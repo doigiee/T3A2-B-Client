@@ -1,6 +1,10 @@
 import React, { useState, useContext } from 'react'
 import menuIcon from '../assets/icons/icon_hamburger.png'
 import closeIcon from '../assets/icons/icon_close.png'
+import login from '../assets/icons/icon_login.png'
+import join from '../assets/icons/icon_join.png'
+import facebook from '../assets/icons/facebook.png'
+import insta from '../assets/icons/instagram.png'
 
 
 //  Use Context for faster performance between states and functions globally
@@ -54,16 +58,33 @@ const MenuBox = ()=>{
     
     return (
     <div id="menu-wrapper" className={"global-menu isOpen " + isVisible}>
-        <a href="/" target="_blank" aria-label="closeMenu" onClick={toggleState} id="btnOpenMenu">
-            <img src={closeIcon} width="40px" height="40px" />
-        </a>
-        <nav aria-label="menu">
-            <ul className='menuItems'>
+        <div id="login-signup-box">
+            <a href="/" target="_blank" onClick={toggleState} id="login">
+                <img src={login}/>  <span>login</span>
+            </a>
+            <a href="/" target="_blank" onClick={toggleState} id="join">
+                <img src={join}/>  <span>Join</span>
+            </a>
+            <a href="/" target="_blank" aria-label="closeMenu" onClick={toggleState} id="btnOpenMenu">
+                <img src={closeIcon} width="40px" height="40px" />
+            </a>
+        </div>
+        <nav aria-label="menu" id="menu-container">
+            <ul id='menu-box'>
                 {menuitems.map((el,idx)=>{ // menu items rendering
                     return <li key={idx}><a href="#">{el}</a></li>
                 })}
             </ul>
         </nav>
+        <div id="social">
+            <a href="/" target="_blank" onClick={toggleState} id="login">
+                <img src={insta}/>
+            </a>
+            <a href="/" target="_blank" onClick={toggleState} id="join">
+                <img src={facebook}/>
+            </a>
+
+        </div>
     </div>
     )    
 }
