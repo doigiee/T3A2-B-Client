@@ -1,13 +1,16 @@
-import { useState } from 'react'
-import reactLogo from '../assets/react.svg'
 import '../App.css'
-import MenuController from './menu'
+import Navbar from './Navbar'
+import { Routes, Route } from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <MenuController />
-    </div>
+  <>
+    <Navbar />
+      <Routes>
+        {/* <Route path='/' element={<Navbar />} /> */}
+      </Routes>
+
+  </>
   )
 }
 
