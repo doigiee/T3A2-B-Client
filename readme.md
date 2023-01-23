@@ -2,8 +2,8 @@
 ---------------------------------------------------------------------------------------------------------
 
 [**Part A**](https://github.com/doigiee/T3A2)  
-[**Part B - Client**](https://github.com/ryanwoolf)  
-[**Part B - Server**](https://github.com/ryanwoolf)  
+[**Part B - Client**](https://github.com/ryanwoolf/T3A2-Client)  
+
 
 ---------------------------------------------------------------------------------------------------------
 

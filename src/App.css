@@ -39,3 +39,18 @@
 .read-the-docs {
   color: #888;
 }
+
+#menu-wrapper{
+  position: fixed; 
+  transition:visibility 0.3s, right 0.3s;
+  background-color: rgb(30, 30, 30);
+}
+
+.isOpen.false{
+  right:-1000px; 
+  visibility:hidden;
+}
+
+.isOpen.true{
+  right:0;
+}
