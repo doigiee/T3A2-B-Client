@@ -10,7 +10,7 @@ const Card = (props) => {
   
   return (
   <>
-    <div className="seenby-cards shadow-btm">
+    <div className="seenby-cards shadow-btm flex-col-cntr">
       <img src={props.src} width='170px'></img>
       <span>{props.desc}</span>
     </div>
@@ -36,7 +36,7 @@ const Home = () => {
       </div>
     </div>
     <img id="wave" src={wave}></img>
-    <section className="context-container">
+    <section className="context-container flex-col-cntr">
       <span>- Seen By -</span>
       <div className="cards-container">
         <Card src={urbanlist} desc='Number one!'/>

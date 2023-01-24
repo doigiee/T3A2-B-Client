@@ -20,12 +20,12 @@ const currentYear = () => new Date().getFullYear()
 
 const Footer = () => {
   return (
-    <footer className="shadow-top">
+    <footer className="shadow-top flex-col-cntr">
       <div className="socialIcon-container">
         <Social href={'http://facebook.com'} src={facebook} />
         <Social href={'http://instagram.com'} src={insta} />
         <Social href={'http://github.com'} src={github} />
-        <Social href={'clidelee@gmail.com'} src={email} />
+        <Social href={'mailto:clidelee@gmail.com'} src={email} />
       </div>
       <span>Copyright &copy; {currentYear()} PAWFUL All Rights Reserved</span>
     </footer>
