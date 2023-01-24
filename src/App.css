@@ -54,6 +54,7 @@
   z-index: 100;
 }
 
+
 #menu-container {
   text-align: right;
   font-size: 1.75rem;
@@ -158,13 +159,16 @@
   position: relative;
   top: -10px;
   background-color: #415144;
-  color: #fffcf5;
   font-size: 1.2rem;
   width: 100vw;
   height: auto;
   justify-content: center;
   padding-bottom: 50px;
-}  
+}
+
+.context-container span {
+  color: #fffcf5;
+}
 
 .cards-container {
   width: 100vw;
