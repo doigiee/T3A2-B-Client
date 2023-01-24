@@ -29,13 +29,23 @@ const MenuController = () => {
         setOpen(!isOpen)
         setVisible(!isOpen)
     }
+    
+    const toggleStateForMenu = () => {
+        setOpen(!isOpen)
+        setVisible(!isOpen)
+    }
+    
 
     return (
-        <MenuControllerContext.Provider value = {{toggleState, isOpen, isVisible}}>
-            <a href="/" target="_blank" aria-label="openMenu" onClick={toggleState} 
+        <MenuControllerContext.Provider value = {{toggleState, toggleStateForMenu, isOpen, isVisible}}>
+            <Link to="/" target="_blank" aria-label="openMenu" onClick={toggleState} 
                     aria-haspopup={!isOpen} id="btnOpenMenu">
                 <img src={menuIcon} width="40px" height="40px" />
-            </a>
+            </Link>
+            {/* <a href="/" target="_blank" aria-label="openMenu" onClick={toggleState} 
+                    aria-haspopup={!isOpen} id="btnOpenMenu">
+                <img src={menuIcon} width="40px" height="40px" />
+            </a> */}
             <MenuBox></MenuBox>
         </MenuControllerContext.Provider>
     )
@@ -47,15 +57,23 @@ const MenuController = () => {
 // MenuBox component
 const MenuBox = () => {
     // Bringing the context from the parent
-    const {toggleState, isOpen, isVisible} = useContext(MenuControllerContext);
+    const {toggleState, toggleStateForMenu, isOpen, isVisible} = useContext(MenuControllerContext);
     
     // Menu items
     const menuitems=[
-        'Home',
-        'About us',
-        'Our services',
-        'Send inquiry'        
+        {title: "Home", to: "/"},
+        {title: "About us", to: "/aboutus"},
+        {title: "Our services", to: "/ourservices"},
+        {title: "Send inquiry", to: "/sendinquiry"}        
     ]
+
+    
+    // const menuitems=[
+    //     'Home',
+    //     'About us',
+    //     'Our services',
+    //     'Send inquiry'        
+    // ]
 
 
     // Custom Link component
@@ -73,20 +91,29 @@ const MenuBox = () => {
         <div id="login-signup-box" className="flex-cntr-sb">
             <LinkTo to="/" src={login} title="Login" onClick={toggleState}/>
             <LinkTo to="/" src={join} title="Join" onClick={toggleState}/>
-            <a href="/" target="_blank" aria-label="closeMenu" onClick={toggleState} id="btnOpenMenu">
+            <Link to="/" target="_blank" aria-label="closeMenu" onClick={toggleState} id="btnOpenMenu">
                 <img src={closeIcon} width="40px" height="40px" />
-            </a>
+            </Link>
+            {/* <a href="/" target="_blank" aria-label="closeMenu" onClick={toggleState} id="btnOpenMenu">
+                <img src={closeIcon} width="40px" height="40px" />
+            </a> */}
         </div>
         <nav aria-label="menu" id="menu-container">
             <ul id='menu-box'>
                 {menuitems.map((el,idx)=>{ // menu items rendering
-                    return <li key={idx}><a href="#">{el}</a></li>
+                    return <li key={idx}>
+                        <Link to={el.to} onClick={toggleStateForMenu}>{el.title}</Link>
+                        </li>
                 })}
             </ul>
         </nav>
         <div id="social-menu">
-            <LinkTo to="http://instagram.com/" src={insta} target="_blank"/>
-            <LinkTo to="http://facebook.com" src={facebook} target="_blank"/>
+            <a href="http://instagram.com/" target="_blank">
+                <img src={insta}/>
+            </a>
+            <a href="http://facebook.com" target="_blank">
+                <img src={facebook}/>
+            </a>
         </div>
     </div>
     )    
