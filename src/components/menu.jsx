@@ -57,8 +57,8 @@ const MenuBox = ()=>{
 
     
     return (
-    <div id="menu-wrapper" className={"global-menu isOpen " + isVisible}>
-        <div id="login-signup-box">
+    <div id="menu-wrapper" className={"shadow-btm isOpen " + isVisible}>
+        <div id="login-signup-box" className="flex-cntr-sb">
             <a href="/" target="_blank" onClick={toggleState} id="login">
                 <img src={login}/>  <span>login</span>
             </a>
@@ -76,7 +76,7 @@ const MenuBox = ()=>{
                 })}
             </ul>
         </nav>
-        <div id="social">
+        <div id="social-menu">
             <a href="/" target="_blank" onClick={toggleState} id="login">
                 <img src={insta}/>
             </a>

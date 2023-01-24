@@ -10,7 +10,7 @@ const Card = (props) => {
   
   return (
   <>
-    <div className="seenby-cards">
+    <div className="seenby-cards shadow-btm flex-col-cntr">
       <img src={props.src} width='170px'></img>
       <span>{props.desc}</span>
     </div>
@@ -31,12 +31,12 @@ const Home = () => {
         at our professional dog grooming service!
       </p>
       <div className="btns-container">
-        <Link className="btn">Make a booking</Link>
-        <Link className="btn">Send inquiry</Link>
+        <Link className="btn shadow-btm">Make a booking</Link>
+        <Link className="btn shadow-btm">Send inquiry</Link>
       </div>
     </div>
     <img id="wave" src={wave}></img>
-    <section className="context-container">
+    <section className="context-container flex-col-cntr">
       <span>- Seen By -</span>
       <div className="cards-container">
         <Card src={urbanlist} desc='Number one!'/>
