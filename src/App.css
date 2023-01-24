@@ -8,7 +8,16 @@
   box-shadow: 0px 5px 30px 5px #00000066;
 }
 
+.white {
+  color: #fffcf5;
+}
+
+.bg-green {
+  background-color: #415144;
+}
+
 #root {
+  min-width: 320px;
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
@@ -26,7 +35,9 @@
   flex-direction: column;
 }
 
+
 #navbar {
+  min-width: 320px;
   width: 100vw;
   height: 80px;
   background-color: #415144;
@@ -99,15 +110,36 @@
   padding: 0 0.5rem;
 }
 
-.heading-container {
+.main-bg-container {
+  background-size: cover;
+  height: 200px;
+
+}
+
+#home {
+  /* display: flex;
+  justify-content: center; */
+  height: 100vh;
+  margin-bottom: -200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("./assets/landing.jpg");
+  background-position: 50%;
+}
+
+
+
+.home-heading-container {
+  position: relative;
+  left: 15%;
   text-align: left;
-  margin-left: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: #fffcf5;
-  max-width: 45%;
-  height: 60vh;
+  width: 40vw;
+  min-width: 100px;
+  max-width: 500px;
+  height: 70vh;
 }
 
 .heading {
@@ -119,6 +151,7 @@
   border-width: 0px 0px 2px 0px;
   border-color: #fffcf5;
   line-height: 110%;
+  text-align: left;
 }
 
 .heading-description {
@@ -127,6 +160,7 @@
   line-height: 140%;
   font-weight: 200;
   padding-bottom: 4rem;
+  text-align: left;
 }
 
 .btns-container {
@@ -152,31 +186,30 @@
 }
 
 #wave {
+  min-width: 320px;
   width: 100vw;
 }
 
 .context-container {
+  min-width: 320px;
   position: relative;
   top: -10px;
-  background-color: #415144;
   font-size: 1.2rem;
   width: 100vw;
   height: auto;
   justify-content: center;
+  padding: 0 2rem;
   padding-bottom: 50px;
 }
 
-.context-container span {
-  color: #fffcf5;
-}
 
 .cards-container {
   width: 100vw;
+  padding: 0 2rem;
   height: auto;
   display: flex;
   align-items: center;
   flex-direction: column;
-  /* justify-content: center; */
 }
 
 
@@ -190,6 +223,7 @@
 }
 
 footer {
+  min-width: 320px;
   position: relative;
   margin-top: -15px;
   z-index: 50;
@@ -206,4 +240,27 @@ footer {
 
 .social-footer {
   padding: 0.5rem;
+}
+
+#aboutus {
+  background-image: url("./assets/about_us.jpg");
+}
+
+.aboutus-heading-container {
+  padding: 2rem 2rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 1080px;
+  height: auto;
+}
+
+.services h3 {
+  padding: 1rem 0;
+} 
+
+.services p {
+  text-align: center;
 }

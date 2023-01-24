@@ -22,12 +22,8 @@ a {
 
 body {
   display: flex;
-  min-width: 320px;
   height: 100vh;
-  background-image: url("./assets/landing.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50%;
+  min-width: 320px;
   background-color: #ffffff;
 }
 
@@ -35,6 +31,5 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
-
 
 
