@@ -6,8 +6,6 @@ import weekend from '../assets/logos/Weekend-Edition_Logo.png'
 import mustdo from '../assets/logos/Must-Do-Brisbane_Logo.png'
 
 const Card = (props) => {
-  
-  
   return (
   <>
     <div className="seenby-cards shadow-btm flex-col-cntr">
@@ -17,9 +15,6 @@ const Card = (props) => {
   </>
   )
 }
-
-
-
 
 const Home = () => {
   return (
@@ -42,12 +37,8 @@ const Home = () => {
         <Card src={urbanlist} desc='Number one!'/>
         <Card src={mustdo} desc='Number one!'/>
         <Card src={weekend} desc='Number one!'/>
-
       </div>
     </section>
-
-
-    
   </>
   )
 }

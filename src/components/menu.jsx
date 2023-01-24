@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import { Link } from 'react-router-dom'
 import menuIcon from '../assets/icons/icon_hamburger.png'
 import closeIcon from '../assets/icons/icon_close.png'
 import login from '../assets/icons/icon_login.png'
@@ -29,7 +30,6 @@ const MenuController = () => {
         setVisible(!isOpen)
     }
 
-
     return (
         <MenuControllerContext.Provider value = {{toggleState, isOpen, isVisible}}>
             <a href="/" target="_blank" aria-label="openMenu" onClick={toggleState} 
@@ -42,8 +42,10 @@ const MenuController = () => {
 }
 
 
+
+
 // MenuBox component
-const MenuBox = ()=>{
+const MenuBox = () => {
     // Bringing the context from the parent
     const {toggleState, isOpen, isVisible} = useContext(MenuControllerContext);
     
@@ -55,16 +57,22 @@ const MenuBox = ()=>{
         'Send inquiry'        
     ]
 
+
+    // Custom Link component
+    const LinkTo = (props) => {
+        return (
+            <Link target="_blank" to={props?.to}>
+                <img src={props.src} />
+                <span>{props?.title}</span>
+            </Link>
+        )
+    }
     
     return (
     <div id="menu-wrapper" className={"shadow-btm isOpen " + isVisible}>
         <div id="login-signup-box" className="flex-cntr-sb">
-            <a href="/" target="_blank" onClick={toggleState} id="login">
-                <img src={login}/>  <span>login</span>
-            </a>
-            <a href="/" target="_blank" onClick={toggleState} id="join">
-                <img src={join}/>  <span>Join</span>
-            </a>
+            <LinkTo to="/" src={login} title="Login" onClick={toggleState}/>
+            <LinkTo to="/" src={join} title="Join" onClick={toggleState}/>
             <a href="/" target="_blank" aria-label="closeMenu" onClick={toggleState} id="btnOpenMenu">
                 <img src={closeIcon} width="40px" height="40px" />
             </a>
@@ -77,13 +85,8 @@ const MenuBox = ()=>{
             </ul>
         </nav>
         <div id="social-menu">
-            <a href="/" target="_blank" onClick={toggleState} id="login">
-                <img src={insta}/>
-            </a>
-            <a href="/" target="_blank" onClick={toggleState} id="join">
-                <img src={facebook}/>
-            </a>
-
+            <LinkTo to="http://instagram.com/" src={insta} target="_blank"/>
+            <LinkTo to="http://facebook.com" src={facebook} target="_blank"/>
         </div>
     </div>
     )    
