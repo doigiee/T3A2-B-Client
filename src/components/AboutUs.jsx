@@ -5,6 +5,8 @@ import daycare from '../assets/icons/icon_daycare.png'
 import grooming from '../assets/icons/icon_grooming.png'
 import bath from '../assets/icons/icon_bath.png'
 import checkup from '../assets/icons/icon_checkup.png'
+import map from '../assets/about_us_map.jpeg'
+
 
 const AboutUs = () => {
 
@@ -51,6 +53,7 @@ const AboutUs = () => {
               Meet friends and play games. After any service, 
               your dog can wait in the playground until you come back!'/>
         </div>
+        <img id="map" src={map} />
     </section>
   </>
   )

@@ -264,3 +264,8 @@ footer {
 .services p {
   text-align: center;
 }
+
+#map {
+  padding: 1rem 1rem;
+  max-width: 90vw; 
+}
