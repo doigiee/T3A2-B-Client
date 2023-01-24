@@ -23,10 +23,9 @@ a {
 body {
   display: flex;
   min-width: 320px;
-  min-height: 100vh;
+  height: 100vh;
   background-image: url("./assets/landing.jpg");
   background-size: cover;
-  background-repeat: no-repeat;
   background-position: 50%;
   background-color: #ffffff;
 }

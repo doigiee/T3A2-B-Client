@@ -33,6 +33,7 @@
   height: 100vh;
   width: 350px;
   top: 0;
+  z-index: 100;
 }
 
 #menu-container {
@@ -112,7 +113,7 @@
   padding-bottom: 4rem;
 }
 
-.button-container {
+.btns-container {
   display: flex;
   flex-direction: column;
 }
@@ -142,6 +143,34 @@
   position: relative;
   top: -10px;
   background-color: #415144;
+  color: #fffcf5;
+  font-size: 1.2rem;
   width: 100vw;
-  height: 500px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }  
+
+.cards-container {
+  width: 100vw;
+  height: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  /* justify-content: center; */
+}
+
+
+.seenby-cards {
+  width: 250px;
+  height: 250px;
+  background-color: #fffcf5;
+  border-radius: 10%;
+  margin: 1.5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
