@@ -20,7 +20,7 @@ const currentYear = () => new Date().getFullYear()
 
 const Footer = () => {
   return (
-    <footer className="shadow-top flex-col-cntr">
+    <footer className="shadow-top flex column a-i-center j-c-center">
       <div className="socialIcon-container">
         <Social href={'http://facebook.com'} src={facebook} />
         <Social href={'http://instagram.com'} src={insta} />

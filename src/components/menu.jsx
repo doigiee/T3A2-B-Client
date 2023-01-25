@@ -42,10 +42,6 @@ const MenuController = () => {
                     aria-haspopup={!isOpen} id="btnOpenMenu">
                 <img src={menuIcon} width="40px" height="40px" />
             </Link>
-            {/* <a href="/" target="_blank" aria-label="openMenu" onClick={toggleState} 
-                    aria-haspopup={!isOpen} id="btnOpenMenu">
-                <img src={menuIcon} width="40px" height="40px" />
-            </a> */}
             <MenuBox></MenuBox>
         </MenuControllerContext.Provider>
     )
@@ -62,18 +58,11 @@ const MenuBox = () => {
     // Menu items
     const menuitems=[
         {title: "Home", to: "/"},
-        {title: "About us", to: "/aboutus"},
-        {title: "Our services", to: "/ourservices"},
-        {title: "Send inquiry", to: "/sendinquiry"}        
+        {title: "About us", to: "/about_us"},
+        {title: "Our services", to: "/our_services"},
+        {title: "Send inquiry", to: "/send_inquiry"}        
     ]
 
-    
-    // const menuitems=[
-    //     'Home',
-    //     'About us',
-    //     'Our services',
-    //     'Send inquiry'        
-    // ]
 
 
     // Custom Link component
@@ -88,7 +77,7 @@ const MenuBox = () => {
     
     return (
     <div id="menu-wrapper" className={"shadow-btm isOpen " + isVisible}>
-        <div id="login-signup-box" className="flex-cntr-sb">
+        <div id="login-signup-box" className="flex a-i-center j-c-sb">
             <LinkTo to="/" src={login} title="Login" onClick={toggleState}/>
             <LinkTo to="/" src={join} title="Join" onClick={toggleState}/>
             <Link to="/" target="_blank" aria-label="closeMenu" onClick={toggleState} id="btnOpenMenu">
@@ -107,7 +96,7 @@ const MenuBox = () => {
                 })}
             </ul>
         </nav>
-        <div id="social-menu">
+        <div id="social-menu" className="flex a-i-center">
             <a href="http://instagram.com/" target="_blank">
                 <img src={insta}/>
             </a>
