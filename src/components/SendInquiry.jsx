@@ -1,26 +1,37 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import wave from '../assets/wave_white.svg'
 import { Link } from 'react-router-dom'
+import emailjs from '@emailjs/browser';
+
+
 
 const SendInquiry = () => {
 
+  const form = useRef()
+
+
+  const sendEmail = (e) => {
+    e.preventDefault()
+
+    emailjs.sendForm('service_ipqihi2', 'template_dp7mndu', form.current, 'x5ldj7hCbXs9GZBHH')
+      .then((result) => {
+          alert("Successfully sent!")
+      }, (error) => {
+          alert("Failed to send email. Please try again later")
+      })
+  }
+
   const isEmail = (e) => {
-    const emailRegex = 
-    /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
-    const test = emailRegex.test(e)
-    if (!test) {
-      return alert(`Invalid email`)
-    }
+    const patternEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
+    const test = patternEmail.test(e.target.value)
+    if (!test) alert("Invalid email address")
   }
 
   const isPhoneNumber = (n) => {
-
+    const patternPhoneNumber = /\d{10}/
+    const test = patternPhoneNumber.test(n.target.value)
+    if (!test || n.target.value.length !== 10 ) alert("Invalid phone number")
   }
-
-
-
-
-
 
   return (
   <>
@@ -31,19 +42,17 @@ const SendInquiry = () => {
       <p className="heading-description">
         If you have any other inquiry, please don't hesitate to send us an email through the below form.
       </p>
-      <form className="send-inquiry-form flex column a-i-center">
-        <input type="email" name="email" 
-              placeholder="Email" onMouseLeave={isEmail}></input>
-        <input type="text" name="first-name" 
-              placeholder="First name"></input>
-        <input type="text" name="last-name" 
-              placeholder="Last name"></input>
-        <input type="tel" name="phone" 
-              placeholder="Phone" pattern="[0-9]{10}" 
-              maxlength="10" onChange={isPhoneNumber}></input>
+      <form className="send-inquiry-form flex column a-i-center" ref={form} onSubmit={sendEmail}>
+        <input type="text" name="user_name" 
+              required placeholder="Name"/>
+        <input type="email" name="user_email" onBlur={isEmail}
+              required placeholder="Email"/>
+        <input type="tel" name="user_phone"
+              placeholder="Phone" pattern="[0-9]{10}" onBlur={isPhoneNumber} 
+              required maxLength="10"/>
         <textarea name="message" id="inquiry-message" 
-              placeholder="Message" cols="" rows="10"></textarea>
-        <Link className="btn shadow-btm">Send</Link>
+              placeholder="Message" cols="" rows="10"/>
+        <input id="submit-btn" type="submit" value="Send" />
       </form>
     </section>
   </>

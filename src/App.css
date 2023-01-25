@@ -305,6 +305,10 @@ footer {
   background-position-y: 60%;
 }
 
+#send-inquiry input, textarea {
+  font-family: "Noto Sans", sans-serif;
+}
+
 .send-inquiry-form input {
   margin: 0.5rem;
   color: #363636;
@@ -332,4 +336,23 @@ footer {
 
 #inquiry-message::placeholder {
   color: #3636364d;
+}
+
+#submit-btn {
+  margin : 5px 0;
+  font-family: 'Noto Sans', sans-serif;
+  color: #fffcf5;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 400;
+  background-color: #D4B565;
+  padding: 10px;
+  width: 130px;
+  border: 0 solid white;
+  border-radius: 12px;
+  transition: .5s ease;
+}
+
+#submit-btn:hover {
+  box-shadow: 0 0 10px 0 #f7d684 inset, 0 0 10px 4px #f7d684;
 }
