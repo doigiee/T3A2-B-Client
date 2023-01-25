@@ -11,12 +11,9 @@ const Home = () => {
 
   const Card = (props) => {
     return (
-    <>
       <div className="seenby-card shadow-btm flex column a-i-center j-c-center">
         <img src={props.src} width='170px'></img>
-        <span>{props.desc}</span>
       </div>
-    </>
     )
   }
 
@@ -39,9 +36,9 @@ const Home = () => {
     <section className="context-container flex column a-i-center j-c-center white bg-green">
       <span>- Seen By -</span>
       <div className="cards-container">
-        <Card src={urbanlist} desc='Number one!'/>
-        <Card src={mustdo} desc='Number one!'/>
-        <Card src={weekend} desc='Number one!'/>
+        <Card src={urbanlist}/>
+        <Card src={mustdo}/>
+        <Card src={weekend}/>
       </div>
     </section>
   </>
