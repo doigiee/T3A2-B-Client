@@ -82,7 +82,7 @@ const MenuBox = () => {
         <div id="login-signup-box" className="flex a-i-center j-c-sb">
             <LinkTo to="/login" src={login} title="Login" onClick={toggleStateForMenu}/>
             <LinkTo to="/join" src={join} title="Join" onClick={toggleStateForMenu}/>
-            <Link to="/" target="_blank" aria-label="closeMenu" onClick={toggleState} id="btnOpenMenu">
+            <Link aria-label="closeMenu" onClick={toggleState} id="btnOpenMenu">
                 <img src={closeIcon} width="40px" height="40px" />
             </Link>
         </div>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import dog from '../assets/dog_login.png'
 
@@ -17,17 +17,44 @@ const Login = () => {
 }
 
 
-
 const Join = () => {
+
+  const [ password, setPassword ] = useState('')
+
+  function handlePassInput(e) {
+    if (e.target) {
+      const password = e.target.value
+      setPassword(password)
+      if (password.length === 0) {
+        addClass(e)
+      } else if (password.length < 4) {
+        addClass(e, "weak")
+      } else if (password.length < 7) {
+        addClass(e, "average")
+      } else {
+        addClass(e, "strong")
+      }
+    }
+  }
+
+  function addClass(e, name) {
+    if (e.target) {
+      e.target.className = "login-input"
+      if (name) {
+        e.target.className += " " + name
+      }
+    }
+  }
+
   return (
     <>
       <h2 className='heading' id="login-heading">Create my account</h2>
-      <input className="login-input" type="text" name="email" placeholder='Email'/>
-      <input className="login-input" type="text" name="first_name" placeholder='First name'/>
-      <input className="login-input" type="text" name="last_name" placeholder='Last name'/>
-      <input className="login-input" type="tel" name="contact" placeholder='Contact'/>
-      <input className="login-input" type="password" placeholder="Password" />
-      <input className="login-input" type="password" placeholder="Password" />
+      <input className="login-input" type="text" name="email" placeholder='Email *'/>
+      <input className="login-input" type="text" name="first_name" placeholder='First name *'/>
+      <input className="login-input" type="text" name="last_name" placeholder='Last name *'/>
+      <input className="login-input" type="tel" name="contact" placeholder='Contact *'/>
+      <input id="password" className="login-input" type="password" placeholder="Password *" value={password} onInput={handlePassInput}/>
+      <input className="login-input" type="password" placeholder="Repeat password *" />
       <Link to="/" className="btn shadow-btm login-btn">CREATE MY ACCOUNT</Link>
       <span className="agreement">By creating an account,<br/> you agree to our Terms & conditions and Privacy notice on how we manage your personal information.</span>
     </>
@@ -43,6 +70,8 @@ const Join = () => {
 
 
 const LoginController = () => {
+
+
 
 
 
