@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import menuIcon from '../assets/icons/icon_hamburger.png'
 import closeIcon from '../assets/icons/icon_close.png'
@@ -34,6 +34,8 @@ const MenuController = () => {
         setOpen(!isOpen)
         setVisible(!isOpen)
     }
+
+    useEffect(()=>console.log('Rendered'),[])
     
 
     return (
@@ -68,7 +70,7 @@ const MenuBox = () => {
     // Custom Link component
     const LinkTo = (props) => {
         return (
-            <Link target="_blank" to={props?.to}>
+            <Link to={props.to}>
                 <img src={props.src} />
                 <span>{props?.title}</span>
             </Link>
@@ -78,18 +80,15 @@ const MenuBox = () => {
     return (
     <div id="menu-wrapper" className={"shadow-btm isOpen " + isVisible}>
         <div id="login-signup-box" className="flex a-i-center j-c-sb">
-            <LinkTo to="/" src={login} title="Login" onClick={toggleState}/>
-            <LinkTo to="/" src={join} title="Join" onClick={toggleState}/>
+            <LinkTo to="/login" src={login} title="Login" onClick={toggleStateForMenu}/>
+            <LinkTo to="/join" src={join} title="Join" onClick={toggleStateForMenu}/>
             <Link to="/" target="_blank" aria-label="closeMenu" onClick={toggleState} id="btnOpenMenu">
                 <img src={closeIcon} width="40px" height="40px" />
             </Link>
-            {/* <a href="/" target="_blank" aria-label="closeMenu" onClick={toggleState} id="btnOpenMenu">
-                <img src={closeIcon} width="40px" height="40px" />
-            </a> */}
         </div>
         <nav aria-label="menu" id="menu-container">
             <ul id='menu-box'>
-                {menuitems.map((el,idx)=>{ // menu items rendering
+                {menuitems.map((el,idx) => { // menu items rendering
                     return <li key={idx}>
                         <Link to={el.to} onClick={toggleStateForMenu}>{el.title}</Link>
                         </li>
