@@ -28,7 +28,7 @@ const Home = () => {
         </p>
         <div className="btns-container flex column">
           <Link className="btn shadow-btm">Make a booking</Link>
-          <Link className="btn shadow-btm">Send inquiry</Link>
+          <Link to="/send_inquiry" className="btn shadow-btm">Send inquiry</Link>
         </div>
       </div>
     </article>

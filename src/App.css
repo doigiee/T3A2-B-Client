@@ -300,3 +300,36 @@ footer {
   font-size: 2.25rem;
 }
 
+#send-inquiry {
+  background-image: url("./assets/send_inquiry.jpg");
+  background-position-y: 60%;
+}
+
+.send-inquiry-form input {
+  margin: 0.5rem;
+  color: #363636;
+  background-color: #0000000f;
+  border: 1px solid #36363685;
+  width: 300px;
+  height: 40px;
+  padding-left: 1rem;
+}
+
+#inquiry-message {
+  margin: 0.5rem;
+  color: #363636;
+  background-color: #0000000f;
+  border: 1px solid #36363685;
+  width: 300px;
+  margin-bottom: 2rem;
+  padding-top: 0.5rem;
+  padding-left: 1rem;
+}
+
+.send-inquiry-form input::placeholder {
+  color: #3636364d;
+}
+
+#inquiry-message::placeholder {
+  color: #3636364d;
+}
