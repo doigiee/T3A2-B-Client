@@ -25,9 +25,9 @@ const MenuController = () => {
 
     // Handler to change states when the button is clicked
     const toggleState = (evt) => {
-        evt.preventDefault()
         setOpen(!isOpen)
         setVisible(!isOpen)
+        evt.preventDefault()
     }
     
     const toggleStateForMenu = () => {
@@ -70,7 +70,7 @@ const MenuBox = () => {
     // Custom Link component
     const LinkTo = (props) => {
         return (
-            <Link to={props.to}>
+            <Link to={props.to} onClick={toggleStateForMenu}>
                 <img src={props.src} />
                 <span>{props?.title}</span>
             </Link>
@@ -80,8 +80,8 @@ const MenuBox = () => {
     return (
     <div id="menu-wrapper" className={"shadow-btm isOpen " + isVisible}>
         <div id="login-signup-box" className="flex a-i-center j-c-sb">
-            <LinkTo to="/login" src={login} title="Login" onClick={toggleStateForMenu}/>
-            <LinkTo to="/join" src={join} title="Join" onClick={toggleStateForMenu}/>
+            <LinkTo to="/login" src={login} title="Login" />
+            <LinkTo to="/join" src={join} title="Join" />
             <Link aria-label="closeMenu" onClick={toggleState} id="btnOpenMenu">
                 <img src={closeIcon} width="40px" height="40px" />
             </Link>
