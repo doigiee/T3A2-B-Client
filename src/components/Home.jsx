@@ -11,37 +11,34 @@ const Home = () => {
 
   const Card = (props) => {
     return (
-    <>
-      <div className="seenby-cards shadow-btm flex-col-cntr">
+      <div className="seenby-card shadow-btm flex column a-i-center j-c-center">
         <img src={props.src} width='170px'></img>
-        <span>{props.desc}</span>
       </div>
-    </>
     )
   }
 
   return (
   <>
     <article id="home">
-      <div className="home-heading-container white">
+      <div className="home-heading-container white flex column j-c-center">
         <h2 className="heading">Welcome to PAWFUL</h2>
         <p className="heading-description">
           Let us pamper your furry friend 
           at our professional dog grooming service!
         </p>
-        <div className="btns-container">
+        <div className="btns-container flex column">
           <Link className="btn shadow-btm">Make a booking</Link>
           <Link className="btn shadow-btm">Send inquiry</Link>
         </div>
       </div>
     </article>
     <img id="wave" src={wave}/>
-    <section className="context-container flex-col-cntr white bg-green">
+    <section className="context-container flex column a-i-center j-c-center white bg-green">
       <span>- Seen By -</span>
       <div className="cards-container">
-        <Card src={urbanlist} desc='Number one!'/>
-        <Card src={mustdo} desc='Number one!'/>
-        <Card src={weekend} desc='Number one!'/>
+        <Card src={urbanlist}/>
+        <Card src={mustdo}/>
+        <Card src={weekend}/>
       </div>
     </section>
   </>

@@ -4,7 +4,7 @@ import MenuController from './Menu'
 
 const Navbar = () => {
   return (
-    <nav id="navbar" className="flex-cntr-sb">
+    <nav id="navbar" className="flex a-i-center j-c-sb">
       <Link id="logo" to="/">PAWFUL</Link>
       <MenuController />
     </nav>
