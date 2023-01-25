@@ -313,6 +313,7 @@ footer {
   margin: 0.5rem;
   color: #363636;
   background-color: #0000000f;
+  /* border: 1px solid #ff6565d3; */
   border: 1px solid #36363685;
   width: 300px;
   height: 40px;
@@ -355,4 +356,8 @@ footer {
 
 #submit-btn:hover {
   box-shadow: 0 0 10px 0 #f7d684 inset, 0 0 10px 4px #f7d684;
+}
+
+#invalid-warning {
+  border: 1px solid #ff656586;
 }
