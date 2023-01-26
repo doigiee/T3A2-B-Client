@@ -307,7 +307,7 @@ footer {
   font-family: "Noto Sans", sans-serif;
 }
 
-.send-inquiry-form input {
+.send-inquiry-form input, #selected-date, #packages-dropbox {
   margin: 0.5rem;
   color: #363636;
   background-color: #0000000f;
@@ -464,6 +464,10 @@ footer {
   margin-right: 0.3rem;
 }
 
+#create-booking {
+  background-image: url("./assets/background2.jpg");
+  background-position-y: 60%;  
+}
 
 .booking-card {
   background-image: linear-gradient(150deg, #415144, #6d8271);
@@ -487,3 +491,4 @@ footer {
   padding-right: 2rem;
   text-align: right;
 }
+

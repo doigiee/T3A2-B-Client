@@ -45,7 +45,7 @@ const BookingCard = (props) => {
           <p className='heading-description'>{props.time}</p>
           <div>
             <h3>$ {props.price}</h3>
-            <Link className="heading-description" to="">Modify</Link>
+            <Link className="heading-description" to="/bookings">Modify</Link>
             <span className="heading-description" > | </span>
             <Link className="heading-description" to="">Cancel</Link>
           </div>
