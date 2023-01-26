@@ -25,7 +25,7 @@ const OurServices = () => {
       <p className="heading-description">
       Let us pamper your furry friend at our professional dog grooming service! 
       </p>
-      <Link className="btn shadow-btm">Send inquiry</Link>
+      <Link to="/send_inquiry" className="btn shadow-btm">Send inquiry</Link>
     </div>
     <img id="wave" src={wave}/>
     <section className="context-container flex column a-i-left">
