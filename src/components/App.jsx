@@ -6,7 +6,8 @@ import Footer from './Footer'
 import AboutUs from './AboutUs'
 import OurServices from './OurServices'
 import SendInquiry from './SendInquiry'
-import LoginController from './LoginController'
+import LoginController from './Login'
+import JoinController from './Join'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/our_services' element={<OurServices />} />
         <Route path='/send_inquiry' element={<SendInquiry />} />
         <Route path='/login' element={<LoginController />} />
+        <Route path='/join' element={<JoinController />} />
       </Routes>
     <Footer />
   </>
