@@ -40,7 +40,7 @@ const Join = () => {
       <input className="login-input" type="text" name="last_name" placeholder='Last name *'/>
       <input className="login-input" type="tel" name="contact" placeholder='Contact *'/>
       <input id="password" className="login-input" type="password" placeholder="Password *" value={password} onInput={handlePassInput}/>
-      <Link to="/" className="btn shadow-btm login-btn">CREATE MY ACCOUNT</Link>
+      <Link to="/my-account" className="btn shadow-btm login-btn">CREATE MY ACCOUNT</Link>
       <span className="agreement">By creating an account,<br/> you agree to our Terms & conditions and Privacy notice on how we manage your personal information.</span>
     </>
   )

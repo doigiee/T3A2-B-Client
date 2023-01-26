@@ -11,7 +11,7 @@ const Login = () => {
       <Link to="/join" className='sub-desc'>New to PAWFUL? Join here</Link>
       <input className="login-input" type="text" name="email" placeholder='Email'/>
       <input className="login-input" type="password" placeholder="Password"/>
-      <Link to="/" className="btn shadow-btm login-btn">LOGIN</Link>
+      <Link to="/my-account" className="btn shadow-btm login-btn">LOGIN</Link>
       <Link className='sub-desc'>Forgot password?</Link>
     </>
   )

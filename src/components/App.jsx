@@ -8,6 +8,9 @@ import OurServices from './OurServices'
 import SendInquiry from './SendInquiry'
 import LoginController from './Login'
 import JoinController from './Join'
+import MyAccount from './MyAccount'
+
+
 
 function App() {
   return (
@@ -20,6 +23,7 @@ function App() {
         <Route path='/send_inquiry' element={<SendInquiry />} />
         <Route path='/login' element={<LoginController />} />
         <Route path='/join' element={<JoinController />} />
+        <Route path='/my-account' element={<MyAccount />} />
       </Routes>
     <Footer />
   </>
