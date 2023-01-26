@@ -24,7 +24,7 @@ function App() {
         <Route path='/send_inquiry' element={<SendInquiry />} />
         <Route path='/login' element={<LoginController />} />
         <Route path='/join' element={<JoinController />} />
-        <Route path='/my-account' element={<MyAccount />} />
+        <Route path='/my_account' element={<MyAccount />} />
         <Route path='/bookings' element={<Booking />} />
       </Routes>
     <Footer />

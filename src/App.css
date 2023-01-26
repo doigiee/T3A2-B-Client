@@ -200,7 +200,7 @@
   width: 100vw;
   height: auto;
   padding: 2rem 2rem;
-  padding-bottom: 50px;
+  padding-bottom: 100px;
 }
 
 
@@ -365,6 +365,7 @@ footer {
   background-size: cover;
   background-blend-mode: darken;
   width: auto;
+  min-height: 100vh;
   height: max-content;
   padding : 8rem 0;
 }
@@ -408,11 +409,31 @@ footer {
   color: #fffcf55c
 }
 
-.login-btn {
+/* .login-btn {
+  transition: .5s ease;
   background-color: #A59468;
   margin-top: 2rem;
   margin-bottom: 1rem;
   width: 230px;
+} */
+.login-btn {
+  margin : 5px 0;
+  transition: .5s ease;
+  background-color: #A59468;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  width: 230px;
+  font-family: 'Noto Sans', sans-serif;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 300;
+  padding: 10px;
+  border-radius: 12px;
+  transition: .5s ease;
+}
+
+#login-btn:hover {
+  box-shadow: 0 0 10px 0 #f7d684 inset, 0 0 10px 4px #f7d684;
 }
 
 .sub-desc {

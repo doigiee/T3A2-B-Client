@@ -71,6 +71,8 @@ const MyAccount = () => {
       <h2 className="heading">My bookings</h2>
         <div className="cards-container flex column a-i-center j-c-center">
           <BookingCard date={{date:"27th", month:"Jan"}} pkg="Package 1" time="11:00AM - 12:00PM" price="110"/>
+          <BookingCard date={{date:"27th", month:"Jan"}} pkg="Package 1" time="11:00AM - 12:00PM" price="110"/>
+          <BookingCard date={{date:"27th", month:"Jan"}} pkg="Package 1" time="11:00AM - 12:00PM" price="110"/>
         </div>
         
     </section>

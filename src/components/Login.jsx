@@ -7,12 +7,12 @@ import dog from '../assets/dog_login.png'
 const Login = () => {
   return (
     <>
-      <h2 className='heading' id="login-heading">Login</h2>
-      <Link to="/join" className='sub-desc'>New to PAWFUL? Join here</Link>
-      <input className="login-input" type="text" name="email" placeholder='Email'/>
-      <input className="login-input" type="password" placeholder="Password"/>
-      <Link to="/my-account" className="btn shadow-btm login-btn">LOGIN</Link>
-      <Link className='sub-desc'>Forgot password?</Link>
+        <h2 className='heading' id="login-heading">Login</h2>
+        <Link to="/join" className='sub-desc'>New to PAWFUL? Join here</Link>
+        <input className="login-input" type="email" name="email" placeholder='Email'/>
+        <input className="login-input" type="password" placeholder="Password"/>
+        <Link to="/my-account"><h3 className="btn login-btn">LOGIN</h3></Link>
+        <Link className='sub-desc'>Forgot password?</Link>
     </>
   )
 }

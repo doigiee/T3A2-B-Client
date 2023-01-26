@@ -27,8 +27,8 @@ const Home = () => {
           at our professional dog grooming service!
         </p>
         <div className="btns-container flex column">
-          <Link className="btn shadow-btm">Make a booking</Link>
-          <Link to="/send_inquiry" className="btn shadow-btm">Send inquiry</Link>
+          <Link to={"/bookings"}><h3 className="btn">Book now</h3></Link>
+          <Link to={"/send_inquiry"}><h3 className="btn">Send inquiry</h3></Link>
         </div>
       </div>
     </article>

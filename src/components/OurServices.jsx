@@ -25,7 +25,7 @@ const OurServices = () => {
       <p className="heading-description">
       Let us pamper your furry friend at our professional dog grooming service! 
       </p>
-      <Link to="/send_inquiry" className="btn shadow-btm">Send inquiry</Link>
+      <Link id="book-now" to={"/send_inquiry"}><h3 className="btn">Send inquiry</h3></Link>
     </div>
     <section className="context-container flex column a-i-left">
       <h2 className="heading">Grooming package</h2>
