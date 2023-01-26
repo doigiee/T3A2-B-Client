@@ -165,7 +165,7 @@
   font-size: 0.9rem;
   line-height: 140%;
   font-weight: 200;
-  padding-bottom: 2rem;
+  padding-bottom: 1.5rem;
   text-align: left;
 }
 
@@ -187,6 +187,7 @@
 }
 
 #wave {
+  position: relative;
   min-width: 320px;
   width: 100vw;
 }
@@ -198,7 +199,7 @@
   font-size: 1.2rem;
   width: 100vw;
   height: auto;
-  padding: 0 2rem;
+  padding: 2rem 2rem;
   padding-bottom: 50px;
 }
 
@@ -306,7 +307,7 @@ footer {
   font-family: "Noto Sans", sans-serif;
 }
 
-.send-inquiry-form input {
+.send-inquiry-form input, #selected-date, #packages-dropbox {
   margin: 0.5rem;
   color: #363636;
   background-color: #0000000f;
@@ -444,3 +445,50 @@ footer {
 .strong {
   border: 2px solid #00800093;
 }
+
+#my-account {
+  background-image: url("./assets/background2.jpg");
+  background-position-y: 60%;
+}
+
+.sub-menu {
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: 200;
+  text-decoration: underline;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  color: #363636
+}
+
+.sub-menu img {
+  margin-right: 0.3rem;
+}
+
+#create-booking {
+  background-image: url("./assets/background2.jpg");
+  background-position-y: 60%;  
+}
+
+.booking-card {
+  background-image: linear-gradient(150deg, #415144, #6d8271);
+  color: #fffcf5;
+  border-radius: 25px;
+  width: 320px;
+  height: 170px;
+  margin: 1rem 0;
+}
+
+.booking-date {
+  width: 35%;
+}
+
+.booking-detail {
+  width: 65%;
+  padding: 1rem 0;
+}
+
+.booking-detail div {
+  padding-right: 2rem;
+  text-align: right;
+}
+

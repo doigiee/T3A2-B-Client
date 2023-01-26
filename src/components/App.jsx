@@ -9,6 +9,7 @@ import SendInquiry from './SendInquiry'
 import LoginController from './Login'
 import JoinController from './Join'
 import MyAccount from './MyAccount'
+import Booking from './Booking'
 
 
 
@@ -24,6 +25,7 @@ function App() {
         <Route path='/login' element={<LoginController />} />
         <Route path='/join' element={<JoinController />} />
         <Route path='/my-account' element={<MyAccount />} />
+        <Route path='/bookings' element={<Booking />} />
       </Routes>
     <Footer />
   </>

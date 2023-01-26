@@ -28,7 +28,6 @@ const AboutUs = () => {
         We're a group of dog enthusiastic that our skills to look after many kinds of dogs!
       </p>
     </div>
-    <img id="wave" src={wave}/>
     <section className="context-container flex column a-i-left">
       <h2 className="heading">Daycare and grooming,<br/>All in one service</h2>
         <p className="heading-description">

@@ -27,7 +27,6 @@ const OurServices = () => {
       </p>
       <Link to="/send_inquiry" className="btn shadow-btm">Send inquiry</Link>
     </div>
-    <img id="wave" src={wave}/>
     <section className="context-container flex column a-i-left">
       <h2 className="heading">Grooming package</h2>
         <p className="heading-description">
