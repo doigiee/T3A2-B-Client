@@ -39,11 +39,13 @@ const SendInquiry = () => {
   return (
   <>
     <div id="send-inquiry" className="main-bg-container"/>
-    <section className="context-container flex column a-i-left">
+    <div className="heading-container flex column">
       <h2 className="heading">Send inquiry</h2>
       <p className="heading-description">
         If you have any other inquiry, please don't hesitate to send us an email through the below form.
       </p>
+    </div>
+    <section className="context-container flex column a-i-left">
       <form className="send-inquiry-form flex column a-i-center" ref={form} onSubmit={toModifyEmail}>
         <input type="text" name="user_name" 
               required placeholder="Name *"/>
@@ -54,7 +56,7 @@ const SendInquiry = () => {
               required maxLength="10"/>
         <textarea name="message" id="inquiry-message" 
               placeholder="Message" cols="" rows="10"/>
-        <input id="submit-btn" type="submit" value="Send" />
+        <input id="submit-btn" type="submit" value="Submit" />
       </form>
     </section>
   </>

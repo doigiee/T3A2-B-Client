@@ -50,7 +50,6 @@ const BookingCard = (props) => {
             <Link className="heading-description" to="">Cancel</Link>
           </div>
         </div>
-
       </div>
     </>
   )

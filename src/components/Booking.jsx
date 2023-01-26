@@ -5,13 +5,6 @@ import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
 import "react-datepicker/dist/react-datepicker.css"
 
-// CSS Modules, react-datepicker-cssmodules.css
-// import 'react-datepicker/dist/react-datepicker-cssmodules.css';
-
-
-
-
-
 
 const Calendar = (props) => {
   
@@ -28,7 +21,6 @@ const Calendar = (props) => {
       selected={startDate}
       onChange={(date) => {
         setStartDate(date)
-        console.log(date)
         props.cb(date)}}
       showTimeSelect
       minTime={setHours(setMinutes(new Date(), 0), 9)}
@@ -38,15 +30,8 @@ const Calendar = (props) => {
       inline
       placeholderText="Click to select a date"
       />
-  );
-};
-
-
-
-
-
-
-
+  )
+}
 
 
 
@@ -66,9 +51,11 @@ const Booking = () => {
       <h2 className="heading">Book your<br/>appointment</h2>
     </div>
     <section className="context-container flex column a-i-center">
-      <Calendar cb={setDate}/>
+      <Calendar id="calendar" cb={setDate}/>
       <div className="cards-container flex column a-i-center j-c-center">
-        <input type="text" id="selected-date" name="selectedDate" value={selectedDate(date)} readonly />
+        <input type="text" id="selected-date" 
+              name="selectedDate" value={selectedDate(date)} 
+              placeholder="Date and time you selected" readonly />
         <select id="packages-dropbox" name="packages">
           <option value="pkg1">Package 1</option>
           <option value="pkg2">Package 2</option>
@@ -76,7 +63,7 @@ const Booking = () => {
           <option value="pkg4">Package 4</option>
         </select>
 
-        <Link to="/my-account" className="btn shadow-btm login-btn">Save</Link>
+        <Link to="/my_account" className="btn shadow-btm login-btn">Save</Link>
 
       </div>
     </section>

@@ -58,7 +58,6 @@
   background-color: #415144;
   color: #fffcf5;
   padding: 1rem 1.5rem;
-
 }
 
 #logo {
@@ -181,6 +180,9 @@
   border-radius: 12px;
   transition: .5s ease;
 }
+.btns-container a {
+  width: 130px;
+}
 
 .btn:hover {
   box-shadow: 0 0 10px 0 #f7d684 inset, 0 0 10px 4px #f7d684;
@@ -273,6 +275,7 @@ footer {
   background-position-y: 10%;
 }
 
+
 .package-card {
   background-color: #3636361c;
   border: 0.5px solid #36363653;
@@ -296,6 +299,10 @@ footer {
 .package-card h2 {
   padding-bottom: 1rem;
   font-size: 2.25rem;
+}
+
+.send-inquiry-form {
+  margin-top: -2rem;
 }
 
 #send-inquiry {
@@ -409,13 +416,6 @@ footer {
   color: #fffcf55c
 }
 
-/* .login-btn {
-  transition: .5s ease;
-  background-color: #A59468;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  width: 230px;
-} */
 .login-btn {
   margin : 5px 0;
   transition: .5s ease;
@@ -489,6 +489,11 @@ footer {
   background-image: url("./assets/background2.jpg");
   background-position-y: 60%;  
 }
+.react-datepicker {
+  width: 328px;
+  margin-top: -30px;
+  margin-bottom: 10px;
+}
 
 .booking-card {
   background-image: linear-gradient(150deg, #415144, #6d8271);
@@ -513,3 +518,99 @@ footer {
   text-align: right;
 }
 
+/* tablet view    */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+
+  .main-bg-container {
+    min-height: 300px;
+  }
+
+  .btns-container {
+    display: inline;
+  }
+
+  .btns-container a {
+    width: 130px;
+    display: inline-block;
+    margin-right: 1.5rem;
+  }
+
+  .heading-container {
+    padding: 5rem 4rem 3rem 4rem;
+  }
+  
+  .context-container {
+    padding: 2rem 4rem;
+    /* flex-direction: row; */
+  }
+
+  .cards-container {
+    flex-direction: row;
+    flex-wrap: wrap ;
+    justify-content: center;
+  }
+  .services {
+    width: 320px;
+  }
+
+  .send-inquiry-form input, #selected-date, #packages-dropbox {
+    width: 450px;
+  }
+  
+  #inquiry-message {
+    width: 450px;
+  }
+
+  .booking-card {
+    width: 350px;
+    margin: 1rem 3rem;
+  }
+}
+
+/* desktop view */
+@media screen and (min-width: 992px) {
+  .main-bg-container {
+    min-height: 300px;
+  }
+
+  .btns-container {
+    display: inline;
+  }
+
+  .btns-container a {
+    width: 130px;
+    display: inline-block;
+    margin-right: 1.5rem;
+  }
+
+  .heading-container {
+    padding: 5rem 4rem 3rem 4rem;
+  }
+  
+  .context-container {
+    padding: 2rem 4rem;
+    /* flex-direction: row; */
+  }
+
+  .cards-container {
+    flex-direction: row;
+    flex-wrap: wrap ;
+    justify-content: center;
+  }
+  .services {
+    width: 320px;
+  }
+
+  .send-inquiry-form input, #selected-date, #packages-dropbox {
+    width: 450px;
+  }
+  
+  #inquiry-message {
+    width: 450px;
+  }
+
+  .booking-card {
+    width: 350px;
+    margin: 1rem 3rem;
+  }
+}
