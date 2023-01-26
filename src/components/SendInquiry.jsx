@@ -39,7 +39,6 @@ const SendInquiry = () => {
   return (
   <>
     <div id="send-inquiry" className="main-bg-container"/>
-    <img id="wave" src={wave}/>
     <section className="context-container flex column a-i-left">
       <h2 className="heading">Send inquiry</h2>
       <p className="heading-description">
