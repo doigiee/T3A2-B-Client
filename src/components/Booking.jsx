@@ -46,11 +46,16 @@ const Booking = () => {
 
   return (
     <>
-    <div id="my-account" className="main-bg-container"/>
-    <div className="heading-container">
-      <h2 className="heading">Book your<br/>appointment</h2>
-    </div>
-    <section className="context-container flex column a-i-center">
+    <article className="page-header flex column j-c-center a-i-center">
+      <div id="my-account" className="main-bg-container"/>
+      <div className="heading-container text-shadow">
+        <h2 className="heading">Book your<br/>appointment</h2>
+        <p className="heading-description">
+          Please check the below options for more information.
+        </p>
+      </div>
+    </article>
+    <section className="context-container flex column a-i-center j-c-center">
       <Calendar id="calendar" cb={setDate}/>
       <div id="date-picker" className="cards-container flex column a-i-center j-c-center">
         <input type="text" id="selected-date" 
@@ -64,6 +69,10 @@ const Booking = () => {
         </select>
         <Link to="/my_account"><h3 className="btn login-btn">Save</h3></Link>
       </div>
+      <p className="agreement">
+      By creating an account, <br/>
+      you agree to our Terms & conditions and Privacy notice on how we manage your personal information.
+      </p>
     </section>
   </>
   ) 

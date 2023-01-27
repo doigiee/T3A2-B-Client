@@ -20,8 +20,8 @@ const Home = () => {
   <>
     <article id="home" className="flex j-c-center">
       <div className="home-heading-container white flex column j-c-center">
-        <h2 className="heading">Welcome to PAWFUL</h2>
-        <p className="heading-description">
+        <h2 className="heading text-shadow">Welcome to PAWFUL</h2>
+        <p className="heading-description text-shadow">
           Let us pamper your furry friend 
           at our professional dog grooming service!
         </p>
@@ -31,7 +31,6 @@ const Home = () => {
         </div>
       </div>
     </article>
-    <div className='wave' />
     <section id="home-bg" className="home-context-container flex column a-i-center j-c-center white">
       <span>- Seen By -</span>
       <div className="home-cards-container flex column a-i-center">

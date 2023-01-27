@@ -60,13 +60,19 @@ const BookingCard = (props) => {
 const MyAccount = () => {
   return (
   <> 
-    <div id="my-account" className="main-bg-container"/>
-    <div className="heading-container">
-      <h2 className="heading">My account </h2>
+    <article className="page-header flex column j-c-center a-i-center">
+      <div id="my-account" className="main-bg-container"/>
+      <div className="heading-container text-shadow">
+        <h2 className="heading ">My account </h2>
+        <p className="heading-description">
+          Please check the below options for more information.
+        </p>
+      </div>
+    </article>
+    <section className="context-container flex column a-i-left">
+      <h2 className="heading">My detail</h2>
       <Link to="/join" className='sub-menu flex'>
         <img src={my_detail} width="25px"/>Update my detail</Link>
-    </div>
-    <section className="context-container flex column a-i-left">
       <h2 className="heading">My bookings</h2>
         <div className="cards-container flex column a-i-center j-c-center">
           <BookingCard date={{date:"27th", month:"Jan"}} pkg="Package 1" time="11:00AM - 12:00PM" price="110"/>

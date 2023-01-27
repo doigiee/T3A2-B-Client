@@ -22,9 +22,10 @@ const OurServices = () => {
     <article className="page-header flex column j-c-center a-i-center">
       <div id="our-services" className="main-bg-container"/>
       <div className="heading-container">
-        <h2 className="heading">Our services </h2>
-        <p className="heading-description">
-        Let us pamper your furry friend at our professional dog grooming service! 
+        <h2 className="heading text-shadow">Our services </h2>
+        <p className="heading-description text-shadow">
+        Let us pamper your furry friend at<br/>
+        our professional dog grooming service! 
         </p>
         <Link to={"/send_inquiry"}><h3 className="btn">Send inquiry</h3></Link>
       </div>

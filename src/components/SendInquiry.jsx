@@ -37,14 +37,17 @@ const SendInquiry = () => {
   const toModifyPhone = () => setValidPhone(true)
 
   return (
-  <article className="page-header flex column j-c-center a-i-center">
-    <div id="send-inquiry" className="main-bg-container"/>
-    <div className="heading-container flex column">
-      <h2 className="heading">Send inquiry</h2>
-      <p className="heading-description">
-        If you have any other inquiry, please don't hesitate to send us an email through the below form.
-      </p>
-    </div>
+    <>
+      <article className="page-header flex column j-c-center a-i-center">
+        <div id="send-inquiry" className="main-bg-container"/>
+        <div className="heading-container text-shadow">
+          <h2 className="heading">Send inquiry</h2>
+          <p className="heading-description">
+            If you have any other inquiry, <br />
+            please don't hesitate to send us an email through the below form.
+          </p>
+      </div>
+    </article>
     <section className="context-container flex column a-i-left">
       <form className="send-inquiry-form flex column a-i-center" ref={form} onSubmit={toModifyEmail}>
         <input type="text" name="user_name" 
@@ -59,7 +62,7 @@ const SendInquiry = () => {
         <input id="submit-btn" type="submit" value="Submit" />
       </form>
     </section>
-  </article>
+    </>
   )
 }
 

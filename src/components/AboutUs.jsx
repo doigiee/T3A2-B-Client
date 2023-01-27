@@ -24,17 +24,18 @@ const AboutUs = () => {
     <article className="page-header flex column j-c-center a-i-center">
       <div id="about-us-bg" className="main-bg-container"/>
       <div className="heading-container flex column">
-        <h2 className="heading">About us,<br/>PAWFUL</h2>
-        <p className="heading-description">
-          We're a group of dog enthusiastic that our skills to look after many kinds of dogs!
+        <h2 className="heading text-shadow">About us,<br/>PAWFUL</h2>
+        <p className="heading-description text-shadow">
+          We're a group of dog enthusiastic that <br/>
+          our skills to look after many kinds of dogs!
         </p>
       </div>
     </article>
     <section className="context-container flex column a-i-left">
-      <h2 className="heading">Daycare and grooming,<br/>All in one service</h2>
-        <p className="heading-description">
+      <h2 className="heading">Daycare and grooming,<br/>All in one service <p className="heading-description">
           We're a group of dog enthusiastic that our skills to look after many kinds of dogs!
-        </p>
+        </p></h2>
+        
         <div className="cards-container flex a-i-center column ">
           <Card src={daycare} title={'Daycare'} 
               desc='Simply your dog can wait in our playground! 

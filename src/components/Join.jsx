@@ -71,8 +71,8 @@ const JoinController = () => {
       <div id="login-container" className='flex column a-i-center shadow-btm'>
         <img id='login-dog' src={dog} />
         <form id='login-form' className='flex column j-c-center a-i-center' > 
-          {/* <Join /> */}
-          <Update />
+          <Join />
+          {/* <Update /> */}
         </form>
       </div>
     </section>
