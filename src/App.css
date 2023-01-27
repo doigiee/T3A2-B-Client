@@ -17,10 +17,12 @@
 }
 
 #root {
+  z-index: 0;
   min-width: 320px;
   max-width: 100%;
   margin: 0 auto;
   text-align: left;
+  background-color: #415144;
 }
 
 .flex {
@@ -52,6 +54,7 @@
 }
 
 #navbar {
+  z-index: 3;
   min-width: 320px;
   width: 100vw;
   height: 80px;
@@ -78,7 +81,6 @@
   top: 0;
   z-index: 100;
 }
-
 
 #menu-container {
   text-align: right;
@@ -123,15 +125,17 @@
 }
 
 .main-bg-container {
-  background-size: cover;
+  z-index: 1;
+  width: 100vw;
   min-height: 200px;
   height: 30vw;
   max-height: 600px;
-  background-position-y: 25%;
 }
 
 #home {
+  z-index: 1;
   height: 100vh;
+  max-height: 800px;
   margin-bottom: -200px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -139,15 +143,19 @@
   background-position: 50%;
 }
 
+#home-bg {
+  background-color: #415144;
+}
 
 .home-heading-container {
   position: relative;
-  left: 15%;
+  right: 15%;
   text-align: left;
   width: 40vw;
   min-width: 100px;
   max-width: 500px;
   height: 70vh;
+  max-height: 800px;
 }
 
 .heading {
@@ -188,13 +196,19 @@
   box-shadow: 0 0 10px 0 #f7d684 inset, 0 0 10px 4px #f7d684;
 }
 
-#wave {
+.wave {
+  z-index: 2;
   position: relative;
   min-width: 320px;
+  height: 90px;
   width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("./assets/wave_green.svg")
 }
 
-.context-container {
+.home-context-container {
+  z-index: 2;
   min-width: 320px;
   position: relative;
   top: -10px;
@@ -203,20 +217,31 @@
   height: auto;
   padding: 2rem 2rem;
   padding-bottom: 100px;
+  background-color: white;
 }
 
+.context-container {
+  z-index: 2;
+  min-width: 320px;
+  position: relative;
+  top: -10px;
+  font-size: 1.2rem;
+  width: 100vw;
+  height: auto;
+  padding: 2rem 2rem;
+  padding-bottom: 100px;
+  background-color: white;
+}
 
 .cards-container {
-  max-width: calc(100vw-4rem);
   height: auto;
 }
-
 
 .seenby-card {
   width: 250px;
   height: 250px;
   background-color: #fffcf5;
-  border-radius: 10%;
+  border-radius: 25px;
   margin: 1.5rem 0;
 }
 
@@ -239,17 +264,25 @@ footer {
   padding: 0.5rem;
 }
 
-#about-us {
+#about-us-bg {
+  background-size: cover;
+  background-position-y: 25%;
   background-image: url("./assets/about_us.jpg");
 }
 
 .heading-container {
+  z-index: 1;
   padding: 2rem 2rem;
   text-align: left;
   justify-content: flex-start;
   width: 100%;
-  max-width: 1080px;
+  background-color: white;
   height: auto;
+}
+
+.heading-container a {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .services {
@@ -267,12 +300,12 @@ footer {
 
 #map {
   padding: 1rem 1rem;
-  max-width: 90vw; 
 }
 
 #our-services {
+  background-size: cover;
   background-image: url("./assets/our_service.jpg");
-  background-position-y: 10%;
+  background-position-y: 35%;
 }
 
 
@@ -280,8 +313,8 @@ footer {
   background-color: #3636361c;
   border: 0.5px solid #36363653;
   padding: 2rem;
-  margin: 1rem 0;
-  max-width: 350px;
+  margin: 1rem;
+  max-width: 280px;
   width: calc(100vw-4rem);
   height: 400px;
 }
@@ -306,6 +339,7 @@ footer {
 }
 
 #send-inquiry {
+  background-size: cover;
   background-image: url("./assets/send_inquiry.jpg");
   background-position-y: 60%;
 }
@@ -470,6 +504,7 @@ footer {
 #my-account {
   background-image: url("./assets/background2.jpg");
   background-position-y: 60%;
+  background-size: cover;
 }
 
 .sub-menu {
@@ -483,12 +518,9 @@ footer {
 
 .sub-menu img {
   margin-right: 0.3rem;
+  vertical-align: middle;
 }
 
-#create-booking {
-  background-image: url("./assets/background2.jpg");
-  background-position-y: 60%;  
-}
 .react-datepicker {
   width: 328px;
   margin-top: -30px;
@@ -518,9 +550,25 @@ footer {
   text-align: right;
 }
 
+.modify-booking-box a {
+  display: inline-block;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 0.9rem;
+  line-height: 140%;
+  font-weight: 200;
+  text-align: left;
+}
+
+#package-dropbox {
+  display: block;
+}
+
 /* tablet view    */
 @media screen and (min-width: 768px) and (max-width: 991px) {
-
+  #logo {
+    font-size: 2rem;
+  }
+  
   .main-bg-container {
     min-height: 300px;
   }
@@ -541,7 +589,6 @@ footer {
   
   .context-container {
     padding: 2rem 4rem;
-    /* flex-direction: row; */
   }
 
   .cards-container {
@@ -569,8 +616,17 @@ footer {
 
 /* desktop view */
 @media screen and (min-width: 992px) {
+  #navbar {
+    background-color: #41514400;
+    height: 120px;
+    padding: 2rem 3rem;
+  }
   .main-bg-container {
-    min-height: 300px;
+    min-height: 600px;
+    z-index: -1;
+    position: relative;
+    top: -184px;
+    max-height: 85vh;
   }
 
   .btns-container {
@@ -587,16 +643,84 @@ footer {
     padding: 5rem 4rem 3rem 4rem;
   }
   
-  .context-container {
+  .home-context-container {
+    position: relative;
+    min-height: 250px;
+    top: 0px;
     padding: 2rem 4rem;
-    /* flex-direction: row; */
+    margin-top: -15%;
+    padding-bottom: 250px;
   }
 
-  .cards-container {
-    flex-direction: row;
-    flex-wrap: wrap ;
-    justify-content: center;
+  /* .home-context-container {
+    padding: 2rem 4rem;
+  } */
+  .context-container {
+    padding: 2rem 4rem;
   }
+
+
+  #home {
+    z-index: -1;
+    position: relative;
+    top: -184px;
+    max-height: 85vh;
+  }
+
+  .home-heading-container {
+    position: relative;
+    right: 15%;
+    text-align: left;
+    width: 35vw;
+    padding-top: 184px;
+    min-width: 100px;
+    max-width: 500px;
+    height: 70vh;
+  }
+
+  .wave {
+    z-index: 0;
+    height: 25vh;
+    top: -13%;
+  }
+
+  .home-cards-container {
+    position: relative;
+    max-width: 990px;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    position: absolute;
+    top: -20%;
+    margin-bottom: 5%;
+  }
+
+  .seenby-card {
+    display:inline-flex;
+    margin: 1.5rem 1.5rem;
+    vertical-align: middle;
+  }
+
+
+  .heading-container {
+    
+
+    display: block;
+    position: relative;
+    top: -184px;
+    width: 100vw;
+  }
+
+  .heading {
+        
+    /* font-size: 1.75rem;
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 110%;
+    text-align: left; */
+  }
+
   .services {
     width: 320px;
   }

@@ -12,21 +12,23 @@ const OurServices = () => {
         <h3>From</h3>
         <h2>$ {props.price}</h2>
         <span className="division-line"></span>
-        <h3 className="btn"><Link to={"/bookings"}>Book now</Link></h3>
+        <Link to={"/bookings"}><h3 className="btn">Book now</h3></Link>
       </div>
     )
   }
 
   return (
     <>
-    <div id="our-services" className="main-bg-container"/>
-    <div className="heading-container">
-      <h2 className="heading">Our services </h2>
-      <p className="heading-description">
-      Let us pamper your furry friend at our professional dog grooming service! 
-      </p>
-      <h3 className="btn"><Link to={"/send_inquiry"}>Send inquiry</Link></h3>
-    </div>
+    <article className="page-header flex column j-c-center a-i-center">
+      <div id="our-services" className="main-bg-container"/>
+      <div className="heading-container">
+        <h2 className="heading">Our services </h2>
+        <p className="heading-description">
+        Let us pamper your furry friend at our professional dog grooming service! 
+        </p>
+        <Link to={"/send_inquiry"}><h3 className="btn">Send inquiry</h3></Link>
+      </div>
+    </article>
     <section className="context-container flex column a-i-left">
       <h2 className="heading">Grooming package</h2>
         <p className="heading-description">

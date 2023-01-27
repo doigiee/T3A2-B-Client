@@ -46,13 +46,13 @@ const Booking = () => {
 
   return (
     <>
-    <div id="create-booking" className="main-bg-container"/>
+    <div id="my-account" className="main-bg-container"/>
     <div className="heading-container">
       <h2 className="heading">Book your<br/>appointment</h2>
     </div>
     <section className="context-container flex column a-i-center">
       <Calendar id="calendar" cb={setDate}/>
-      <div className="cards-container flex column a-i-center j-c-center">
+      <div id="date-picker" className="cards-container flex column a-i-center j-c-center">
         <input type="text" id="selected-date" 
               name="selectedDate" value={selectedDate(date)} 
               placeholder="Date and time you selected" readonly />
@@ -62,9 +62,7 @@ const Booking = () => {
           <option value="pkg3">Package 3</option>
           <option value="pkg4">Package 4</option>
         </select>
-
-        <Link to="/my_account" className="btn shadow-btm login-btn">Save</Link>
-
+        <Link to="/my_account"><h3 className="btn login-btn">Save</h3></Link>
       </div>
     </section>
   </>

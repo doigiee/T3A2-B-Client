@@ -21,19 +21,21 @@ const AboutUs = () => {
 
   return (
     <>
-    <div id="about-us" className="main-bg-container"/>
-    <div className="heading-container flex column">
-      <h2 className="heading">About us,<br/>PAWFUL</h2>
-      <p className="heading-description">
-        We're a group of dog enthusiastic that our skills to look after many kinds of dogs!
-      </p>
-    </div>
+    <article className="page-header flex column j-c-center a-i-center">
+      <div id="about-us-bg" className="main-bg-container"/>
+      <div className="heading-container flex column">
+        <h2 className="heading">About us,<br/>PAWFUL</h2>
+        <p className="heading-description">
+          We're a group of dog enthusiastic that our skills to look after many kinds of dogs!
+        </p>
+      </div>
+    </article>
     <section className="context-container flex column a-i-left">
       <h2 className="heading">Daycare and grooming,<br/>All in one service</h2>
         <p className="heading-description">
           We're a group of dog enthusiastic that our skills to look after many kinds of dogs!
         </p>
-        <div className="cards-container flex a-i-center column">
+        <div className="cards-container flex a-i-center column ">
           <Card src={daycare} title={'Daycare'} 
               desc='Simply your dog can wait in our playground! 
               Meet friends and play games. After any service, 

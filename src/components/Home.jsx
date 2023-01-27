@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import wave from '../assets/wave_green.svg'
 import urbanlist from '../assets/logos/Urban-List_Logo.png'
 import weekend from '../assets/logos/Weekend-Edition_Logo.png'
 import mustdo from '../assets/logos/Must-Do-Brisbane_Logo.png'
@@ -19,7 +18,7 @@ const Home = () => {
 
   return (
   <>
-    <article id="home">
+    <article id="home" className="flex j-c-center">
       <div className="home-heading-container white flex column j-c-center">
         <h2 className="heading">Welcome to PAWFUL</h2>
         <p className="heading-description">
@@ -32,10 +31,10 @@ const Home = () => {
         </div>
       </div>
     </article>
-    <img id="wave" src={wave}/>
-    <section className="context-container flex column a-i-center j-c-center white bg-green">
+    <div className='wave' />
+    <section id="home-bg" className="home-context-container flex column a-i-center j-c-center white">
       <span>- Seen By -</span>
-      <div className="cards-container">
+      <div className="home-cards-container flex column a-i-center">
         <Card src={urbanlist}/>
         <Card src={mustdo}/>
         <Card src={weekend}/>

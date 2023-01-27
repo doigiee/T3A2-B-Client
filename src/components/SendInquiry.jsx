@@ -37,7 +37,7 @@ const SendInquiry = () => {
   const toModifyPhone = () => setValidPhone(true)
 
   return (
-  <>
+  <article className="page-header flex column j-c-center a-i-center">
     <div id="send-inquiry" className="main-bg-container"/>
     <div className="heading-container flex column">
       <h2 className="heading">Send inquiry</h2>
@@ -59,7 +59,7 @@ const SendInquiry = () => {
         <input id="submit-btn" type="submit" value="Submit" />
       </form>
     </section>
-  </>
+  </article>
   )
 }
 

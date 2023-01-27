@@ -16,6 +16,7 @@
 }
 
 a {
+  display: inline-block;
   color: #fffcf5;
   text-decoration: inherit;
 }
@@ -24,6 +25,8 @@ body {
   display: flex;
   height: 100vh;
   min-width: 320px;
+  min-width: 320px;
+  min-height: 100vh;
   background-color: #ffffff;
 }
 

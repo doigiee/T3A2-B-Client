@@ -43,11 +43,11 @@ const BookingCard = (props) => {
         <div className="booking-detail">
           <h3>{props.pkg}</h3>
           <p className='heading-description'>{props.time}</p>
-          <div>
+          <div className="modify-booking-box">
             <h3>$ {props.price}</h3>
-            <Link className="heading-description" to="/bookings">Modify</Link>
-            <span className="heading-description" > | </span>
-            <Link className="heading-description" to="">Cancel</Link>
+            <Link className="" to="/bookings">Modify</Link>
+            <span className="" > | </span>
+            <Link className="" to="">Cancel</Link>
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@ const BookingCard = (props) => {
 
 const MyAccount = () => {
   return (
-  <>
+  <> 
     <div id="my-account" className="main-bg-container"/>
     <div className="heading-container">
       <h2 className="heading">My account </h2>
