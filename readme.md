@@ -12,3 +12,6 @@
 - [**Ryan Chang-Ha Lee**](https://github.com/RyanWoolf)
 
 ---------------------------------------------------------------------------------------------------------
+
+
+# **Pull the repo then do 'npm install' to run 'npm run dev'**
