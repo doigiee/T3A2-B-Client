@@ -17,7 +17,7 @@ const Home = () => {
   }
 
   return (
-  <><main id="page-container">
+  <main id="page-container">
     <article id="home" className="flex j-c-center">
       <div className="home-heading-container white flex column j-c-center">
         <h2 className="heading text-shadow">Welcome to PAWFUL</h2>
@@ -39,9 +39,7 @@ const Home = () => {
         <Card src={weekend}/>
       </div>
     </section>
-    </main>
-
-  </>
+  </main>
   )
 }
 
