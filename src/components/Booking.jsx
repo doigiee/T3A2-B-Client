@@ -45,7 +45,7 @@ const Booking = () => {
   
 
   return (
-    <>
+  <main id="page-container">
     <article className="page-header flex column j-c-center a-i-center">
       <div id="my-account" className="main-bg-container"/>
       <div className="heading-container text-shadow">
@@ -58,8 +58,7 @@ const Booking = () => {
     <section className="context-container flex column a-i-center j-c-center">
       <Calendar id="calendar" cb={setDate}/>
       <div id="date-picker" className="cards-container flex column a-i-center j-c-center">
-        <input type="text" id="selected-date" 
-              name="selectedDate" value={selectedDate(date)} 
+        <input type="text" id="selected-date" name="selectedDate" value={selectedDate(date)} 
               placeholder="Date and time you selected" readonly />
         <select id="packages-dropbox" name="packages">
           <option value="pkg1">Package 1</option>
@@ -74,7 +73,7 @@ const Booking = () => {
       you agree to our Terms & conditions and Privacy notice on how we manage your personal information.
       </p>
     </section>
-  </>
+  </main>
   ) 
 } 
 

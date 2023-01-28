@@ -23,7 +23,6 @@
   margin: 0 auto;
   text-align: left;
   height: fit-content;
-  /* background-color: #415144; */
 }
 
 .flex {
@@ -67,6 +66,7 @@
 #logo {
   font-size: 1.6rem;
   font-weight: 700;
+  text-shadow: 4px 4px 5px #0000008a;
 }
 
 #menu-wrapper {
@@ -308,8 +308,7 @@ footer {
   border: 0.5px solid #36363653;
   padding: 2rem;
   margin: 1rem;
-  /* max-width: 250px; */
-  width: calc(100vw - 4rem);
+  width: 280px;
   height: 400px;
 }
 
@@ -405,7 +404,7 @@ footer {
   background-blend-mode: darken;
   background-position-x: center;
   width: auto;
-  min-height: 100vh;
+  min-height: calc(100vh - 120px);
   height: max-content;
   padding : 8rem 0;
 }
@@ -610,11 +609,6 @@ footer {
     margin: 0 -50px;
   }
 
-  .package-card {
-    width: 280px;
-    height: 370px;
-  }
-
   .services {
     width: 320px;
   }
@@ -644,6 +638,8 @@ footer {
 
   #logo {
     font-size: 2.2rem;
+    font-weight: 800;
+    text-shadow: 
   }
 
   .text-shadow {
@@ -730,7 +726,6 @@ footer {
     width: 100vw;
     min-height: 200px;
     height: 600px;
-    
   }
 
   .heading-container {
@@ -742,36 +737,36 @@ footer {
   }
   
   .context-container {
-    /* display: inline-flex; */
-    /* flex-direction: row; */
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
     min-height: 60vh;
-    width: 100vw;
-    /* max-width:1080px; */
+    width: 850px;
+    position: relative;
+    top: -150px;
+    margin-bottom: -150px;
     order: 10;
+    left: calc(100vw/2 - 425px);
   }
+
   #map {
-    display: none;
     width: 100%;
   }
 
   .cards-container {
     flex-direction: row;
-    /* flex-wrap: wrap ; */
+    flex-wrap: wrap ;
     justify-content: center;
-    margin: 0px auto;
+    margin: 0px 0px;
   }
 
   .package-card {
     flex-grow: 0;
-    width: 240px;
-    height: 370px;
   }
 
   .services {
     width: 240px;
+    margin: 1rem 2rem;
   }
 
   .send-inquiry-form input, #selected-date, #packages-dropbox {
@@ -790,83 +785,46 @@ footer {
   #packages-dropbox {
     margin-right: 4rem;
     margin-left: 4rem;
-
-  }
-}
-
-/* 
-@media screen and (min-width: 992px) and (min-height: 558px) {
-
-  #logo {
-    font-size: 2rem;
   }
 
-  .text-shadow {
-    text-shadow: 4px 4px 5px #0000008a;
-  }
-
-  #navbar {
-    background-color: #41514400;
-    height: 120px;
-    padding: 2rem 3rem;
-    box-shadow: none;
-  }
-
-  .btns-container {
-    display: inline;
-  }
-
-  .btns-container a {
-    width: 130px;
-    display: inline-block;
-    margin-right: 1.5rem;
-  }
-
-  .heading-container {
-    padding: 5rem 4rem 3rem 4rem;
-  }
-  
-  
-
-  .context-container {
-    padding: 2rem 4rem;
-  }
-
-  #home {
-    position: relative;;
+  #login-bg {
+    flex-direction: column;
     z-index: -1;
+    position: relative;
     top: -184px;
-    max-height: 85vh;
+    margin-bottom: -184px;
+    height: calc(100vh + 184px);
   }
 
-  #home-bg {
-    margin-top: 0px;
-  }
-
-  .home-heading-container {
+  #login-container {
     position: relative;
-    right: 15%;
-    text-align: left;
-    width: 35vw;
-    padding-top: 184px;
-    min-width: 100px;
-    max-width: 500px;
-    height: 70vh;
-  }
-  .home-cards-container {
-    position: relative;
-    max-width: 990px;
-    flex-direction: row;
-    justify-content: center;
-    align-content: center;
-    position: absolute;
-    top: -20%;
-    margin-bottom: 5%;
   }
 
-  .seenby-card {
-    display:inline-flex;
-    margin: 1.5rem 1.5rem;
-    vertical-align: middle;
+  #my-account-page {
+    margin-bottom: 30px;
   }
-} */
+
+  #my-account-page .context-container {
+    justify-content: flex-start;
+    align-items: baseline;
+    left: calc(100vw/2 - 496px);
+    width: 992px;
+    padding-right: 0;
+  }
+
+  #my-account-page .cards-container {
+    margin-top : -55px;
+    padding-left: 200px;
+    justify-content: flex-start;
+  }
+
+  .booking-card {
+    margin: 1.5rem 0.5rem;
+  }
+
+  #page-container {
+    min-height: 100vh;
+    height: max-content;
+    margin-bottom: 30px;
+  } 
+}

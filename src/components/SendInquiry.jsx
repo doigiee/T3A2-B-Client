@@ -37,7 +37,7 @@ const SendInquiry = () => {
   const toModifyPhone = () => setValidPhone(true)
 
   return (
-    <>
+    <main id="page-container">
       <article className="page-header flex column j-c-center a-i-center">
         <div id="send-inquiry" className="main-bg-container"/>
         <div className="heading-container text-shadow">
@@ -47,22 +47,19 @@ const SendInquiry = () => {
             please don't hesitate to send us an email through the below form.
           </p>
       </div>
-    </article>
-    <section className="context-container flex column a-i-left">
-      <form className="send-inquiry-form flex column a-i-center" ref={form} onSubmit={toModifyEmail}>
-        <input type="text" name="user_name" 
-              required placeholder="Name *"/>
-        <input type="email" name="user_email" id={isValidEmail ? "" : "invalid-warning" } onBlur={isEmail} onFocus={toModifyEmail}
-              required placeholder="Email *"/>
-        <input type="tel" name="user_phone"
-              placeholder="Phone *" pattern="[0-9]{10}" id={isValidPhone ? "" : "invalid-warning"} onBlur={isPhoneNumber} onFocus={toModifyPhone}
-              required maxLength="10"/>
-        <textarea name="message" id="inquiry-message" 
-              placeholder="Message" cols="" rows="10"/>
-        <input id="submit-btn" type="submit" value="Submit" />
-      </form>
-    </section>
-    </>
+      </article>
+      <section className="context-container flex column a-i-left">
+        <form className="send-inquiry-form flex column a-i-center" ref={form} onSubmit={toModifyEmail}>
+          <input type="text" name="user_name" required placeholder="Name *"/>
+          <input type="email" name="user_email" id={isValidEmail ? "" : "invalid-warning" } 
+                onBlur={isEmail} onFocus={toModifyEmail} required placeholder="Email *"/>
+          <input type="tel" name="user_phone" placeholder="Phone *" pattern="[0-9]{10}" onBlur={isPhoneNumber} 
+                id={isValidPhone ? "" : "invalid-warning"}  onFocus={toModifyPhone} required maxLength="10"/>
+          <textarea name="message" id="inquiry-message" placeholder="Message" cols="" rows="10"/>
+          <input id="submit-btn" type="submit" value="Submit" />
+        </form>
+      </section>
+    </main>
   )
 }
 

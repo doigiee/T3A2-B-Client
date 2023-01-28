@@ -1,5 +1,4 @@
 import React from 'react'
-import wave from '../assets/wave_white.svg'
 import daycare from '../assets/icons/icon_daycare.png'
 import grooming from '../assets/icons/icon_grooming.png'
 import bath from '../assets/icons/icon_bath.png'
@@ -20,7 +19,7 @@ const AboutUs = () => {
   }
 
   return (
-    <>
+  <main id="page-container">
     <article className="page-header flex column j-c-center a-i-center">
       <div id="about-us-bg" className="main-bg-container"/>
       <div className="heading-container flex column">
@@ -35,7 +34,6 @@ const AboutUs = () => {
       <h2 className="heading">Daycare and grooming,<br/>All in one service <p className="heading-description">
           We're a group of dog enthusiastic that our skills to look after many kinds of dogs!
         </p></h2>
-        
         <div className="cards-container flex a-i-center column ">
           <Card src={daycare} title={'Daycare'} 
               desc='Simply your dog can wait in our playground! 
@@ -56,7 +54,7 @@ const AboutUs = () => {
         </div>
         <img id="map" src={map} />
     </section>
-  </>
+  </main>
   )
 }
 

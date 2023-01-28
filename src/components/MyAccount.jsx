@@ -59,7 +59,7 @@ const BookingCard = (props) => {
 
 const MyAccount = () => {
   return (
-  <> 
+  <main id="my-account-page">
     <article className="page-header flex column j-c-center a-i-center">
       <div id="my-account" className="main-bg-container"/>
       <div className="heading-container text-shadow">
@@ -70,18 +70,19 @@ const MyAccount = () => {
       </div>
     </article>
     <section className="context-container flex column a-i-left">
-      <h2 className="heading">My detail</h2>
-      <Link to="/join" className='sub-menu flex'>
-        <img src={my_detail} width="25px"/>Update my detail</Link>
+      <div className="flex column">
+        <h2 className="heading">My detail</h2>
+        <Link to="/join" className='sub-menu flex'>
+          <img src={my_detail} width="25px"/>Update my detail</Link>
+      </div>
       <h2 className="heading">My bookings</h2>
         <div className="cards-container flex column a-i-center j-c-center">
           <BookingCard date={{date:"27th", month:"Jan"}} pkg="Package 1" time="11:00AM - 12:00PM" price="110"/>
           <BookingCard date={{date:"27th", month:"Jan"}} pkg="Package 1" time="11:00AM - 12:00PM" price="110"/>
           <BookingCard date={{date:"27th", month:"Jan"}} pkg="Package 1" time="11:00AM - 12:00PM" price="110"/>
         </div>
-        
     </section>
-  </>
+  </main>
   )
 }
 

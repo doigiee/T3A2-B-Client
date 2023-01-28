@@ -18,7 +18,7 @@ const OurServices = () => {
   }
 
   return (
-    <>
+  <main id="page-container">
     <article className="page-header flex column j-c-center a-i-center">
       <div id="our-services" className="main-bg-container"/>
       <div className="heading-container">
@@ -31,10 +31,9 @@ const OurServices = () => {
       </div>
     </article>
     <section className="context-container flex column a-i-left">
-      <h2 className="heading">Grooming package</h2>
-        <p className="heading-description">
+      <h2 className="heading">Grooming package<p className="heading-description">
           We're a group of dog enthusiastic that our skills to look after many kinds of dogs!
-        </p>
+        </p></h2>
         <div className="cards-container flex column a-i-center j-c-center">
           <Card title="Package 1" 
                 desc="Let us pamper your furry friend at our professional" 
@@ -49,9 +48,8 @@ const OurServices = () => {
                 desc="Let us pamper your furry friend at our professional" 
                 price="100"/>
         </div>
-        
-    </section>
-  </>
+      </section>
+    </main>
   )
 }
 
