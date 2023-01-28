@@ -651,6 +651,7 @@ footer {
     height: 120px;
     padding: 2rem 3rem;
     box-shadow: none;
+    z-index: 0;
   }
 
   .home-context-container {
@@ -664,7 +665,7 @@ footer {
   
   #home {
     position: relative;;
-    z-index: -1;
+    z-index: 0;
     top: -184px;
     max-height: 85vh;
   }
@@ -711,6 +712,7 @@ footer {
   }
 
   .btns-container {
+    z-index: 1;
     flex-direction: row;
     align-items: left;
     justify-content: flex-start;
@@ -826,6 +828,8 @@ footer {
     min-height: 100vh;
     height: max-content;
     margin-bottom: 30px;
+    z-index: -1;
+    position:relative;
   } 
 
   footer {
