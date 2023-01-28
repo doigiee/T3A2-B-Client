@@ -128,6 +128,7 @@
 .main-bg-container {
   z-index: 1;
   width: 100vw;
+  min-width: 320px;
   min-height: 200px;
   height: 30vw;
   max-height: 600px;

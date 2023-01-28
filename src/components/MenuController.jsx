@@ -34,13 +34,13 @@ const MenuController = () => {
         setOpen(!isOpen)
         setVisible(!isOpen)
     }
-
+    
     useEffect(()=>console.log('Rendered'),[])
     
 
     return (
         <MenuControllerContext.Provider value = {{toggleState, toggleStateForMenu, isOpen, isVisible}}>
-            <Link to="/" target="_blank" aria-label="openMenu" onClick={toggleState} 
+            <Link to="/" target="_blank" aria-label="openMenu" onClick={toggleState}
                     aria-haspopup={!isOpen} id="btnOpenMenu">
                 <img src={menuIcon} width="40px" height="40px" />
             </Link>
@@ -78,7 +78,7 @@ const MenuBox = () => {
     }
     
     return (
-    <div id="menu-wrapper" className={"shadow-btm isOpen " + isVisible}>
+    <div id="menu-wrapper" className={"shadow-btm isOpen " + isVisible} >
         <div id="login-signup-box" className="flex a-i-center j-c-sb">
             <LinkTo to="/login" src={login} title="Login" />
             <LinkTo to="/join" src={join} title="Join" />
