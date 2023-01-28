@@ -827,4 +827,8 @@ footer {
     height: max-content;
     margin-bottom: 30px;
   } 
+
+  footer {
+    margin-top: -150px;
+  }
 }
