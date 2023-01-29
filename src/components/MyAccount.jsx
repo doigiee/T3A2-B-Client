@@ -1,6 +1,5 @@
 import React from 'react'
-import wave from '../assets/wave_white.svg'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import my_detail from '../assets/icons/icon_mydetail.png'
 
 
@@ -31,6 +30,12 @@ const bookings = [
   },
 ]
 
+
+
+
+
+
+
 const BookingCard = (props) => {
 
   return (
@@ -58,6 +63,14 @@ const BookingCard = (props) => {
 
 
 const MyAccount = () => {
+
+
+  const { id } = useParams()
+
+
+
+
+
   return (
   <main id="my-account-page">
     <article className="page-header flex column j-c-center a-i-center">

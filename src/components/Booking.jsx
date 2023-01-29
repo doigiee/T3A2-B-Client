@@ -40,6 +40,10 @@ const Booking = () => {
 
   const selectedDate = (data) => {
     const result = String(data).split(' ').slice(0, 5)
+    let time = result[4]
+    if (time) {
+      result[4] = time.slice(0, 5)
+    }
     return result
   }
   
@@ -59,7 +63,7 @@ const Booking = () => {
       <Calendar id="calendar" cb={setDate}/>
       <div id="date-picker" className="cards-container flex column a-i-center j-c-center">
         <input type="text" id="selected-date" name="selectedDate" value={selectedDate(date)} 
-              placeholder="Date and time you selected" readonly />
+              placeholder="Date and time you selected" readOnly />
         <select id="packages-dropbox" name="packages">
           <option value="pkg1">Package 1</option>
           <option value="pkg2">Package 2</option>
