@@ -30,12 +30,6 @@ const bookings = [
   },
 ]
 
-
-
-
-
-
-
 const BookingCard = (props) => {
 
   return (
@@ -62,7 +56,8 @@ const BookingCard = (props) => {
 }
 
 
-const MyAccount = () => {
+const MyAccount = ({ user }) => {
+  const { email, password, name } = user || {}
 
 
   const { id } = useParams()

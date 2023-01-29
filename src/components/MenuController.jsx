@@ -6,6 +6,7 @@ import login from '../assets/icons/icon_login.png'
 import join from '../assets/icons/icon_join.png'
 import facebook from '../assets/icons/facebook.png'
 import insta from '../assets/icons/instagram.png'
+import LogoutButton from './LogoutButton'
 
 
 //  Use Context for faster performance between states and functions globally
@@ -13,7 +14,7 @@ const MenuControllerContext = React.createContext()
 
 
 // Parent component to control the menu
-const MenuController = () => {
+const MenuController = ({ authenticated }) => {
     // State to watch that the menu is opened or closed
     const [ isOpen, setOpen ] = useState(null)
 
@@ -39,7 +40,7 @@ const MenuController = () => {
     
 
     return (
-        <MenuControllerContext.Provider value = {{toggleState, toggleStateForMenu, isOpen, isVisible}}>
+        <MenuControllerContext.Provider value = {{toggleState, toggleStateForMenu, authenticated, isOpen, isVisible}}>
             <Link to="/" target="_blank" aria-label="openMenu" onClick={toggleState}
                     aria-haspopup={!isOpen} id="btnOpenMenu">
                 <img src={menuIcon} width="40px" height="40px" />
@@ -55,7 +56,7 @@ const MenuController = () => {
 // MenuBox component
 const MenuBox = () => {
     // Bringing the context from the parent
-    const {toggleState, toggleStateForMenu, isOpen, isVisible} = useContext(MenuControllerContext);
+    const {toggleState, toggleStateForMenu, authenticated, isOpen, isVisible} = useContext(MenuControllerContext);
     
     // Menu items
     const menuitems=[
@@ -80,9 +81,15 @@ const MenuBox = () => {
     return (
     <div id="menu-wrapper" className={"shadow-btm isOpen " + isVisible} >
         <div id="login-signup-box" className="flex a-i-center j-c-sb">
-            <LinkTo to="/login" src={login} title="Login" />
-            <LinkTo to="/join" src={join} title="Join" />
-            <Link aria-label="closeMenu" onClick={toggleStateForMenu} id="btnOpenMenu">
+            {authenticated ? (
+                <LogoutButton/>
+                ) : (
+                <>
+                <LinkTo to="/login" authenticated={authenticated} src={login} title="Login" />
+                <LinkTo to="/join" src={join} title="Join" />
+                </>
+                )}
+            <Link aria-label="closeMenu" onClick={toggleState} id="btnOpenMenu">
                 <img src={closeIcon} width="40px" height="40px" />
             </Link>
         </div>
