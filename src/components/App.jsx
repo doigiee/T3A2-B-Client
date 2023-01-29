@@ -14,6 +14,12 @@ import Booking from './Booking'
 
 
 function App() {
+
+  // const JoinWrapper = () => {
+  //   const { id } = useParams()
+  // }
+
+
   return (
   <>
     <Navbar />
