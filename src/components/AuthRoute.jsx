@@ -1,11 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Route, Navigate, Outlet } from "react-router-dom"
+import MyAccount from './MyAccount'
 
-const AuthRoute = ({ authenticated }) => {
-  if ( authenticated !== null ) {
-    return <Navigate replace to="/my_account" />
+const AuthRoute = () => {
+  const [ Authorized, setAuthorized ] = useState('false')
+  const token = localStorage.getItem("isAuthenticated")
+  // setAuthorized(sessionStorage.getItem("isAuthenticated"))
+  // useEffect(()=>{
+  //   console.log(isAuthenticated)
+  // }, [isAuthenticated])
+  useEffect(()=>{
+    setAuthorized(token)
+    console.log(Authorized)
+  }, [Authorized])
+
+
+
+
+  if ( Authorized == false ) {
+    return <Navigate replace to="/login" />
   }
-  return <Navigate replace to="/login" />
+  return <MyAccount />
+  // return <Navigate to="/my_account" />
 }
 
 export default AuthRoute
