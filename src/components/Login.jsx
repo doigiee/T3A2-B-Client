@@ -1,10 +1,11 @@
 import React, { useState, useMemo, useEffect } from 'react'
 import { Link, Navigate, Route, useLocation, useNavigate } from 'react-router-dom'
 import dog from '../assets/dog_login.png'
+import { useUserContext } from './UserContext'
 
 
 
-const Login = ({ email, password, authCheck, setEmail, setPassword }) => {
+const Login = ({ email, password, loggingIn, setEmail, setPassword }) => {
   return (
     <>
       <h2 className='heading' id="login-heading">Login</h2>
@@ -15,6 +16,7 @@ const Login = ({ email, password, authCheck, setEmail, setPassword }) => {
           type="email" 
           name="email" 
           placeholder='Email'
+          required
           onChange={({ target: { value } }) => setEmail(value)}
       />
       <input 
@@ -22,21 +24,22 @@ const Login = ({ email, password, authCheck, setEmail, setPassword }) => {
           className="login-input" 
           type="password" 
           placeholder="Password"
+          required
           onChange={({ target: { value } }) => setPassword(value)}
           />
-      <Link onClick={authCheck}><h3 className="btn login-btn">LOGIN</h3></Link>
+      <Link onClick={loggingIn}><h3 className="btn login-btn">LOGIN</h3></Link>
       <Link className='sub-desc'>Forgot password?</Link>
     </>
   )
 }
 
-const LoginController = ({ authenticated }) => {
+const LoginController = () => {
   
 
   const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
   // const [ users, setUsers ] = useState([])
-  const [ user, setUser ] = useState({})
+  const { user, setUser } = useUserContext()
 
   const nav = useNavigate()
 
@@ -50,15 +53,15 @@ const LoginController = ({ authenticated }) => {
   // }, [])
 
   const users = [
-    { email: "kim@test.com", password: "123", name: "Kim" },
-    { email: "lee@test.com", password: "456", name: "Lee" },
-    { email: "park@test.com", password: "789", name: "Park" },
+    { email: "kim@test.com", password: "123", firstName: "Kim" },
+    { email: "lee@test.com", password: "456", firstName: "Lee" },
+    { email: "park@test.com", password: "789", firstName: "Park" },
   ]
-
-  const authCheck = (evt) => {
+  
+  const loggingIn = (evt) => {
     evt.preventDefault()
     try {
-      loggingIn({ email, password })
+      authCheck({ email, password })
       // .then((res) => setUser(res))
       // .then((res) => console.log(res))
       .then((res) => nav(`../my_account`, {
@@ -77,7 +80,6 @@ const LoginController = ({ authenticated }) => {
   //   console.log(user, "login function")
   //   return user
   // }
-  const logout = () => setUser(null)
 
   // const signIn = ({ email, password }) => {
   //   const user = users.find(
@@ -89,7 +91,7 @@ const LoginController = ({ authenticated }) => {
   //   return user
   // }
 
-  const loggingIn = function({ email, password }) {
+  const authCheck = function({ email, password }) {
     return new Promise((resolve, reject) => {
       const user = users.find(
         (user) => user.email === email && user.password === password
@@ -98,7 +100,7 @@ const LoginController = ({ authenticated }) => {
       setUser(user)
       console.log(user, "signed in")
       resolve(user)
-    })
+    }).catch((e) => alert(e.message))
   }
 
 
@@ -109,7 +111,7 @@ const LoginController = ({ authenticated }) => {
       <div id="login-container" className='flex column a-i-center shadow-btm'>
         <img id='login-dog' src={dog} />
         <form id='login-form' className='flex column j-c-center a-i-center' > 
-          <Login email={email} password={password} authCheck={authCheck} setEmail={setEmail} setPassword={setPassword}/>
+          <Login email={email} password={password} loggingIn={loggingIn} setEmail={setEmail} setPassword={setPassword}/>
         </form>
       </div>
     </section>

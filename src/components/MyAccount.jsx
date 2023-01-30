@@ -1,34 +1,9 @@
-import React from 'react'
-import { Link, useLocation, useParams } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import my_detail from '../assets/icons/icon_mydetail.png'
+import LoginController from './Login'
+import { useUserContext } from './UserContext'
 
-
-const bookings = [
-  {
-    date: '2023-01-27', 
-    time: '11:00-12:00',
-    pkg: 'Package 1',
-    price: 110
-  },
-  {
-    date: '2023-01-11', 
-    time: '09:00-10:00',
-    pkg: 'Package 2',
-    price: 95
-  },
-  {
-    date: '2023-01-07', 
-    time: '14:00-15:00',
-    pkg: 'Package 3',
-    price: 115
-  },
-  {
-    date: '2023-01-05', 
-    time: '11:00-12:00',
-    pkg: 'Package 1',
-    price: 110
-  },
-]
 
 const BookingCard = (props) => {
 
@@ -56,14 +31,55 @@ const BookingCard = (props) => {
 }
 
 
+const NoBookingsExist = () => {
+  return <></>
+}
+
 const MyAccount = () => {
-  // const { email, password, name } = user || {}
-  const location = useLocation()
-  const email = location.state.email
-  const password = location.state.password
-  console.log(location.state, "3rd")
-  console.log(location.state.email, "3rd")
-  console.log(location.state.password, "3rd")
+  // const location = useLocation()
+  // if (location.state == null) {
+  //   return <LoginController />
+  // } 
+  const [ bookings, setBookings ] = useState([])
+  const nav = useNavigate()
+  const { user } = useUserContext()
+  console.log(user, " at My account page")
+  // if ( user == undefined ) {
+  //   return <LoginController />
+  // } 
+
+
+  // console.log(location.state.email, "After login")
+  // console.log(location.state.password, "After login")
+  // console.log(location.state.first_name, "After login")
+
+  // const bookings = [
+  //   {
+  //     id: 123,
+  //     date: {
+  //       day: 27,
+  //       month: "Jan"
+  //     }, 
+  //     time: '11:00-12:00',
+  //     pkg: 'Package 1',
+  //     price: 110
+  //   }
+  // ]
+  
+  
+
+  useEffect(() => {
+    async function getBookings() {
+      console.log("Start fetching bookings...")
+      const res = await fetch('http://url') // user id to retrieve bookings
+      const data = await res.json()
+    }
+    getBookings().catch((e) => console.log(e.message))
+    if (user == undefined) {
+      nav('/login')
+    }
+  }, [])
+  
 
 
   return (
@@ -71,7 +87,7 @@ const MyAccount = () => {
     <article className="page-header flex column j-c-center a-i-center">
       <div id="my-account" className="main-bg-container"/>
       <div className="heading-container text-shadow">
-        <h2 className="heading ">My account </h2>
+        <h2 className="heading ">Welcome back, <br/>{ user != undefined ? user.firstName : "Visitor"} </h2>
         <p className="heading-description">
           Please check the below options for more information.
         </p>
@@ -85,9 +101,18 @@ const MyAccount = () => {
       </div>
       <h2 className="heading">My bookings</h2>
         <div className="cards-container flex column a-i-center j-c-center">
+          {bookings.length > 0 ? 
+            bookings.map((el, idx) => {
+              return <BookingCard 
+              key={idx}
+              date={{date: el.date.day ,month: el.date.month}}
+              pkg={el.pkg}
+              time={el.time}
+              price={el.price}/>
+            }) : <h5> No booking found </h5>}
+          {/* <BookingCard date={{date:"27th", month:"Jan"}} pkg="Package 1" time="11:00AM - 12:00PM" price="110"/>
           <BookingCard date={{date:"27th", month:"Jan"}} pkg="Package 1" time="11:00AM - 12:00PM" price="110"/>
-          <BookingCard date={{date:"27th", month:"Jan"}} pkg="Package 1" time="11:00AM - 12:00PM" price="110"/>
-          <BookingCard date={{date:"27th", month:"Jan"}} pkg="Package 1" time="11:00AM - 12:00PM" price="110"/>
+          <BookingCard date={{date:"27th", month:"Jan"}} pkg="Package 1" time="11:00AM - 12:00PM" price="110"/> */}
         </div>
     </section>
   </main>
