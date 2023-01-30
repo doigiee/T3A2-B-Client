@@ -98,6 +98,15 @@
   padding-left: 1rem;
 }
 
+#login-signup-box span{
+  font-size: 1rem;
+}
+
+#login-signup-box img{
+  font-size: 1rem;
+  vertical-align: middle;
+}
+
 .isOpen.false {
   right:-1000px; 
   visibility:hidden;
@@ -381,10 +390,10 @@ footer {
   color: #fffcf5;
   text-align: center;
   font-size: 0.8rem;
-  font-weight: 400;
+  font-weight: 200;
   background-color: #D4B565;
   padding: 10px;
-  width: 130px;
+  width: 230px;
   border: 0 solid white;
   border-radius: 12px;
   transition: .5s ease;

@@ -41,12 +41,12 @@ const MyAccount = () => {
   //   return <LoginController />
   // } 
   const [ bookings, setBookings ] = useState([])
+  const nav = useNavigate()
   const { user } = useUserContext()
   console.log(user, " at My account page")
-  if ( user == null ) {
-    return <LoginController />
-  } 
-  const { email, password, first_name, user_id } = user
+  // if ( user == undefined ) {
+  //   return <LoginController />
+  // } 
 
 
   // console.log(location.state.email, "After login")
@@ -73,9 +73,11 @@ const MyAccount = () => {
       console.log("Start fetching bookings...")
       const res = await fetch('http://url') // user id to retrieve bookings
       const data = await res.json()
-      setBookings(data)
     }
-    getBookings().then().catch((e) => console.log(e.message))
+    getBookings().catch((e) => console.log(e.message))
+    if (user == undefined) {
+      nav('/login')
+    }
   }, [])
   
 
@@ -85,7 +87,7 @@ const MyAccount = () => {
     <article className="page-header flex column j-c-center a-i-center">
       <div id="my-account" className="main-bg-container"/>
       <div className="heading-container text-shadow">
-        <h2 className="heading ">Welcome, {first_name || "Visitor"} </h2>
+        <h2 className="heading ">Welcome back, <br/>{ user != undefined ? user.firstName : "Visitor"} </h2>
         <p className="heading-description">
           Please check the below options for more information.
         </p>

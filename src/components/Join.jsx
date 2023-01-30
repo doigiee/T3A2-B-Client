@@ -7,19 +7,25 @@ import dog from '../assets/dog_login.png'
 
 const Join = () => {
   const nav = useNavigate()
-  const { setUser } = useUserContext();
+  const { user,setUser } = useUserContext()
   const [ usersList, setUsersList ] = useState([])
   const [ form, setForm ] = useState({
-    email: undefined,
-    title: undefined,
-    first_name: undefined,
-    last_name: undefined,
-    phone_number: undefined,
-    password: undefined
+    email: '',
+    title: '',
+    first_name: '',
+    last_name: '',
+    phone_number: '',
+    password: ''
   })
+  const { email, title, first_name, last_name, phone_number, password } = form
 
   const handleForm = (e) => {
-    setForm(e.target.value)
+    const { value, name } = e.target
+    setForm({
+      ...form,
+      [name]: value
+    })
+    console.log(name, value)
   }
 
   const titles = [
@@ -50,26 +56,30 @@ const Join = () => {
       phoneNumber: phone_number,
       password: password // Double check on DB server
     }
-    await setUser(newUser)
+    
 
     // Post new user to API
-    const returnedUser = await fetch('http://url', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newUser)
-    }).then(() => nav(`../my_account`))
-    .catch(e => console.log(e.message + " Returned4 user"))
+
+    // const returnedUser = await fetch('http://url', {
+    //   method: 'POST',
+    //   headers: {
+    //     Accept: 'application/json',
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(newUser)
+    // }).then(setUser(newUser.firstName))
+    // .catch(e => {
+    //   setUser(newUser)
+    //   console.log(e.message + " Returned4 user")})
+
     // }).catch(e => nav(`../my_account`))
       // }).catch(e => setUser(newUser))
       // const data = await returnedUser.json()
-      // setUser(newUser)
-    
+    setUser(newUser)
   }
 
   const submit = async (evt) => {
+    console.log(form, "right after submission")
     evt.preventDefault()
     await addUserDetail( 
       form.email, 
@@ -77,8 +87,9 @@ const Join = () => {
       form.first_name, 
       form.last_name, 
       form.phone_number, 
-      form.password ).then(setUser(form))
-     nav(`../my_account`)
+      form.password )
+    console.log(form, "form")
+    nav(`../my_account`)
   }
 
 
@@ -86,18 +97,19 @@ const Join = () => {
     <>
       <h2 className='heading' id="login-heading">Create my account</h2>
       <Link to="/login" className='sub-desc'>Already have an account? Login here</Link>
-      <input value={form.email} onChange={handleForm} className="login-input" type="email" name="email" placeholder='Email *'/>
+      <input value={form.email} onInput={handleForm} required className="login-input" type="email" name="email" placeholder='Email *'/>
       <select value={form.title} onChange={handleForm} className="login-input" name="title">
         <option value="" disabled hidden>Title</option>
         {titles.map((el,idx) => {
           return <option key={idx} value={el}>{el}</option>
         })}
       </select>
-      <input value={form.first_name} onChange={handleForm} className="login-input" type="text" name="first_name" placeholder='First name *'/>
-      <input value={form.last_name} onChange={handleForm} className="login-input" type="text" name="last_name" placeholder='Last name *'/>
+      <input value={form.first_name} onChange={handleForm} required className="login-input" type="text" name="first_name" placeholder='First name *'/>
+      <input value={form.last_name} onChange={handleForm} required className="login-input" type="text" name="last_name" placeholder='Last name *'/>
       <input value={form.phone_number} onChange={handleForm} className="login-input" type="tel" name="phone_number" placeholder='Phone number *'/>
-      <input value={form.password} onChange={handleForm} id="password" className="login-input" type="password" placeholder="Password *" />
-      <Link onClick={submit}><h3 className="btn login-btn">Create my account</h3></Link>
+      <input value={form.password} onChange={handleForm} required id="password" className="login-input" name="password" type="password" placeholder="Password *" />
+      {/* <Link onClick={submit}><h3 className="btn login-btn">Create my account</h3></Link> */}
+      <input id="submit-btn" onClick={submit} type="submit" value="Create my account" />
       <span className="agreement">By creating an account,<br/> you agree to our Terms & conditions and Privacy notice on how we manage your personal information.</span>
     </>
   )
