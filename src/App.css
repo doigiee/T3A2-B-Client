@@ -490,18 +490,6 @@ footer {
   font-size: 0.6rem;
 }
 
-.weak {
-  border: 2px solid #ff000084;
-}
-
-.average {
-  border: 2px solid #ffd0007d;
-}
-
-.strong {
-  border: 2px solid #00800093;
-}
-
 #my-account {
   background-image: url("./assets/background2.jpg");
   background-position-y: 60%;

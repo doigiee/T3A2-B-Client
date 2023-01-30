@@ -50,9 +50,9 @@ const LoginController = ({ authenticated }) => {
   // }, [])
 
   const users = [
-    { email: "kim@test.com", password: "123", name: "Kim" },
-    { email: "lee@test.com", password: "456", name: "Lee" },
-    { email: "park@test.com", password: "789", name: "Park" },
+    { email: "kim@test.com", password: "123", first_name: "Kim" },
+    { email: "lee@test.com", password: "456", first_name: "Lee" },
+    { email: "park@test.com", password: "789", first_name: "Park" },
   ]
 
   const authCheck = (evt) => {
@@ -95,7 +95,7 @@ const LoginController = ({ authenticated }) => {
         (user) => user.email === email && user.password === password
       );
       if (user === undefined) throw new Error();
-      setUser(user)
+
       console.log(user, "signed in")
       resolve(user)
     })

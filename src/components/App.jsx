@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { UserContextProvider } from './UserContext'
 import '../App.css'
 import Navbar from './Navbar'
 import { Routes, Route, useLocation, Navigate, Outlet } from 'react-router-dom'
@@ -17,38 +18,10 @@ import AuthRoute from "./AuthRoute"
 
 
 function App() {
-  
-  // const [ user, setUser ] = useState()
-  // const authenticated = user != null;
-  
-  // const login = ({ email, password }) => setUser(signIn({ email, password }))
-  // const logout = () => setUser(null)
-
-  // const users = [
-  //   { email: "kim@test.com", password: "123", name: "Kim" },
-  //   { email: "lee@test.com", password: "456", name: "Lee" },
-  //   { email: "park@test.com", password: "789", name: "Park" },
-  // ]
-  // const signIn = ({ email, password }) => {
-  //   const user = users.find(
-  //     (user) => user.email === email && user.password === password
-  //   );
-  //   if (user === undefined) throw new Error();
-  //   return user;
-  // }
-
-  // const JoinWrapper = () => {
-  //   const { id } = useParams()
-  // }
-
-  // const [ user, setUser ] = useState()
-  // const authenticated = user != null;
-
-  
-
 
   return (
   <>
+  <UserContextProvider>
     <Navbar/>
       <Routes>
         <Route path='/' element={<Home />} />
@@ -61,6 +34,7 @@ function App() {
         <Route path='/bookings' element={<Booking />} /> 
       </Routes>
     <Footer />
+  </UserContextProvider>
   </>
   )
 }
