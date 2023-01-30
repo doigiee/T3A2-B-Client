@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import my_detail from '../assets/icons/icon_mydetail.png'
 
 
@@ -30,12 +30,6 @@ const bookings = [
   },
 ]
 
-
-
-
-
-
-
 const BookingCard = (props) => {
 
   return (
@@ -51,7 +45,7 @@ const BookingCard = (props) => {
           <div className="modify-booking-box">
             <h3>$ {props.price}</h3>
             <Link className="" to="/bookings">Modify</Link>
-            <span className="" > | </span>
+            <span className="" >  |  </span>
             <Link className="" to="">Cancel</Link>
           </div>
         </div>
@@ -63,12 +57,13 @@ const BookingCard = (props) => {
 
 
 const MyAccount = () => {
-
-
-  const { id } = useParams()
-
-
-
+  // const { email, password, name } = user || {}
+  const location = useLocation()
+  const email = location.state.email
+  const password = location.state.password
+  console.log(location.state, "3rd")
+  console.log(location.state.email, "3rd")
+  console.log(location.state.password, "3rd")
 
 
   return (

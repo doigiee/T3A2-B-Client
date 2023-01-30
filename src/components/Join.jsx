@@ -41,14 +41,14 @@ const Join = () => {
     "Mx"
   ]
 
-  useEffect(() => {
-    async function fetchUsers () {
-      const res = await fetch('http://url') //user list .. leaks risk?
-      const data = await res.json()
-      setUsers(data)
-    }
-    fetchUsers()
-  }, [])
+  // useEffect(() => {
+  //   async function fetchUsers () {
+  //     const res = await fetch('http://url') //user list .. leaks risk?
+  //     const data = await res.json()
+  //     setUsers(data)
+  //   }
+  //   fetchUsers()
+  // }, [])
 
   const addUserDetail = async ( email, title, first_name, last_name, phone_number, password) => {
     const id = users.length
