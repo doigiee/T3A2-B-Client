@@ -1,5 +1,5 @@
-import React, { useState, useMemo, useEffect } from 'react'
-import { Link, Navigate, Route, useLocation, useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import dog from '../assets/dog_login.png'
 import { useUserContext } from './UserContext'
 
@@ -38,58 +38,33 @@ const LoginController = () => {
 
   const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
-  // const [ users, setUsers ] = useState([])
-  const { user, setUser } = useUserContext()
+  const [ users, setUsers ] = useState([])
+  const { setUser } = useUserContext()
 
   const nav = useNavigate()
 
-  // useEffect(() => {
-  //   async function getUsers() {
-  //     const res = await fetch('http://url')
-  //     const data = await res.json()
-  //     setUsers(data)
-  //   }
-  //   getUsers()
-  // }, [])
+  useEffect(() => {
+    async function getUsers() {
+      const res = await fetch('http://localhost:4717/users')
+      const data = await res.json()
+      setUsers(data)
+    }
+    getUsers()
+  }, [])
 
-  const users = [
-    { email: "kim@test.com", password: "123", firstName: "Kim" },
-    { email: "lee@test.com", password: "456", firstName: "Lee" },
-    { email: "park@test.com", password: "789", firstName: "Park" },
-  ]
-  
-  const loggingIn = (evt) => {
+
+  const loggingIn = async (evt) => {
     evt.preventDefault()
     try {
-      authCheck({ email, password })
-      // .then((res) => setUser(res))
-      // .then((res) => console.log(res))
-      .then((res) => nav(`../my_account`, {
-        replace: true,
-        state: res
-      }))
-    } catch (e) {
-      alert("Failed to login")
+      await authCheck({ email, password })
+    } catch {
+      console.log(`Failed to login`)
+      alert("Failed to login. Please try again")
       setEmail('')
       setPassword('')
     }
   }
 
-  // const login = ({ email, password }) => {
-  //   setUser(signIn({ email, password }))
-  //   console.log(user, "login function")
-  //   return user
-  // }
-
-  // const signIn = ({ email, password }) => {
-  //   const user = users.find(
-  //     (user) => user.email === email && user.password === password
-  //   );
-  //   if (user === undefined) throw new Error();
-  //   console.log(user, "signIn function")
-  //   setUser(user)
-  //   return user
-  // }
 
   const authCheck = function({ email, password }) {
     return new Promise((resolve, reject) => {
@@ -100,10 +75,8 @@ const LoginController = () => {
       setUser(user)
       console.log(user, "signed in")
       resolve(user)
-    }).catch((e) => alert(e.message))
+    }).then(() => nav('../my_account'))
   }
-
-
 
   
   return (

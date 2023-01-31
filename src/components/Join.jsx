@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { UserContextProvider, useUserContext } from './UserContext'
+import { useUserContext } from './UserContext'
 import { Link, useNavigate, Navigate } from 'react-router-dom'
 import dog from '../assets/dog_login.png'
 
@@ -25,7 +25,6 @@ const Join = () => {
       ...form,
       [name]: value
     })
-    console.log(name, value)
   }
 
   const titles = [
@@ -38,15 +37,15 @@ const Join = () => {
 
   useEffect(() => {
     async function fetchUsersList () {
-      // const res = await fetch('http://url').catch(e => console.log(e.message)) //user list .. leaks risk?
-      // const data = await res.json()
-      // setUsersList(data)
+      const res = await fetch('http://localhost:4717/users').catch(e => console.log(e.message)) //user list .. leaks risk?
+      const data = await res.json()
+      setUsersList(data)
     }
     fetchUsersList()
   }, [])
 
   const addUserDetail = async ( email, title, first_name, last_name, phone_number, password ) => {
-    const id = usersList.length
+    // const id = usersList.length
 
     const newUser = {
       email: email,
@@ -60,21 +59,16 @@ const Join = () => {
 
     // Post new user to API
 
-    // const returnedUser = await fetch('http://url', {
-    //   method: 'POST',
-    //   headers: {
-    //     Accept: 'application/json',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(newUser)
-    // }).then(setUser(newUser.firstName))
-    // .catch(e => {
-    //   setUser(newUser)
-    //   console.log(e.message + " Returned4 user")})
-
-    // }).catch(e => nav(`../my_account`))
-      // }).catch(e => setUser(newUser))
-      // const data = await returnedUser.json()
+    const returnedUser = await fetch('http://localhost:4717/users', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newUser)
+    }).then()
+    .catch(e => {
+      console.log(e.message)})
     setUser(newUser)
   }
 

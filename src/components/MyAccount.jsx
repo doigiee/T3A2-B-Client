@@ -71,8 +71,11 @@ const MyAccount = () => {
   useEffect(() => {
     async function getBookings() {
       console.log("Start fetching bookings...")
-      const res = await fetch('http://url') // user id to retrieve bookings
+      const res = await fetch(`http://localhost:4717/bookings/${user._id}`) // user id to retrieve bookings
       const data = await res.json()
+      setBookings(data)
+      console.log(data)
+      console.log(bookings)
     }
     getBookings().catch((e) => console.log(e.message))
     if (user == undefined) {
@@ -101,13 +104,13 @@ const MyAccount = () => {
       </div>
       <h2 className="heading">My bookings</h2>
         <div className="cards-container flex column a-i-center j-c-center">
-          {bookings.length > 0 ? 
+          {bookings !== undefined ? 
             bookings.map((el, idx) => {
               return <BookingCard 
               key={idx}
-              date={{date: el.date.day ,month: el.date.month}}
+              date={{date: el.date[0].date + "th" ,month: el.date[0].month}}
               pkg={el.pkg}
-              time={el.time}
+              time={el.date[0].time}
               price={el.price}/>
             }) : <h5> No booking found </h5>}
           {/* <BookingCard date={{date:"27th", month:"Jan"}} pkg="Package 1" time="11:00AM - 12:00PM" price="110"/>
