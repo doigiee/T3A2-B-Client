@@ -13,7 +13,7 @@ const AboutUs = () => {
       <div className="services flex column a-i-center">
         <img src={props.src} width='170px'/>
         <h3>{props.title}</h3>
-        <p className="heading-description text-center">{props.desc}</p>
+        <p className="heading-description">{props.desc}</p>
       </div>
     )
   }

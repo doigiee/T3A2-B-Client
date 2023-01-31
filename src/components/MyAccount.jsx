@@ -5,20 +5,28 @@ import LoginController from './Login'
 import { useUserContext } from './UserContext'
 
 
-const BookingCard = (props) => {
+const BookingCard = ({ date, pkg }) => {
+
+  const nthNumber = (number) => {
+    return number > 0
+      ? ["th", "st", "nd", "rd"][
+          (number > 3 && number < 21) || number % 10 > 3 ? 0 : number % 10
+        ]
+      : "";
+  };
 
   return (
     <>
       <div className="booking-card flex a-i-center shadow-btm">
         <div className="booking-date flex column a-i-center">
-          <h2>{props.date.date}</h2>
-          <h2>{props.date.month}</h2>
+          <h2>{nthNumber(date.date)}</h2>
+          <h2>{date.month}</h2>
         </div> 
         <div className="booking-detail">
-          <h3>{props.pkg}</h3>
-          <p className='heading-description'>{props.time}</p>
+          <h3>{pkg.name}</h3>
+          <p className='heading-description'>{date.time}</p>
           <div className="modify-booking-box">
-            <h3>$ {props.price}</h3>
+            <h3>$ {pkg.price}</h3>
             <Link className="" to="/bookings">Modify</Link>
             <span className="" >  |  </span>
             <Link className="" to="">Cancel</Link>
@@ -106,16 +114,15 @@ const MyAccount = () => {
         <div className="cards-container flex column a-i-center j-c-center">
           {bookings !== undefined ? 
             bookings.map((el, idx) => {
-              return <BookingCard 
-              key={idx}
-              date={{date: el.date[0].date + "th" ,month: el.date[0].month}}
-              pkg={el.pkg}
-              time={el.date[0].time}
-              price={el.price}/>
+              return (
+                <BookingCard 
+                  key={idx}
+                  date={{date: el.date[0].date + "th" ,month: el.date[0].month}}
+                  pkg={el.pkg}
+                  time={el.date[0].time}
+                  price={el.price}
+                />)
             }) : <h5> No booking found </h5>}
-          {/* <BookingCard date={{date:"27th", month:"Jan"}} pkg="Package 1" time="11:00AM - 12:00PM" price="110"/>
-          <BookingCard date={{date:"27th", month:"Jan"}} pkg="Package 1" time="11:00AM - 12:00PM" price="110"/>
-          <BookingCard date={{date:"27th", month:"Jan"}} pkg="Package 1" time="11:00AM - 12:00PM" price="110"/> */}
         </div>
     </section>
   </main>
