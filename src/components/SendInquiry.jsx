@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react'
-import wave from '../assets/wave_white.svg'
 import { Link } from 'react-router-dom'
 import emailjs from '@emailjs/browser';
 
@@ -15,9 +14,11 @@ const SendInquiry = () => {
     e.preventDefault()
     emailjs.sendForm('service_ipqihi2', 'template_dp7mndu', form.current, 'x5ldj7hCbXs9GZBHH')
       .then((result) => {
-          alert("Successfully sent!")
+          alert("Thanks for sending inquiries. We'll contact you very soon.")
+          console.log(result)
       }, (error) => {
-          alert("Failed to send email. Please try again later")
+          alert("I'm sorry. Failed to send email. Please try again later")
+          console.log(error.message)
       })
   }
 
@@ -36,6 +37,8 @@ const SendInquiry = () => {
   const toModifyEmail = () => setValidEmail(true)
   const toModifyPhone = () => setValidPhone(true)
 
+
+
   return (
     <main id="page-container">
       <article className="page-header flex column j-c-center a-i-center">
@@ -49,7 +52,7 @@ const SendInquiry = () => {
       </div>
       </article>
       <section className="context-container flex column a-i-left">
-        <form className="send-inquiry-form flex column a-i-center" ref={form} onSubmit={toModifyEmail}>
+        <form className="send-inquiry-form flex column a-i-center" ref={form} onSubmit={sendEmail}>
           <input type="text" name="user_name" required placeholder="Name *"/>
           <input type="email" name="user_email" id={isValidEmail ? "" : "invalid-warning" } 
                 onBlur={isEmail} onFocus={toModifyEmail} required placeholder="Email *"/>

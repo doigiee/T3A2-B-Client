@@ -28,7 +28,7 @@ const Login = ({ email, password, loggingIn, setEmail, setPassword }) => {
           onChange={({ target: { value } }) => setPassword(value)}
           />
       <Link onClick={loggingIn}><h3 className="btn login-btn">LOGIN</h3></Link>
-      <Link className='sub-desc'>Forgot password?</Link>
+      <Link to="/send_inquiry"className='sub-desc'>Forgot password?</Link>
     </>
   )
 }
@@ -71,10 +71,13 @@ const LoginController = () => {
       const user = users.find(
         (user) => user.email === email && user.password === password
       );
-      if (user === undefined) throw new Error();
+      if (user === undefined) {
+        alert("Login failed. Please try again")
+        throw new Error("Login failed")};
       setUser(user)
       console.log("Login component", user)
       resolve(user)
+      reject(err => console.log(err.message))
     }).then(() => nav('../my_account')).catch((e) => console.log(e.message))
   }
 

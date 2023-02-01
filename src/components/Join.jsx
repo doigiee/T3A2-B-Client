@@ -56,7 +56,6 @@ const Join = () => {
       password: password // Double check on DB server
     }
     
-
     // Post new user to API
 
     const returnedUser = await fetch('http://localhost:4717/users', {
@@ -66,24 +65,44 @@ const Join = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(newUser)
-    }).then()
-    .catch(e => {
-      console.log(e.message)})
-    setUser(newUser)
+    })
+    const data = await returnedUser.json()
+    console.log(data)
+    setUser(data)
   }
 
+
+  const isThisEmailOk = (e) => {
+    console.log(usersList)
+    const found = usersList.find( (el) => {
+      if (el.email === e.target.value) {
+        alert('This email is already in use. Please try another email.')
+        setForm({
+          ...form,
+          email: ''
+        })
+        return false}
+    })
+  }
+
+
+
   const submit = async (evt) => {
-    console.log(form, "right after submission")
-    evt.preventDefault()
-    await addUserDetail( 
-      form.email, 
-      form.title, 
-      form.first_name, 
-      form.last_name, 
-      form.phone_number, 
-      form.password )
-    console.log(form, "form")
-    nav(`../my_account`)
+    console.log("Checking the form valid")
+    if (!form.email || !form.password || !form.first_name || !form.last_name) {
+      return alert('Please enter the required fields')
+    } else {
+      console.log("Creating new user", form)
+      evt.preventDefault()
+      await addUserDetail( 
+        form.email, 
+        form.title, 
+        form.first_name, 
+        form.last_name, 
+        form.phone_number, 
+        form.password )
+      nav(`../my_account`)
+    }
   }
 
 
@@ -91,18 +110,26 @@ const Join = () => {
     <>
       <h2 className='heading' id="login-heading">Create my account</h2>
       <Link to="/login" className='sub-desc'>Already have an account? Login here</Link>
-      <input value={form.email} onInput={handleForm} required className="login-input" type="email" name="email" placeholder='Email *'/>
-      <select defaultValue="DEFAULT" value={form.title} onChange={handleForm} className="login-input" name="title">
+      <input value={email} onInput={handleForm} onBlur={isThisEmailOk} required className="login-input" 
+        type="email" name="email" placeholder='Email *' 
+        pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*"/>
+      <select defaultValue="DEFAULT" onChange={handleForm} className="login-input" name="title">
         <option value="DEFAULT" disabled hidden>Title</option>
         {titles.map((el,idx) => {
           return <option key={idx} value={el}>{el}</option>
         })}
       </select>
-      <input value={form.first_name} onChange={handleForm} required className="login-input" type="text" name="first_name" placeholder='First name *'/>
-      <input value={form.last_name} onChange={handleForm} required className="login-input" type="text" name="last_name" placeholder='Last name *'/>
-      <input value={form.phone_number} onChange={handleForm} className="login-input" type="tel" name="phone_number" placeholder='Phone number *'/>
-      <input value={form.password} onChange={handleForm} required id="password" className="login-input" name="password" type="password" placeholder="Password *" />
-      {/* <Link onClick={submit}><h3 className="btn login-btn">Create my account</h3></Link> */}
+      <input value={first_name} onChange={handleForm} 
+        required className="login-input" type="text" 
+        name="first_name" placeholder='First name *'/>
+      <input value={last_name} onChange={handleForm} 
+        required className="login-input" type="text" 
+        name="last_name" placeholder='Last name *'/>
+      <input value={phone_number} onChange={handleForm} 
+        pattern="[0-9]{10}" className="login-input" 
+        type="tel" name="phone_number" placeholder='Phone number'/>
+      <input value={password} onChange={handleForm} required id="password" 
+      className="login-input" name="password" type="password" placeholder="Password *" />
       <input id="submit-btn" onClick={submit} type="submit" value="Create my account" />
       <span className="agreement">By creating an account,<br/> you agree to our Terms & conditions and Privacy notice on how we manage your personal information.</span>
     </>

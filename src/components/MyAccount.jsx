@@ -49,7 +49,7 @@ const BookingCard = ({ booking, date, pkg, time, price }) => {
     return i + "th";
   }
 
-  const addBookingToUser = () => {
+  const addBookingToUserContext = () => {
     setUser({
       ...user,
       booking: booking
@@ -96,7 +96,7 @@ const BookingCard = ({ booking, date, pkg, time, price }) => {
           <p className='heading-description'>{time} up to 1 hour</p>
           <div className="modify-booking-box">
             <h3>$ {price}</h3>
-            <Link className="" to={`/bookings/update`} onClick={addBookingToUser}>Modify</Link>
+            <Link className="" to={`/bookings/update`} onClick={addBookingToUserContext}>Modify</Link>
             <span className="" > | </span>
             <Link className="" to="" onClick={deleteBooking}>Cancel</Link>
           </div>

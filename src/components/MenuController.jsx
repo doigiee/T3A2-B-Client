@@ -44,6 +44,7 @@ const MenuController = () => {
 
     const handleLogoutClick = (evt) => {
         evt.preventDefault()
+        alert(`Successfully logged out. \n See you again, ${user.firstName}`)
         setUser(undefined)
         setOpen(!isOpen)
         setVisible(!isOpen)
@@ -67,13 +68,6 @@ const MenuController = () => {
 
 // MenuBox component
 const MenuBox = () => {
-    
-    // useEffect(() => {
-    //     if (user == undefined) {
-    //         nav('/login')
-    //     }
-    // }, [])
-    // Bringing the context from the parent
     const {toggleState, toggleStateForMenu, handleLogoutClick, isOpen, isVisible, user} = useContext(MenuControllerContext);
     console.log("MenuController", user)
     // Menu items
@@ -83,14 +77,6 @@ const MenuBox = () => {
         {title: "Our services", to: "/our_services"},
         {title: "Send inquiry", to: "/send_inquiry"}        
     ]
-
-    // const LogoutButton = () => {
-    //     const nav = useNavigate()
-
-    //     return (
-    //       <LinkTo onClick={handleClick} src={logout} title="Logout" />
-    //     )
-    //   }
     
     // Custom Link component
     const LinkTo = (props) => {
