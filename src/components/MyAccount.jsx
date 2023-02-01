@@ -5,7 +5,33 @@ import LoginController from './Login'
 import { useUserContext } from './UserContext'
 
 
-const BookingCard = ({ bookingId, date, pkg, time, price }) => {
+
+const MyAccount = () => {
+  const { user, setUser } = useUserContext()
+  const [ bookings, setBookings ] = useState([])
+  const nav = useNavigate()
+  
+  useEffect(() => {
+    // const { user } = useUserContext()
+    console.log("My account page renders")
+    if (user == undefined) {
+      nav('/login')}
+    async function getBookings() {
+      console.log("Start fetching bookings...")
+      const res = await fetch(`http://localhost:4717/bookings/${user._id}`)
+        .catch((e) => console.log(e.message)) // user id to retrieve bookings
+      const data = await res.json()
+      // console.log(user._id)
+      // console.log(user)
+      setBookings(data)
+    }
+    getBookings()
+    
+    }
+  , [])
+
+
+const BookingCard = ({ booking, date, pkg, time, price }) => {
 
   const nthNumber = (str) => {
     let i = Number(str)
@@ -21,7 +47,42 @@ const BookingCard = ({ bookingId, date, pkg, time, price }) => {
         return i + "rd";
     }
     return i + "th";
-}
+  }
+
+  const addBookingToUser = () => {
+    setUser({
+      ...user,
+      booking: booking
+    })
+    console.log(booking, user, "Booking to modify added on user")
+  }
+
+  const deleteBooking = async () => {
+    const confirmation = confirm("Do you wish to delete this booking?")
+    const doubleConfirmation = confirm("Are you sure?")
+    if ( confirmation && doubleConfirmation ) {
+      const bookingToDelete = await fetch(`http://localhost:4717/bookings/${booking._id}`, {
+        method: 'DELETE'}).then(() => alert("Booking deleted successfully"))
+        .catch(e => {console.log(e.message)
+        })
+      console.log("Booking successfully deleted")
+      setUser({ ... user,
+        booking: {}
+      })
+      async function getBookings() {
+        console.log("Start fetching bookings...")
+        const res = await fetch(`http://localhost:4717/bookings/${user._id}`)
+          .catch((e) => console.log(e.message)) // user id to retrieve bookings
+        const data = await res.json()
+        // console.log(user._id)
+        // console.log(user)
+        setBookings(data)
+      }
+      getBookings()
+    } else {
+      return true
+    }
+  }
 
   return (
     <>
@@ -35,9 +96,9 @@ const BookingCard = ({ bookingId, date, pkg, time, price }) => {
           <p className='heading-description'>{time} up to 1 hour</p>
           <div className="modify-booking-box">
             <h3>$ {price}</h3>
-            <Link className="" to={`/bookings`} state={bookingId}>Modify</Link>
+            <Link className="" to={`/bookings/update`} onClick={addBookingToUser}>Modify</Link>
             <span className="" > | </span>
-            <Link className="" to="">Cancel</Link>
+            <Link className="" to="" onClick={deleteBooking}>Cancel</Link>
           </div>
         </div>
       </div>
@@ -49,28 +110,6 @@ const BookingCard = ({ bookingId, date, pkg, time, price }) => {
 const NoBookingsExist = () => {
   return <></>
 }
-
-const MyAccount = () => {
-  const [ bookings, setBookings ] = useState([])
-  const nav = useNavigate()
-  const { user } = useUserContext()
-  console.log(user, " at My account page")
-
-  
-  useEffect(() => {
-    if (user == undefined) {
-      nav('/login')
-    async function getBookings() {
-      console.log("Start fetching bookings...")
-      const res = await fetch(`http://localhost:4717/bookings/${user._id}`)
-        .catch((e) => console.log(e.message)) // user id to retrieve bookings
-      const data = await res.json()
-      await setBookings(data)
-    }
-    getBookings().catch((e) => console.log(e.message))
-    
-    }
-  }, [])
 
 
   return (
@@ -91,13 +130,13 @@ const MyAccount = () => {
           <img src={my_detail} width="25px"/>Update my detail</Link>
       </div>
       <h2 className="heading">My bookings</h2>
-        <div className="cards-container flex column a-i-center j-c-center">
-          {bookings.length !== 0 ? 
+        <div id="booking-cards-container" className="cards-container flex column a-i-center j-c-center">
+          {bookings.length > 0 ? 
             bookings.map((el, idx) => {
               return (
                 <BookingCard 
                   key={idx}
-                  bookingId={el._id}
+                  booking={el}
                   date={{date: el.date.date, month: el.date.month}}
                   pkg={el.pkg.name}
                   time={el.date.time}

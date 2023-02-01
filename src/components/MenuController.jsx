@@ -75,7 +75,7 @@ const MenuBox = () => {
     // }, [])
     // Bringing the context from the parent
     const {toggleState, toggleStateForMenu, handleLogoutClick, isOpen, isVisible, user} = useContext(MenuControllerContext);
-    console.log(user, " at Hamburger menu")
+    console.log("MenuController", user)
     // Menu items
     const menuitems=[
         {title: "Home", to: "/"},

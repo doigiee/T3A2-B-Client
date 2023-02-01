@@ -66,16 +66,16 @@ const LoginController = () => {
   }
 
 
-  const authCheck = function({ email, password }) {
+  const authCheck = async function({ email, password }) {
     return new Promise((resolve, reject) => {
       const user = users.find(
         (user) => user.email === email && user.password === password
       );
       if (user === undefined) throw new Error();
       setUser(user)
-      console.log(user, "signed in")
+      console.log("Login component", user)
       resolve(user)
-    }).then(() => nav('../my_account'))
+    }).then(() => nav('../my_account')).catch((e) => console.log(e.message))
   }
 
   
