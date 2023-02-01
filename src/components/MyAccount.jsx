@@ -5,15 +5,23 @@ import LoginController from './Login'
 import { useUserContext } from './UserContext'
 
 
-const BookingCard = ({ date, pkg }) => {
+const BookingCard = ({ date, pkg, time, price }) => {
 
-  const nthNumber = (number) => {
-    return number > 0
-      ? ["th", "st", "nd", "rd"][
-          (number > 3 && number < 21) || number % 10 > 3 ? 0 : number % 10
-        ]
-      : "";
-  };
+  const nthNumber = (str) => {
+    let i = Number(str)
+    let j = i % 10,
+        k = i % 100;
+    if (j == 1 && k != 11) {
+        return i + "st";
+    }
+    if (j == 2 && k != 12) {
+        return i + "nd";
+    }
+    if (j == 3 && k != 13) {
+        return i + "rd";
+    }
+    return i + "th";
+}
 
   return (
     <>
@@ -23,10 +31,10 @@ const BookingCard = ({ date, pkg }) => {
           <h2>{date.month}</h2>
         </div> 
         <div className="booking-detail">
-          <h3>{pkg.name}</h3>
-          <p className='heading-description'>{date.time}</p>
+          <h3>{pkg}</h3>
+          <p className='heading-description'>{time} up to 1 hour</p>
           <div className="modify-booking-box">
-            <h3>$ {pkg.price}</h3>
+            <h3>$ {price}</h3>
             <Link className="" to="/bookings">Modify</Link>
             <span className="" >  |  </span>
             <Link className="" to="">Cancel</Link>
@@ -81,9 +89,8 @@ const MyAccount = () => {
       console.log("Start fetching bookings...")
       const res = await fetch(`http://localhost:4717/bookings/${user._id}`) // user id to retrieve bookings
       const data = await res.json()
-      setBookings(data)
-      console.log(data)
-      console.log(bookings)
+      await setBookings(data)
+      await console.log(bookings)
     }
     getBookings().catch((e) => console.log(e.message))
     if (user == undefined) {
@@ -112,15 +119,15 @@ const MyAccount = () => {
       </div>
       <h2 className="heading">My bookings</h2>
         <div className="cards-container flex column a-i-center j-c-center">
-          {bookings !== undefined ? 
+          {bookings.length !== 0 ? 
             bookings.map((el, idx) => {
               return (
                 <BookingCard 
                   key={idx}
-                  date={{date: el.date[0].date + "th" ,month: el.date[0].month}}
-                  pkg={el.pkg}
-                  time={el.date[0].time}
-                  price={el.price}
+                  date={{date: el.date.date, month: el.date.month}}
+                  pkg={el.pkg.name}
+                  time={el.date.time}
+                  price={el.pkg.price}
                 />)
             }) : <h5> No booking found </h5>}
         </div>

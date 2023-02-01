@@ -23,10 +23,16 @@ const Booking = () => {
     dog_breed: ''
   })
 
+  useEffect(() => {
+    if (user == undefined) {
+      nav('/login')
+    }
+  }, [])
+
   const Calendar = () => {
   
     const [startDate, setStartDate] = useState(
-      setHours(setMinutes(new Date(), 30), 16)
+      setHours(setMinutes(new Date(), 30), new Date().getHours())
     )
   
     const filterPassedTime = (time) => {
@@ -50,7 +56,6 @@ const Booking = () => {
         filterTime={filterPassedTime}
         dateFormat="yyyy-MM-dd"
         inline
-        placeholderText="Click to select a date"
         />
     )
   }
@@ -104,7 +109,11 @@ const Booking = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(newBooking)
-    }).then(() => console.log("New booking successfully added"))
+    }).then((res) => {
+      console.log(res)
+      console.log("New booking successfully added")
+      nav(`../my_account`)
+    })
     .catch(e => {
       console.log(e.message)})
   }
@@ -124,7 +133,7 @@ const Booking = () => {
       form.dog_breed
     )
     console.log(form, "right after submission")
-    nav(`../my_account`)
+    
   }
   
 
