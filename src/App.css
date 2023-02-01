@@ -326,6 +326,10 @@ footer {
   padding: 0.5rem;
 }
 
+.package-card p {
+  font-size: 0.8rem;
+}
+
 .division-line {
   width: 200px;
   margin: 1rem;
@@ -514,6 +518,11 @@ footer {
   margin-bottom: 3rem;
   color: #363636
 }
+
+#update-my-detail {
+  width: 170px;
+}
+
 
 .sub-menu img {
   margin: 0 0.5rem;
@@ -822,11 +831,6 @@ footer {
   .booking-card {
     width: 350px;
     margin: 1rem 3rem;
-  }
-
-  #packages-dropbox {
-    /* margin-right: 4rem;
-    margin-left: 4rem; */
   }
 
   #login-bg {
