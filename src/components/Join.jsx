@@ -92,8 +92,8 @@ const Join = () => {
       <h2 className='heading' id="login-heading">Create my account</h2>
       <Link to="/login" className='sub-desc'>Already have an account? Login here</Link>
       <input value={form.email} onInput={handleForm} required className="login-input" type="email" name="email" placeholder='Email *'/>
-      <select value={form.title} onChange={handleForm} className="login-input" name="title">
-        <option value="" disabled hidden>Title</option>
+      <select defaultValue="DEFAULT" value={form.title} onChange={handleForm} className="login-input" name="title">
+        <option value="DEFAULT" disabled hidden>Title</option>
         {titles.map((el,idx) => {
           return <option key={idx} value={el}>{el}</option>
         })}

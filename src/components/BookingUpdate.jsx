@@ -9,9 +9,15 @@ import ourPackages from "./servicePackageList"
 
 
 
-const Booking = () => {
+const BookingUpdate = () => {
   const { user } = useUserContext()
   const nav = useNavigate()
+  let bookedDate = new Date(
+    user.booking.date.month + " " + 
+    user.booking.date.date + " " + 
+    user.booking.date.year + " " + 
+    user.booking.date.time
+    )
   const [ form, setForm ] = useState({
     _id: '',
     date: '',
@@ -26,24 +32,24 @@ const Booking = () => {
   useEffect(() => {
     if (user == undefined) {
       nav('/login')
-    }
-    console.log("My Account page renders")
+      }
     }, [])
 
   const Calendar = () => {
-    const [startDate, setStartDate] = useState(form.date)
+    const [startDate, setStartDate] = useState(form.date ? form.date : bookedDate)
     const filterPassedTime = (time) => {
       const currentDate = new Date()
       const selectedDate = new Date(time)
       return currentDate.getTime() < selectedDate.getTime()
     }
-  
+    
     return (
       <DatePicker 
         selected={startDate}
         onChange={(date) => {
           setStartDate(date)
           form.date = date
+          // bookedDate = undefined
           }}
         name="date"
         showTimeSelect
@@ -66,6 +72,7 @@ const Booking = () => {
   }
 
   const handleForm = (e) => {
+    
     const { value, name } = e.target
     if ( name === "pkg_name") {
       form.pkg_price = matchPrice(value)
@@ -77,7 +84,7 @@ const Booking = () => {
     console.log( form )
   }
 
-  const addBooking = async ( date, pkg_name, pkg_price, dog_name, dog_gender, dog_age, dog_breed ) => {
+  const updateBooking = async ( date, pkg_name, pkg_price, dog_name, dog_gender, dog_age, dog_breed ) => {
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     const data_date = new Date(date)
     const newBooking = {
@@ -99,8 +106,8 @@ const Booking = () => {
       }
     }
     // Post new booking to API
-    const returnedBooking = await fetch('http://localhost:4717/bookings', {
-      method: 'POST',
+    const returnedBooking = await fetch(`http://localhost:4717/bookings/${user.booking._id}`, {
+      method: 'PUT',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -108,38 +115,33 @@ const Booking = () => {
       body: JSON.stringify(newBooking)
     }).then((res) => {
       console.log(res)
-      console.log("New booking successfully added")
+      console.log("Booking successfully updated")
       nav(`../my_account`)
-    }).catch(e => {
+    })
+    .catch(e => {
       console.log(e.message)})
   }
 
-  const emptyValueCheck = () => {
-    if (!form.date || !form.pkg_name || !form.dog_name || !form.dog_gender) {
-      return false
-    } else {
-      return true
-    }
-  }
+
 
   const submit = async (evt) => {
     console.log(form, "before submit")
-    if (emptyValueCheck()) {
-      evt.preventDefault()
-      await addBooking(
-        form.date,
-        form.pkg_name,
-        form.pkg_price,
-        form.dog_name,
-        form.dog_gender,
-        form.dog_age,
-        form.dog_breed
-      )
-    } else {
-      alert('Please provide the required information.')
-    }
+    console.log(form, "right before submission")
+    evt.preventDefault()
+    console.log(user)
+    await updateBooking(
+      form.date ? form.date : bookedDate,
+      form.pkg_name ? form.pkg_name : user.booking.pkg.name,
+      form.pkg_price ? form.pkg_price : user.booking.pkg.price,
+      form.dog_name ? form.dog_name : user.booking.dog.name,
+      form.dog_gender ? form.dog_gender : user.booking.dog.gender,
+      form.dog_age ? form.dog_age : user.booking.dog.age,
+      form.dog_breed ? form.dog_breed : user.booking.dog.breed
+    )
+    console.log(form, "right after submission")
   }
   
+
   return (
   <main id="page-container">
     <article className="page-header flex column j-c-center a-i-center">
@@ -197,7 +199,10 @@ const Booking = () => {
           className="booking-input" 
           name="dog_breed" 
           placeholder={user?.booking?.dog?.breed ? user.booking.dog.breed : "Dog breed"}/>
-        <Link onClick={submit} ><h3 className="btn login-btn">Save</h3></Link>
+        {!user?.booking ? 
+          <Link onClick={submit} ><h3 className="btn login-btn">Save</h3></Link>
+          : <Link onClick={submit} ><h3 className="btn login-btn">Update</h3></Link>
+        }
       </div>
       <p id="booking-agreement" className="agreement">
       By creating an account, <br/>
@@ -208,4 +213,4 @@ const Booking = () => {
   ) 
 } 
 
-export default Booking
+export default BookingUpdate

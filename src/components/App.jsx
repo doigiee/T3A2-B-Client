@@ -15,6 +15,7 @@ import Booking from './Booking'
 // import signIn from "./Auth"
 
 import AuthRoute from "./AuthRoute"
+import BookingUpdate from "./BookingUpdate"
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path='/login' element={<LoginController />} />
         <Route path='/my_account' element={<MyAccount />} /> 
         <Route path='/bookings' element={<Booking />} /> 
+        <Route path='/bookings/update' element={<BookingUpdate />} /> 
       </Routes>
     <Footer />
   </UserContextProvider>
