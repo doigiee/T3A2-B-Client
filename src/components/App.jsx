@@ -12,7 +12,9 @@ import LoginController from './Login'
 import JoinController from './Join'
 import MyAccount from './MyAccount'
 import Booking from './Booking'
-import NotFound from "./NotFound"
+// import signIn from "./Auth"
+
+import AuthRoute from "./AuthRoute"
 
 
 function App() {
@@ -30,7 +32,6 @@ function App() {
         <Route path='/login' element={<LoginController />} />
         <Route path='/my_account' element={<MyAccount />} /> 
         <Route path='/bookings' element={<Booking />} /> 
-        <Route path='*' element={<NotFound />} /> 
       </Routes>
     <Footer />
   </UserContextProvider>
