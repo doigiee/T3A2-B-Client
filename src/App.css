@@ -519,6 +519,11 @@ footer {
   color: #363636
 }
 
+#update-my-detail {
+  width: 170px;
+}
+
+
 .sub-menu img {
   margin: 0 0.5rem;
   vertical-align: middle;

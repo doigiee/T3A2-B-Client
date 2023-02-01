@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import DatePicker from 'react-datepicker'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import setHours from "date-fns/setHours"
 import setMinutes from "date-fns/setMinutes"
 import "react-datepicker/dist/react-datepicker.css"
@@ -12,6 +12,7 @@ import ourPackages from "./servicePackageList"
 const Booking = () => {
   const { user } = useUserContext()
   const nav = useNavigate()
+  const [ booking, setBooking ] = useState({})
   const [ form, setForm ] = useState({
     _id: '',
     date: '',
@@ -26,14 +27,30 @@ const Booking = () => {
   useEffect(() => {
     if (user == undefined) {
       nav('/login')
+    const location = useLocation()
+    const bookingId = location.state.bookingId
+
+    async function getBooking() {
+        console.log("Start fetching a booking")
+        const res = await fetch(`http://localhost:4717/bookings/find/${bookingId}`) // user id to retrieve bookings
+        const data = await res.json()
+        // await setBooking(data)
+        // console.log(data)
+        // console.log(booking)
+        // await setForm(booking)
+        // form = booking
+      }
+      getBooking()
+      // .then((data) => setBooking(data))
+      // .then(()=> console.log(booking))
+      .catch((e) => console.log(e.message))
     }
+
   }, [])
 
   const Calendar = () => {
   
-    const [startDate, setStartDate] = useState(
-      setHours(setMinutes(new Date(), 30), new Date().getHours())
-    )
+    const [startDate, setStartDate] = useState(form.date)
   
     const filterPassedTime = (time) => {
       const currentDate = new Date()
@@ -48,7 +65,7 @@ const Booking = () => {
           form.date = date
           }}
         name="date"
-        value={form.date}
+        // value={form.date}
         showTimeSelect
         required={true}
         minTime={setHours(setMinutes(new Date(), 0), 9)}

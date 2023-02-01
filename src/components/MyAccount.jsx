@@ -5,7 +5,7 @@ import LoginController from './Login'
 import { useUserContext } from './UserContext'
 
 
-const BookingCard = ({ date, pkg, time, price }) => {
+const BookingCard = ({ bookingId, date, pkg, time, price }) => {
 
   const nthNumber = (str) => {
     let i = Number(str)
@@ -35,15 +35,14 @@ const BookingCard = ({ date, pkg, time, price }) => {
           <p className='heading-description'>{time} up to 1 hour</p>
           <div className="modify-booking-box">
             <h3>$ {price}</h3>
-            <Link className="" to="/bookings">Modify</Link>
-            <span className="" >  |  </span>
+            <Link className="" to={`/bookings`} state={bookingId}>Modify</Link>
+            <span className="" > | </span>
             <Link className="" to="">Cancel</Link>
           </div>
         </div>
       </div>
     </>
   )
-   
 }
 
 
@@ -52,52 +51,26 @@ const NoBookingsExist = () => {
 }
 
 const MyAccount = () => {
-  // const location = useLocation()
-  // if (location.state == null) {
-  //   return <LoginController />
-  // } 
   const [ bookings, setBookings ] = useState([])
   const nav = useNavigate()
   const { user } = useUserContext()
   console.log(user, " at My account page")
-  // if ( user == undefined ) {
-  //   return <LoginController />
-  // } 
 
-
-  // console.log(location.state.email, "After login")
-  // console.log(location.state.password, "After login")
-  // console.log(location.state.first_name, "After login")
-
-  // const bookings = [
-  //   {
-  //     id: 123,
-  //     date: {
-  //       day: 27,
-  //       month: "Jan"
-  //     }, 
-  //     time: '11:00-12:00',
-  //     pkg: 'Package 1',
-  //     price: 110
-  //   }
-  // ]
   
-  
-
   useEffect(() => {
-    async function getBookings() {
-      console.log("Start fetching bookings...")
-      const res = await fetch(`http://localhost:4717/bookings/${user._id}`) // user id to retrieve bookings
-      const data = await res.json()
-      await setBookings(data)
-      await console.log(bookings)
-    }
-    getBookings().catch((e) => console.log(e.message))
     if (user == undefined) {
       nav('/login')
+    async function getBookings() {
+      console.log("Start fetching bookings...")
+      const res = await fetch(`http://localhost:4717/bookings/${user._id}`)
+        .catch((e) => console.log(e.message)) // user id to retrieve bookings
+      const data = await res.json()
+      await setBookings(data)
+    }
+    getBookings().catch((e) => console.log(e.message))
+    
     }
   }, [])
-  
 
 
   return (
@@ -114,7 +87,7 @@ const MyAccount = () => {
     <section className="context-container flex column a-i-left">
       <div className="flex column">
         <h2 className="heading">My detail</h2>
-        <Link to="/join" className='sub-menu flex'>
+        <Link id="update-my-detail" to="/join" className='sub-menu flex'>
           <img src={my_detail} width="25px"/>Update my detail</Link>
       </div>
       <h2 className="heading">My bookings</h2>
@@ -124,6 +97,7 @@ const MyAccount = () => {
               return (
                 <BookingCard 
                   key={idx}
+                  bookingId={el._id}
                   date={{date: el.date.date, month: el.date.month}}
                   pkg={el.pkg.name}
                   time={el.date.time}
