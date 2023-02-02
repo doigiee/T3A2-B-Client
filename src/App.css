@@ -404,6 +404,7 @@ footer {
 
 #submit-btn {
   margin : 5px 0;
+  margin-top: 1rem;
   font-family: 'Noto Sans', sans-serif;
   color: #fffcf5;
   text-align: center;
@@ -475,6 +476,7 @@ footer {
 .login-input::placeholder {
   color: #fffcf55c;
 }
+
 #login-form select {
   color: #fffcf55c;
 }

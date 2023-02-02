@@ -126,7 +126,7 @@ const NoBookingsExist = () => {
     <section className="context-container flex column a-i-left">
       <div className="flex column">
         <h2 className="heading">My detail</h2>
-        <Link id="update-my-detail" to="/join" className='sub-menu flex'>
+        <Link id="update-my-detail" to="/my_account/update" className='sub-menu flex'>
           <img src={my_detail} width="25px"/>Update my detail</Link>
       </div>
       <h2 className="heading">My bookings</h2>
