@@ -99,7 +99,7 @@ const Booking = () => {
       }
     }
     // Post new booking to API
-    const returnedBooking = await fetch(fetchURL + '/bookings', {
+    const returnedBooking = await fetch(fetchURL+'/bookings/', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
