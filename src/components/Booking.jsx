@@ -99,7 +99,7 @@ const Booking = () => {
       }
     }
     // Post new booking to API
-    const returnedBooking = await fetch(fetchURL + '/bookings', {
+    const returnedBooking = await fetch(fetchURL+'/bookings/', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -155,7 +155,7 @@ const Booking = () => {
       <Calendar id="calendar" cb={handleForm} />
       <div id="booking-input-container" className="cards-container flex column a-i-center j-c-center">
         <select 
-          defaultValue={user?.booking?.pkg?.name ? user.booking.pkg.name : "DEFAULT"} 
+          defaultValue="DEFAULT"
           onChange={handleForm} 
           id="packages-dropbox" 
           required 
@@ -172,9 +172,9 @@ const Booking = () => {
           className="booking-input" 
           name="dog_name" 
           required 
-          placeholder={user?.booking?.dog?.name !== undefined ? user.booking.dog.name : "Dog name *"}/>
+          placeholder={"Dog name *"}/>
         <select 
-          defaultValue={user?.booking?.dog?.gender ? user.booking.dog.gender : "DEFAULT_gender"} 
+          defaultValue="DEFAULT_gender"
           onChange={handleForm} 
           id="packages-dropbox" 
           required 
@@ -189,14 +189,14 @@ const Booking = () => {
           type="number" 
           className="booking-input" 
           name="dog_age" 
-          placeholder={user?.booking?.dog?.age ? user.booking.dog.age : "Dog age"}/>
+          placeholder={"Dog age"}/>
         <input 
           onChange={handleForm} 
           value={form.dog_breed} 
           type="text" 
           className="booking-input" 
           name="dog_breed" 
-          placeholder={user?.booking?.dog?.breed ? user.booking.dog.breed : "Dog breed"}/>
+          placeholder={"Dog breed"}/>
         <Link onClick={submit} ><h3 className="btn login-btn">Save</h3></Link>
       </div>
       <p id="booking-agreement" className="agreement">

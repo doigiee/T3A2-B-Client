@@ -24,6 +24,7 @@ const MyAccount = () => {
         const data = await res.json()
         setBookings(data)
         setLoading(false)
+        console.log(`${fetchURL}`)
       }
       getBookings()
     } catch (err) {
