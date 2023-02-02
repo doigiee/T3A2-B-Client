@@ -14,6 +14,7 @@ import MyAccount from './MyAccount'
 import Booking from './Booking'
 import NotFound from "./NotFound"
 import BookingUpdate from "./BookingUpdate"
+import UpdateMyDetail from "./UpdateMyDetail"
 
 
 
@@ -31,6 +32,7 @@ function App() {
         <Route path='/join' element={<JoinController />} />
         <Route path='/login' element={<LoginController />} />
         <Route path='/my_account' element={<MyAccount />} /> 
+        <Route path='/my_account/update' element={<UpdateMyDetail />} /> 
         <Route path='/bookings' element={<Booking />} /> 
         <Route path='/bookings/update' element={<BookingUpdate />} /> 
         <Route path='*' element={<NotFound />} /> 

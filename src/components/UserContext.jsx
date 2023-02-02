@@ -4,7 +4,6 @@ const UserContext = createContext(null)
 
 export function UserContextProvider({children}) {
   const [ user, setUser ] = useState(undefined)
-  // const [ isLoggedIn, setIsLoggedIn ] = useState(false)
 
   return (
     <UserContext.Provider
@@ -12,8 +11,6 @@ export function UserContextProvider({children}) {
       value={{
         user,
         setUser,
-        // isLoggedIn,
-        // setIsLoggedIn,
       }}
     />
   )
