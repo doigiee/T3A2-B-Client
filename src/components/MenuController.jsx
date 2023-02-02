@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import menuIcon from '../assets/icons/icon_hamburger.png'
 import closeIcon from '../assets/icons/icon_close.png'
@@ -8,7 +8,8 @@ import join from '../assets/icons/icon_join.png'
 import facebook from '../assets/icons/facebook.png'
 import insta from '../assets/icons/instagram.png'
 import { useUserContext } from './UserContext'
-import LoginController from './Login'
+import { menuItems } from './config'
+
 
 
 //  Use Context for faster performance between states and functions globally
@@ -51,8 +52,6 @@ const MenuController = () => {
         nav("/login")
     }
     
-    useEffect(()=>console.log('Rendered'),[])
-    
 
     return (
         <MenuControllerContext.Provider value = {{toggleState, toggleStateForMenu, handleLogoutClick, isOpen, isVisible, user}}>
@@ -69,15 +68,7 @@ const MenuController = () => {
 // MenuBox component
 const MenuBox = () => {
     const {toggleState, toggleStateForMenu, handleLogoutClick, isOpen, isVisible, user} = useContext(MenuControllerContext);
-    console.log("MenuController", user)
-    // Menu items
-    const menuitems=[
-        {title: "Home", to: "/"},
-        {title: "About us", to: "/about_us"},
-        {title: "Our services", to: "/our_services"},
-        {title: "Send inquiry", to: "/send_inquiry"}        
-    ]
-    
+
     // Custom Link component
     const LinkTo = (props) => {
         return (
@@ -107,7 +98,7 @@ const MenuBox = () => {
         </div>
         <nav aria-label="menu" id="menu-container">
             <ul id='menu-box'>
-                {menuitems.map((el,idx) => { // menu items rendering
+                {menuItems.map((el,idx) => { // menu items rendering
                     return <li key={idx}>
                         <Link to={el.to} onClick={toggleStateForMenu}>{el.title}</Link>
                         </li>

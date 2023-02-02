@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useUserContext } from './UserContext'
-import { Link, useNavigate, Navigate } from 'react-router-dom'
-import dog from '../assets/dog_login.png'
-
+import { useNavigate } from 'react-router-dom'
+import { fetchURL, titles } from './config'
+import UserBoxController from './UserBoxController'
 
 
 const Update = () => {
@@ -25,24 +25,17 @@ const Update = () => {
     })
   }
 
-  const titles = [
-    "Mr",
-    "Mrs",
-    "Ms",
-    "Miss",
-    "Mx"
-  ]
-
+  
   useEffect(() => {
     console.log("Update my detail page renders")
     if (user == undefined) {
       nav('/login')}
+
     async function fetchUserDetail () {
-      const res = await fetch(`http://localhost:4717/users/${user._id}`)
+      const res = await fetch(`${fetchURL}/users/${user._id}`)
       .catch(e => console.log(e.message))
       const data = await res.json()
       setUserDetail(data)
-      console.log("Data came back", data)
     }
     fetchUserDetail()
   }, [])
@@ -59,7 +52,7 @@ const Update = () => {
     
     // Post new user to API
 
-    const returnedUser = await fetch(`http://localhost:4717/users/${user._id}`, {
+    const returnedUser = await fetch(`${fetchURL}/users/${user._id}`, {
       method: 'PUT',
       headers: {
         Accept: 'application/json',
@@ -119,14 +112,13 @@ const Update = () => {
 const UpdateMyDetail = () => {
 
   return (
-    <section id="login-bg" className='flex j-c-center a-i-center'>
-      <div id="login-container" className='flex column a-i-center shadow-btm'>
-        <img id='login-dog' src={dog} />
+    <UserBoxController 
+      children={
         <form id='login-form' className='flex column j-c-center a-i-center' > 
           <Update />
         </form>
-      </div>
-    </section>
+      } 
+    />
   )
 }
 

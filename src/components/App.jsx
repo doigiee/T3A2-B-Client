@@ -1,8 +1,8 @@
-import React, { useState } from "react"
+import React from "react"
 import { UserContextProvider } from './UserContext'
 import '../App.css'
 import Navbar from './Navbar'
-import { Routes, Route, useLocation, Navigate, Outlet } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Home from './Home'
 import Footer from './Footer'
 import AboutUs from './AboutUs'
@@ -35,6 +35,7 @@ function App() {
         <Route path='/my_account/update' element={<UpdateMyDetail />} /> 
         <Route path='/bookings' element={<Booking />} /> 
         <Route path='/bookings/update' element={<BookingUpdate />} /> 
+        <Route path='/404' element={<NotFound />} /> 
         <Route path='*' element={<NotFound />} /> 
       </Routes>
     <Footer />

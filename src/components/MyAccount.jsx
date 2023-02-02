@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import my_detail from '../assets/icons/icon_mydetail.png'
-import LoginController from './Login'
+import { fetchURL } from './config'
 import { useUserContext } from './UserContext'
 
 
@@ -9,24 +9,27 @@ import { useUserContext } from './UserContext'
 const MyAccount = () => {
   const { user, setUser } = useUserContext()
   const [ bookings, setBookings ] = useState([])
+  const [ loading, setLoading ] = useState(true)
   const nav = useNavigate()
   
   useEffect(() => {
-    // const { user } = useUserContext()
+    setLoading(true)
     console.log("My account page renders")
-    if (user == undefined) {
-      nav('/login')}
-    async function getBookings() {
-      console.log("Start fetching bookings...")
-      const res = await fetch(`http://localhost:4717/bookings/${user._id}`)
-        .catch((e) => console.log(e.message)) // user id to retrieve bookings
-      const data = await res.json()
-      // console.log(user._id)
-      // console.log(user)
-      setBookings(data)
+    try {
+      if (user == undefined) {
+        nav('/login')}
+      async function getBookings() {
+        console.log("Start fetching bookings...")
+        const res = await fetch(`${fetchURL}/bookings/${user._id}`)
+        const data = await res.json()
+        setBookings(data)
+        setLoading(false)
+      }
+      getBookings()
+    } catch (err) {
+      console.log(err.message)
+      nav('/404')
     }
-    getBookings()
-    
     }
   , [])
 
@@ -61,7 +64,7 @@ const BookingCard = ({ booking, date, pkg, time, price }) => {
     const confirmation = confirm("Do you wish to delete this booking?")
     const doubleConfirmation = confirm("Are you sure?")
     if ( confirmation && doubleConfirmation ) {
-      const bookingToDelete = await fetch(`http://localhost:4717/bookings/${booking._id}`, {
+      const bookingToDelete = await fetch(`${fetchURL}/bookings/${booking._id}`, {
         method: 'DELETE'}).then(() => alert("Booking deleted successfully"))
         .catch(e => {console.log(e.message)
         })
@@ -71,7 +74,7 @@ const BookingCard = ({ booking, date, pkg, time, price }) => {
       })
       async function getBookings() {
         console.log("Start fetching bookings...")
-        const res = await fetch(`http://localhost:4717/bookings/${user._id}`)
+        const res = await fetch(`${fetchURL}/bookings/${user._id}`)
           .catch((e) => console.log(e.message)) // user id to retrieve bookings
         const data = await res.json()
         // console.log(user._id)
@@ -106,9 +109,26 @@ const BookingCard = ({ booking, date, pkg, time, price }) => {
   )
 }
 
-
-const NoBookingsExist = () => {
-  return <></>
+const BookingCardContainer = () => {
+  if (loading) {
+    return <><br/><h3>Loading...</h3></>
+  }
+  return (
+    <div id="booking-cards-container" className="cards-container flex column a-i-center j-c-center">
+          {bookings.length > 0 ? 
+            bookings.map((el, idx) => {
+              return (
+                <BookingCard 
+                  key={idx}
+                  booking={el}
+                  date={{date: el.date.date, month: el.date.month}}
+                  pkg={el.pkg.name}
+                  time={el.date.time}
+                  price={el.pkg.price}
+                />)
+            }) : <h5> No booking found </h5>}
+        </div>
+  )
 }
 
 
@@ -130,20 +150,7 @@ const NoBookingsExist = () => {
           <img src={my_detail} width="25px"/>Update my detail</Link>
       </div>
       <h2 className="heading">My bookings</h2>
-        <div id="booking-cards-container" className="cards-container flex column a-i-center j-c-center">
-          {bookings.length > 0 ? 
-            bookings.map((el, idx) => {
-              return (
-                <BookingCard 
-                  key={idx}
-                  booking={el}
-                  date={{date: el.date.date, month: el.date.month}}
-                  pkg={el.pkg.name}
-                  time={el.date.time}
-                  price={el.pkg.price}
-                />)
-            }) : <h5> No booking found </h5>}
-        </div>
+        <BookingCardContainer/>
     </section>
   </main>
   )

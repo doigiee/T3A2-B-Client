@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import dog from '../assets/dog_login.png'
+import { fetchURL } from './config'
+import UserBoxController from './UserBoxController'
 import { useUserContext } from './UserContext'
-
 
 
 const Login = ({ email, password, loggingIn, setEmail, setPassword }) => {
@@ -33,25 +33,27 @@ const Login = ({ email, password, loggingIn, setEmail, setPassword }) => {
   )
 }
 
+
 const LoginController = () => {
-  
 
   const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
   const [ users, setUsers ] = useState([])
-  const { setUser } = useUserContext()
+  const { user, setUser } = useUserContext()
 
   const nav = useNavigate()
 
   useEffect(() => {
+    if (user) {
+      nav('/my_account')}
+    console.log("Login page renders")
     async function getUsers() {
-      const res = await fetch('http://localhost:4717/users')
+      const res = await fetch(fetchURL + '/users')
       const data = await res.json()
       setUsers(data)
     }
     getUsers()
   }, [])
-
 
   const loggingIn = async (evt) => {
     evt.preventDefault()
@@ -65,7 +67,6 @@ const LoginController = () => {
     }
   }
 
-
   const authCheck = async function({ email, password }) {
     return new Promise((resolve, reject) => {
       const user = users.find(
@@ -75,22 +76,25 @@ const LoginController = () => {
         alert("Login failed. Please try again")
         throw new Error("Login failed")};
       setUser(user)
+      setUser({
+        ...user,
+        password: ''
+      })
       console.log("Login component", user)
       resolve(user)
       reject(err => console.log(err.message))
-    }).then(() => nav('../my_account')).catch((e) => console.log(e.message))
+    }).then(() => {
+      nav('../my_account')}).catch((e) => console.log(e.message))
   }
 
-  
   return (
-    <section id="login-bg" className='flex j-c-center a-i-center'>
-      <div id="login-container" className='flex column a-i-center shadow-btm'>
-        <img id='login-dog' src={dog} />
+    <UserBoxController 
+      children={
         <form id='login-form' className='flex column j-c-center a-i-center' > 
           <Login email={email} password={password} loggingIn={loggingIn} setEmail={setEmail} setPassword={setPassword}/>
         </form>
-      </div>
-    </section>
+      } 
+    />
   )
 }
 
