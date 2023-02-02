@@ -1,5 +1,5 @@
 import React from 'react'
-import ourPackages from './servicePackageList'
+import { ourPackages } from './config.js'
 import { Link } from 'react-router-dom'
 
 const OurServices = () => {

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react"
 import DatePicker from 'react-datepicker'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import setHours from "date-fns/setHours"
 import setMinutes from "date-fns/setMinutes"
 import "react-datepicker/dist/react-datepicker.css"
 import { useUserContext } from "./UserContext"
-import ourPackages from "./servicePackageList"
+import { ourPackages, fetchURL } from "./config"
 
 
 
@@ -27,7 +27,7 @@ const Booking = () => {
     if (user == undefined) {
       nav('/login')
     }
-    console.log("My Account page renders")
+    console.log("New booking page renders")
     }, [])
 
   const Calendar = () => {
@@ -99,7 +99,7 @@ const Booking = () => {
       }
     }
     // Post new booking to API
-    const returnedBooking = await fetch('http://localhost:4717/bookings', {
+    const returnedBooking = await fetch(fetchURL + '/bookings', {
       method: 'POST',
       headers: {
         Accept: 'application/json',

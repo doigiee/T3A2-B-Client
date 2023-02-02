@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useUserContext } from './UserContext'
 import { Link, useNavigate, Navigate } from 'react-router-dom'
-import dog from '../assets/dog_login.png'
+import UserBoxController from './UserBoxController'
+import { fetchURL, titles } from './config'
 
 
 const JoinController = () => {
@@ -27,17 +28,10 @@ const JoinController = () => {
       })
     }
 
-    const titles = [
-      "Mr",
-      "Mrs",
-      "Ms",
-      "Miss",
-      "Mx"
-    ]
-
     useEffect(() => {
+      console.log("Join page renders")
       async function fetchUsersList () {
-        const res = await fetch('http://localhost:4717/users').catch(e => console.log(e.message)) //user list .. leaks risk?
+        const res = await fetch(fetchURL + '/users').catch(e => console.log(e.message)) //user list .. leaks risk?
         const data = await res.json()
         setUsersList(data)
       }
@@ -58,7 +52,7 @@ const JoinController = () => {
       
       // Post new user to API
 
-      const returnedUser = await fetch('http://localhost:4717/users', {
+      const returnedUser = await fetch(fetchURL + '/users', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -73,7 +67,6 @@ const JoinController = () => {
 
 
     const isThisEmailOk = (e) => {
-      console.log(usersList)
       const found = usersList.find( (el) => {
         if (el.email === e.target.value) {
           alert('This email is already in use. Please try another email.')
@@ -137,36 +130,14 @@ const JoinController = () => {
   }
 
 
-  // const Update = () => {
-
-  //   return (
-  //     <>
-  //       <h2 className='heading' id="login-heading">Update my detail</h2>
-  //       <input className="login-input" type="text" name="first_name" placeholder='New first name *'/>
-  //       <input className="login-input" type="text" name="last_name" placeholder='New last name *'/>
-  //       <input className="login-input" type="tel" name="contact" placeholder='New contact *'/>
-  //       <input id="password" className="login-input" type="password" placeholder="Current password *" /> 
-  //       <Link to="/my_account"><h3 className="btn login-btn">Create my account</h3></Link>
-  //     </>
-  //   )
-  // }
-
-
-
-
-
-  
-
   return (
-    <section id="login-bg" className='flex j-c-center a-i-center'>
-      <div id="login-container" className='flex column a-i-center shadow-btm'>
-        <img id='login-dog' src={dog} />
+    <UserBoxController 
+      children={
         <form id='login-form' className='flex column j-c-center a-i-center' > 
           <Join />
-          {/* <Update /> */}
         </form>
-      </div>
-    </section>
+      } 
+    />
   )
 }
 

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react"
 import DatePicker from 'react-datepicker'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import setHours from "date-fns/setHours"
 import setMinutes from "date-fns/setMinutes"
 import "react-datepicker/dist/react-datepicker.css"
 import { useUserContext } from "./UserContext"
-import ourPackages from "./servicePackageList"
+import { ourPackages, fetchURL } from "./config"
 
 
 
@@ -33,6 +33,8 @@ const BookingUpdate = () => {
     if (user == undefined) {
       nav('/login')
       }
+    console.log("Booking update page renders")
+    
     }, [])
 
   const Calendar = () => {
@@ -49,7 +51,6 @@ const BookingUpdate = () => {
         onChange={(date) => {
           setStartDate(date)
           form.date = date
-          // bookedDate = undefined
           }}
         name="date"
         showTimeSelect
@@ -106,7 +107,7 @@ const BookingUpdate = () => {
       }
     }
     // Post new booking to API
-    const returnedBooking = await fetch(`http://localhost:4717/bookings/${user.booking._id}`, {
+    const returnedBooking = await fetch(`${fetchURL}/bookings/${user.booking._id}`, {
       method: 'PUT',
       headers: {
         Accept: 'application/json',
@@ -199,10 +200,7 @@ const BookingUpdate = () => {
           className="booking-input" 
           name="dog_breed" 
           placeholder={user?.booking?.dog?.breed ? user.booking.dog.breed : "Dog breed"}/>
-        {!user?.booking ? 
-          <Link onClick={submit} ><h3 className="btn login-btn">Save</h3></Link>
-          : <Link onClick={submit} ><h3 className="btn login-btn">Update</h3></Link>
-        }
+        <Link onClick={submit} ><h3 className="btn login-btn">Update</h3></Link>
       </div>
       <p id="booking-agreement" className="agreement">
       By creating an account, <br/>
