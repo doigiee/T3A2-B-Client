@@ -110,10 +110,13 @@ const BookingUpdate = () => {
       method: 'PUT',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        authorization: user.tk
       },
       body: JSON.stringify(newBooking)
-    }).then((res) => {
+    })
+    const data = await returnedBooking.json()
+    .then((res) => {
       console.log(res)
       console.log("Booking successfully updated")
       nav(`../my_account`)

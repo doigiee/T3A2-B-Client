@@ -8,5 +8,11 @@ export default defineConfig({
     hmr: {
       protocol: 'ws',
       host: 'localhost',
-    }}
+    }},
+  test: {
+    environment: 'jsdom',
+    globals: true
+
+  }
+  
 })
