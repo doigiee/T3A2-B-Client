@@ -15,17 +15,29 @@ const MyAccount = () => {
   useEffect(() => {
     setLoading(true)
     console.log("My account page renders")
+    console.log(user)
     try {
       if (user == undefined) {
         nav('/login')}
       async function getBookings() {
         console.log("Start fetching bookings...")
-        const res = await fetch(`${fetchURL}/bookings/${user._id}`)
-        const data = await res.json()
-        setBookings(data)
-        setLoading(false)
-        console.log(`${fetchURL}`)
-      }
+        const bookings = await fetch(`${fetchURL}/bookings/my_bookings/`, {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            authorization: user.tk
+          },
+          body: JSON.stringify({
+            _id: user._id
+          })
+        })
+        const data = await bookings.json()
+        .then((res) => {
+          console.log("Bookings res" , res)
+          setBookings(res)
+          setLoading(false)
+      })}
       getBookings()
     } catch (err) {
       console.log(err.message)
@@ -66,21 +78,33 @@ const BookingCard = ({ booking, date, pkg, time, price }) => {
     const doubleConfirmation = confirm("Are you sure?")
     if ( confirmation && doubleConfirmation ) {
       const bookingToDelete = await fetch(`${fetchURL}/bookings/${booking._id}`, {
-        method: 'DELETE'}).then(() => alert("Booking deleted successfully"))
+        method: 'DELETE',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          authorization: user.tk
+        }})
+      const data = await bookingToDelete.json()
+        .then((res) => {
+          alert(res.msg)})
         .catch(e => {console.log(e.message)
         })
-      console.log("Booking successfully deleted")
-      setUser({ ... user,
-        booking: {}
-      })
+
       async function getBookings() {
         console.log("Start fetching bookings...")
-        const res = await fetch(`${fetchURL}/bookings/${user._id}`)
-          .catch((e) => console.log(e.message)) // user id to retrieve bookings
-        const data = await res.json()
-        // console.log(user._id)
-        // console.log(user)
-        setBookings(data)
+        const bookings = await fetch(`${fetchURL}/bookings/my_bookings/`, {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            authorization: user.tk
+          },
+          body: JSON.stringify({
+            _id: user._id
+          })
+        })
+        const data = await bookings.json()
+        .then((res) => setBookings(res))
       }
       getBookings()
     } else {

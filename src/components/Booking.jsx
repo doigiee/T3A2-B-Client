@@ -103,13 +103,18 @@ const Booking = () => {
       method: 'POST',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        authorization: user.tk
       },
       body: JSON.stringify(newBooking)
-    }).then((res) => {
+    })
+    const data = await returnedBooking.json()
+    .then((res) => {
       console.log(res)
-      console.log("New booking successfully added")
-      nav(`../my_account`)
+      if (res) {
+        console.log("New booking successfully added")
+        return nav(`../my_account`)
+      }
     }).catch(e => {
       console.log(e.message)})
   }

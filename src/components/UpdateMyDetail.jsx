@@ -10,10 +10,10 @@ const Update = () => {
   const { user,setUser } = useUserContext()
   const [ userDetail, setUserDetail ] = useState([])
   const [ form, setForm ] = useState({
-    title: user.title || '',
-    first_name: user.firstName,
-    last_name: user.lastName,
-    phone_number: user.phoneNumber || ''
+    title: userDetail.title || '',
+    first_name: userDetail.firstName,
+    last_name: userDetail.lastName,
+    phone_number: userDetail.phoneNumber || ''
   })
   const { first_name, last_name, phone_number } = form
 
@@ -32,10 +32,27 @@ const Update = () => {
       nav('/login')}
 
     async function fetchUserDetail () {
-      const res = await fetch(`${fetchURL}/users/${user._id}`)
+      const res = await fetch(`${fetchURL}/users/${user._id}`, {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          authorization: user.tk
+        }})
       .catch(e => console.log(e.message))
       const data = await res.json()
-      setUserDetail(data)
+      .then((res) => {
+        setUserDetail(res)
+        setForm({
+          ...form,
+          title: res.title,
+          first_name: res.firstName,
+          last_name: res.lastName,
+          phone_number: res.phoneNumber
+        })
+        console.log("userdetail", res)
+
+        console.log(user)})
     }
     fetchUserDetail()
   }, [])
@@ -56,13 +73,21 @@ const Update = () => {
       method: 'PUT',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        authorization: user.tk
       },
       body: JSON.stringify(updatedDetail)
     })
     const data = await returnedUser.json()
-    console.log(data)
-    setUser(data)
+    .then(res => {
+      setUser({
+        ...user,
+        _id: res._id,
+        firstName: res.firstName,
+      })
+      console.log(res)
+      console.log(user)
+    })
   }
 
 
@@ -87,7 +112,7 @@ const Update = () => {
   return (
     <>
       <h2 className='heading' id="login-heading">Update my detail</h2>
-      <select defaultValue={user.title ? user.title : "DEFAULT"} onChange={handleForm} className="login-input" name="title">
+      <select defaultValue={form.title || "DEFAULT"} onChange={handleForm} className="login-input" name="title">
         <option value="DEFAULT" disabled hidden>Title</option>
         {titles.map((el,idx) => {
           return <option key={idx} value={el}>{el}</option>

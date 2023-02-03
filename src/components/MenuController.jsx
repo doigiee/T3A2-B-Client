@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import menuIcon from '../assets/icons/icon_hamburger.png'
 import closeIcon from '../assets/icons/icon_close.png'
@@ -20,6 +20,8 @@ const MenuControllerContext = React.createContext()
 const MenuController = () => {
     const { user, setUser } = useUserContext()
     const nav = useNavigate()
+
+    useEffect(() => console.log(user), [])
     
 
     // State to watch that the menu is opened or closed
