@@ -54,23 +54,25 @@ const JoinController = () => {
         
         const data = await returnedUser.json()
         .then((res) => {
+          console.log("Attempting to register in DB")
+          if (res.code == 201) {
             setUser({
               _id: res.user_id,
               firstName: res.firstName,
               tk: res.token
               })
+            alert("Thanks for registering!")
+            return nav('/my_account')
+            }
           })
-        .then((res) => {
-          console.log(res)
-          nav('/my_account')
+        .catch((err) => {
+         setUser(null) 
         })
-        
       } catch (err) {
-        setUser(undefined)
+        setUser(null)
         console.error(err)
         alert("Failed to register. Please try again")
       }}
-
 
     const submit = async (evt) => {
       evt.preventDefault()

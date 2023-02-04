@@ -30,11 +30,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.7",
     "jsdom": "^21.1.0",
-    "msw": "^1.0.0",
     "vite": "^4.0.0",
     "vitest": "^0.28.3"
-  },
-  "msw": {
-    "workerDirectory": "public"
   }
 }
