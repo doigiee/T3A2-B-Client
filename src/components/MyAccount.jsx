@@ -12,6 +12,36 @@ const MyAccount = () => {
   const [ loading, setLoading ] = useState(true)
   const nav = useNavigate()
   
+
+  async function getBookings() {
+    console.log("Start fetching bookings...")
+    const bookings = await fetch(`${fetchURL}/bookings/my_bookings/`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        authorization: user.tk
+      },
+      body: JSON.stringify({
+        _id: user._id
+      })
+    }).catch((err) => {
+      console.log("Error fetching bookings", err.error)
+      setLoading(true)
+    })
+    const data = await bookings.json()
+    .then((res) => {
+      console.log("Bookings result" , res)
+      setBookings(res)
+      setLoading(false)
+    }).catch((err) => {
+      setLoading(true)
+    })
+  }
+
+
+
+
   useEffect(() => {
     setLoading(true)
     console.log("My account page renders")
@@ -19,25 +49,6 @@ const MyAccount = () => {
     try {
       if (user == undefined) {
         nav('/login')}
-      async function getBookings() {
-        console.log("Start fetching bookings...")
-        const bookings = await fetch(`${fetchURL}/bookings/my_bookings/`, {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            authorization: user.tk
-          },
-          body: {
-            _id: user._id
-          }
-        })
-        const data = await bookings.json()
-        .then((res) => {
-          console.log("Bookings res" , res)
-          setBookings(res)
-          setLoading(false)
-      })}
       getBookings()
     } catch (err) {
       console.log(err.message)
@@ -89,23 +100,6 @@ const BookingCard = ({ booking, date, pkg, time, price }) => {
           alert(res.msg)})
         .catch(e => {console.log(e.message)
         })
-
-      async function getBookings() {
-        console.log("Start fetching bookings...")
-        const bookings = await fetch(`${fetchURL}/bookings/my_bookings/`, {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            authorization: user.tk
-          },
-          body: JSON.stringify({
-            _id: user._id
-          })
-        })
-        const data = await bookings.json()
-        .then((res) => setBookings(res))
-      }
       getBookings()
     } else {
       return true

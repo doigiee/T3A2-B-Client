@@ -86,14 +86,15 @@ const LoginController = () => {
           return nav('/my_account')
         }
         alert("Failed to login. Please try again")
+          setUser(undefined)
           setForm({
             email: '',
             password: ''
           })
       })
     } catch {
-      console.log(`Failed to login`)
       alert("Failed to login. Please try again")
+      setUser(undefined)
       setForm({
         email: '',
         password: ''

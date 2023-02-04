@@ -51,6 +51,7 @@ const JoinController = () => {
           },
           body: JSON.stringify(newUser)
         })
+        
         const data = await returnedUser.json()
         .then((res) => {
             setUser({
@@ -63,6 +64,7 @@ const JoinController = () => {
           console.log(res)
           nav('/my_account')
         })
+        
       } catch (err) {
         setUser(undefined)
         console.error(err)
