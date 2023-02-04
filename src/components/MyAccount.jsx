@@ -28,9 +28,9 @@ const MyAccount = () => {
             'Content-Type': 'application/json',
             authorization: user.tk
           },
-          body: JSON.stringify({
+          body: {
             _id: user._id
-          })
+          }
         })
         const data = await bookings.json()
         .then((res) => {

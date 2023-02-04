@@ -53,18 +53,19 @@ const JoinController = () => {
         })
         const data = await returnedUser.json()
         .then((res) => {
-          if (res.code == 201) {
             setUser({
               _id: res.user_id,
-              firstName: res.first_name,
+              firstName: res.firstName,
               tk: res.token
               })
-            alert(res.message)
-            nav('/my_account')
-        }
-        alert("Failed to register. Please try again")
           })
+        .then((res) => {
+          console.log(res)
+          nav('/my_account')
+        })
       } catch (err) {
+        setUser(undefined)
+        console.error(err)
         alert("Failed to register. Please try again")
       }}
 

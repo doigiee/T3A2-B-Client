@@ -181,37 +181,30 @@ describe('Join', () => {
 })
 
 
-describe('Join', () => {
+describe('Login', () => {
 
-  const handlers = [
-    rest.post('/users/login', (req, res, ctx) => {
-      sessionStorage.setItem('is-authenticated', 'true')
-      return res(
-        ctx.status(200)
-      )
-    }),
-    rest.get('/users', (req, res, ctx) => {
-      const isAuthenticated = sessionStorage.getItem('is-authenticated')
-
-      if (!isAuthenticated) {
-        return res(
-          ctx.status(403),
-          ctx.json({
-            errorMessage: 'Not authorized',
-          })
-        )
-      }
-      return res(
-        ctx.status(200),
-        ctx.json({
-          username: 'admin'
-        })
-      )
-    })
-  ]
-  it("Has 5 input boxes includes 1 button and 1 select box. ", async () => {
-
+  it("Triggers onSubmit when submits email and password", async () => {
+    render(
+      <BrowserRouter>
+        <UserContextProvider>
+          <LoginController />
+        </UserContextProvider>
+      </BrowserRouter>
+    )
     
+    const mockUser = {
+      email: "starfish@outlook.com",
+      password: "123456"
+    }
+    const emailInput = screen.getByRole('textbox', { name : '' })
+    const passwordInput = document.querySelector('#passwordInput')
+    const submitButton = screen.getByRole('link', { name : 'LOGIN'})
+    userEvent.type(emailInput, mockUser.email)
+    userEvent.type(passwordInput, mockUser.password)
+    userEvent.click(submitButton)
+    // console.log("email", emailInput, "password", passwordInput)
+    screen.debug()
+
   })
 
 })
