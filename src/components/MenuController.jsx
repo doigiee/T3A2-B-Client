@@ -99,10 +99,10 @@ const MenuBox = () => {
             </Link>
         </div>
         <nav aria-label="menu" id="menu-container">
-            <ul id='menu-box'>
+            <ul id='menu-box' name="menu-box">
                 {menuItems.map((el,idx) => { // menu items rendering
-                    return <li key={idx}>
-                        <Link to={el.to} onClick={toggleStateForMenu}>{el.title}</Link>
+                    return <li key={idx} >
+                        <Link to={el.to} aria-label={el.title} onClick={toggleStateForMenu}>{el.title}</Link>
                         </li>
                 })}
             </ul>

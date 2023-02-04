@@ -11,6 +11,7 @@ const Login = ({ email, password, handle, logIn }) => {
       <h2 className='heading' id="login-heading">Login</h2>
       <Link to="/join" className='sub-desc'>New to PAWFUL? Join here</Link>
       <input 
+          id="loginInput"
           key="1"
           value={email} 
           className="login-input" 
@@ -21,6 +22,7 @@ const Login = ({ email, password, handle, logIn }) => {
           onChange={handle}
       />
       <input 
+          id="passwordInput"
           key="2"
           value={password} 
           className="login-input" 
@@ -30,8 +32,8 @@ const Login = ({ email, password, handle, logIn }) => {
           name="password"
           onChange={handle}
       />
-      <Link onClick={logIn}><h3 className="btn login-btn">LOGIN</h3></Link>
-      <Link to="/send_inquiry" className='sub-desc'>Forgot password?</Link>
+      <Link name="login-button" onClick={logIn}><h3 className="btn login-btn">LOGIN</h3></Link>
+      <Link name="forgot-password" to="/send_inquiry" className='sub-desc'>Forgot password?</Link>
     </>
   )
 }

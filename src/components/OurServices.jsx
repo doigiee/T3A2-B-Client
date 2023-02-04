@@ -12,7 +12,7 @@ const OurServices = () => {
         <h3>From</h3>
         <h2>$ {props.price}</h2>
         <span className="division-line"></span>
-        <Link to={"/bookings"}><h3 className="btn">Book now</h3></Link>
+        <Link to={"/bookings"}><h3 className="btn" name="Book-Now">Book now</h3></Link>
       </div>
     )
   }
@@ -41,8 +41,11 @@ const OurServices = () => {
                 key={idx}
                 name={el.pkg_name}
                 desc={el.pkg_description}
-                price={el.pkg_price}/>)
-          })}
+                price={el.pkg_price}
+              />
+            )
+            })
+          }
         </div>
       </section>
     </main>
