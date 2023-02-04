@@ -22,7 +22,7 @@ const MyAccount = () => {
       async function getBookings() {
         console.log("Start fetching bookings...")
         const bookings = await fetch(`${fetchURL}/bookings/my_bookings/`, {
-          method: 'POST',
+          method: 'GET',
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
