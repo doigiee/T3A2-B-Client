@@ -22,15 +22,15 @@ const MyAccount = () => {
       async function getBookings() {
         console.log("Start fetching bookings...")
         const bookings = await fetch(`${fetchURL}/bookings/my_bookings/`, {
-          method: 'POST',
+          method: 'GET',
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
             authorization: user.tk
           },
-          body: JSON.stringify({
+          body: {
             _id: user._id
-          })
+          }
         })
         const data = await bookings.json()
         .then((res) => {
