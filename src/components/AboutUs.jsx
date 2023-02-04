@@ -1,9 +1,6 @@
 import React from 'react'
-import daycare from '../assets/icons/icon_daycare.png'
-import grooming from '../assets/icons/icon_grooming.png'
-import bath from '../assets/icons/icon_bath.png'
-import checkup from '../assets/icons/icon_checkup.png'
 import map from '../assets/about_us_map.jpeg'
+import { aboutUs } from './config.js' 
 
 
 const AboutUs = () => {
@@ -13,7 +10,7 @@ const AboutUs = () => {
       <div className="services flex column a-i-center">
         <img src={props.src} width='170px'/>
         <h3>{props.title}</h3>
-        <p className="heading-description text-center">{props.desc}</p>
+        <p className="heading-description">{props.desc}</p>
       </div>
     )
   }
@@ -35,22 +32,9 @@ const AboutUs = () => {
           We're a group of dog enthusiastic that our skills to look after many kinds of dogs!
         </p></h2>
         <div className="cards-container flex a-i-center column ">
-          <Card src={daycare} title={'Daycare'} 
-              desc='Simply your dog can wait in our playground! 
-              Meet friends and play games. After any service, 
-              your dog can wait in the playground until you come back!'/>
-          <Card src={grooming} title={'Grooming'} 
-              desc='Simply your dog can wait in our playground! 
-              Meet friends and play games. After any service, 
-              your dog can wait in the playground until you come back!'/>
-          <Card src={bath} title={'Bath'} 
-              desc='Simply your dog can wait in our playground! 
-              Meet friends and play games. After any service, 
-              your dog can wait in the playground until you come back!'/>
-          <Card src={checkup} title={'Check up'} 
-              desc='Simply your dog can wait in our playground! 
-              Meet friends and play games. After any service, 
-              your dog can wait in the playground until you come back!'/>
+          {aboutUs.map((el, idx) => {
+            return <Card key={idx} src={el.src} title={el.title} desc={el.desc}/>
+          })}
         </div>
         <img id="map" src={map} />
     </section>

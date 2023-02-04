@@ -1,11 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300;400;500;700&family=Raleway:wght@500;700;800;900&display=swap');
 
+.page-not-found h1 {
+  margin-bottom: 1.5rem;
+  font-size: 6rem;
+}
+
+.page-not-found p {
+  font-weight: 500;
+  margin-bottom: 2.8rem;
+}
+
 .shadow-top {
   box-shadow: 0px -5px 30px 5px #00000066;
 }
 
 .shadow-btm {
-  box-shadow: 0px 5px 50px 0px #3636363a;
+  box-shadow: 0px 5px 50px 0px #3636367b;
 }
 
 .white {
@@ -56,7 +66,7 @@
 #navbar {
   z-index: 3;
   min-width: 320px;
-  width: 100vw;
+  width: calc(100vw);
   height: 80px;
   background-color: #415144;
   color: #fffcf5;
@@ -66,7 +76,7 @@
 #logo {
   font-size: 1.6rem;
   font-weight: 700;
-  text-shadow: 4px 4px 5px #0000008a;
+  text-shadow: 4px 4px 5px #0000009f;
 }
 
 #menu-wrapper {
@@ -256,7 +266,7 @@ footer {
   margin-top: -10px;
   z-index: 50;
   bottom: 0;
-  width: 100vw;
+  width: calc(100vw);
   height: 120px;
   background-color: #415144;
   color: #fffcf56d;
@@ -283,6 +293,10 @@ footer {
   width: 100%;
   background-color: white;
   height: auto;
+}
+
+.heading-container h2 {
+  font-size: 2.5rem;
 }
 
 .heading-container a {
@@ -324,6 +338,10 @@ footer {
 
 .package-card h3 {
   padding: 0.5rem;
+}
+
+.package-card p {
+  font-size: 0.8rem;
 }
 
 .division-line {
@@ -386,6 +404,7 @@ footer {
 
 #submit-btn {
   margin : 5px 0;
+  margin-top: 1rem;
   font-family: 'Noto Sans', sans-serif;
   color: #fffcf5;
   text-align: center;
@@ -457,6 +476,7 @@ footer {
 .login-input::placeholder {
   color: #fffcf55c;
 }
+
 #login-form select {
   color: #fffcf55c;
 }
@@ -515,6 +535,11 @@ footer {
   color: #363636
 }
 
+#update-my-detail {
+  width: 170px;
+}
+
+
 .sub-menu img {
   margin: 0 0.5rem;
   vertical-align: middle;
@@ -537,6 +562,11 @@ footer {
 
 .booking-date {
   width: 35%;
+}
+
+.booking-date h2{
+  font-size: 1.8rem;
+  line-height: 110%;
 }
 
 .booking-detail {
@@ -603,6 +633,10 @@ footer {
     padding: 4rem 7rem;
     order: 10;
   }
+
+  #packages-container {
+    margin-bottom: 50px;
+  } 
 
   .cards-container {
     flex-direction: row;
@@ -687,7 +721,7 @@ footer {
 
   .home-heading-container {
     position: relative;
-    right: 15%;
+    right: 10%;
     text-align: left;
     width: 35vw;
     padding-top: 184px;
@@ -740,7 +774,9 @@ footer {
     position: absolute;
     background-color: #ffffff00;
     color: #fffcf5;
-    width: 90%;
+    width: 70%;
+    max-width: 1000px;
+    /* left: 20%; */
   }
   
   .context-container {
@@ -765,6 +801,10 @@ footer {
     flex-wrap: wrap ;
     justify-content: center;
     margin: 0px 0px;
+  }
+
+  #packages-container {
+    margin-bottom: 130px;
   }
 
   .package-card {
@@ -824,11 +864,14 @@ footer {
     margin: 1rem 3rem;
   }
 
+<<<<<<< HEAD
   #packages-dropbox {
     /* margin-right: 4rem;
     margin-left: 4rem; */
   }
 
+=======
+>>>>>>> fb2896808fffb5749fb2cae8f610224e6592dc6d
   #login-bg {
     flex-direction: column;
     z-index: -1;

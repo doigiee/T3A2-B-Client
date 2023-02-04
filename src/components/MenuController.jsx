@@ -8,7 +8,12 @@ import join from '../assets/icons/icon_join.png'
 import facebook from '../assets/icons/facebook.png'
 import insta from '../assets/icons/instagram.png'
 import { useUserContext } from './UserContext'
+<<<<<<< HEAD
 import LoginController from './Login'
+=======
+import { menuItems } from './config'
+
+>>>>>>> fb2896808fffb5749fb2cae8f610224e6592dc6d
 
 
 //  Use Context for faster performance between states and functions globally
@@ -19,6 +24,11 @@ const MenuControllerContext = React.createContext()
 const MenuController = () => {
     const { user, setUser } = useUserContext()
     const nav = useNavigate()
+<<<<<<< HEAD
+=======
+
+    useEffect(() => console.log(user), [])
+>>>>>>> fb2896808fffb5749fb2cae8f610224e6592dc6d
     
 
     // State to watch that the menu is opened or closed
@@ -44,13 +54,20 @@ const MenuController = () => {
 
     const handleLogoutClick = (evt) => {
         evt.preventDefault()
+<<<<<<< HEAD
+=======
+        alert(`Successfully logged out. \n See you again, ${user.firstName}`)
+>>>>>>> fb2896808fffb5749fb2cae8f610224e6592dc6d
         setUser(undefined)
         setOpen(!isOpen)
         setVisible(!isOpen)
         nav("/login")
     }
+<<<<<<< HEAD
     
     useEffect(()=>console.log('Rendered'),[])
+=======
+>>>>>>> fb2896808fffb5749fb2cae8f610224e6592dc6d
     
 
     return (
@@ -67,6 +84,7 @@ const MenuController = () => {
 
 // MenuBox component
 const MenuBox = () => {
+<<<<<<< HEAD
     
     // useEffect(() => {
     //     if (user == undefined) {
@@ -92,6 +110,10 @@ const MenuBox = () => {
     //     )
     //   }
     
+=======
+    const {toggleState, toggleStateForMenu, handleLogoutClick, isOpen, isVisible, user} = useContext(MenuControllerContext);
+
+>>>>>>> fb2896808fffb5749fb2cae8f610224e6592dc6d
     // Custom Link component
     const LinkTo = (props) => {
         return (
@@ -120,10 +142,10 @@ const MenuBox = () => {
             </Link>
         </div>
         <nav aria-label="menu" id="menu-container">
-            <ul id='menu-box'>
-                {menuitems.map((el,idx) => { // menu items rendering
-                    return <li key={idx}>
-                        <Link to={el.to} onClick={toggleStateForMenu}>{el.title}</Link>
+            <ul id='menu-box' name="menu-box">
+                {menuItems.map((el,idx) => { // menu items rendering
+                    return <li key={idx} >
+                        <Link to={el.to} aria-label={el.title} onClick={toggleStateForMenu}>{el.title}</Link>
                         </li>
                 })}
             </ul>

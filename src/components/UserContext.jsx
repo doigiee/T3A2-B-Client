@@ -4,7 +4,10 @@ const UserContext = createContext(null)
 
 export function UserContextProvider({children}) {
   const [ user, setUser ] = useState(undefined)
+<<<<<<< HEAD
   // const [ isLoggedIn, setIsLoggedIn ] = useState(false)
+=======
+>>>>>>> fb2896808fffb5749fb2cae8f610224e6592dc6d
 
   return (
     <UserContext.Provider
@@ -12,8 +15,11 @@ export function UserContextProvider({children}) {
       value={{
         user,
         setUser,
+<<<<<<< HEAD
         // isLoggedIn,
         // setIsLoggedIn,
+=======
+>>>>>>> fb2896808fffb5749fb2cae8f610224e6592dc6d
       }}
     />
   )

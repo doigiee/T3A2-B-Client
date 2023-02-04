@@ -1,5 +1,5 @@
 import React from 'react'
-import wave from '../assets/wave_white.svg'
+import { ourPackages } from './config.js'
 import { Link } from 'react-router-dom'
 
 const OurServices = () => {
@@ -7,12 +7,12 @@ const OurServices = () => {
   const Card = (props) => {
     return (
       <div className="package-card shadow-btm flex column a-i-center j-c-sb">
-        <h3>{props.title}</h3>
+        <h3>{props.name}</h3>
         <p className="heading-description">{props.desc}</p>
         <h3>From</h3>
         <h2>$ {props.price}</h2>
         <span className="division-line"></span>
-        <Link to={"/bookings"}><h3 className="btn">Book now</h3></Link>
+        <Link to={"/bookings"}><h3 className="btn" name="Book-Now">Book now</h3></Link>
       </div>
     )
   }
@@ -34,19 +34,18 @@ const OurServices = () => {
       <h2 className="heading">Grooming package<p className="heading-description">
           We're a group of dog enthusiastic that our skills to look after many kinds of dogs!
         </p></h2>
-        <div className="cards-container flex column a-i-center j-c-center">
-          <Card title="Package 1" 
-                desc="Let us pamper your furry friend at our professional" 
-                price="110"/>
-          <Card title="Package 2" 
-                desc="Let us pamper your furry friend at our professional" 
-                price="115"/>
-          <Card title="package 3" 
-                desc="Let us pamper your furry friend at our professional" 
-                price="130"/>
-          <Card title="package 4" 
-                desc="Let us pamper your furry friend at our professional" 
-                price="100"/>
+        <div id="packages-container" className="cards-container flex column a-i-center j-c-center">
+          {ourPackages.map((el, idx) => {
+            return (
+              <Card 
+                key={idx}
+                name={el.pkg_name}
+                desc={el.pkg_description}
+                price={el.pkg_price}
+              />
+            )
+            })
+          }
         </div>
       </section>
     </main>

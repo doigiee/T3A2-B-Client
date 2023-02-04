@@ -4,7 +4,7 @@ import MenuController from './MenuController'
 
 const Navbar = ({ authenticated }) => {
   return (
-    <nav id="navbar" className="flex a-i-center j-c-sb shadow-btm">
+    <nav id="navbar" className="flex a-i-center j-c-sb">
       <Link id="logo" to="/">PAWFUL</Link>
       <MenuController authenticated={authenticated} />
     </nav>
