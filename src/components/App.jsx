@@ -24,20 +24,20 @@ function App() {
   <>
   <UserContextProvider>
     <Navbar/>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/about_us' element={<AboutUs />} />
-        <Route path='/our_services' element={<OurServices />} />
-        <Route path='/send_inquiry' element={<SendInquiry />} />
-        <Route path='/join' element={<JoinController />} />
-        <Route path='/login' element={<LoginController />} />
-        <Route path='/my_account' element={<MyAccount />} /> 
-        <Route path='/my_account/update' element={<UpdateMyDetail />} /> 
-        <Route path='/bookings' element={<Booking />} /> 
-        <Route path='/bookings/update' element={<BookingUpdate />} /> 
-        <Route path='/404' element={<NotFound />} /> 
-        <Route path='*' element={<NotFound />} /> 
-      </Routes>
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/about_us' element={<AboutUs />} />
+      <Route path='/our_services' element={<OurServices />} />
+      <Route path='/send_inquiry' element={<SendInquiry />} />
+      <Route path='/join' element={<JoinController />} />
+      <Route path='/login' element={<LoginController />} />
+      <Route path='/my_account' element={<MyAccount />} /> 
+      <Route path='/my_account/update' element={<UpdateMyDetail />} /> 
+      <Route path='/bookings' element={<Booking />} /> 
+      <Route path='/bookings/update' element={<BookingUpdate />} /> 
+      <Route path='/404' element={<NotFound />} /> 
+      <Route path='*' element={<NotFound />} /> 
+    </Routes>
     <Footer />
   </UserContextProvider>
   </>
