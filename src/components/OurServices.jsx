@@ -34,7 +34,7 @@ const OurServices = () => {
       <h2 className="heading">Grooming package<p className="heading-description">
           We're a group of dog enthusiastic that our skills to look after many kinds of dogs!
         </p></h2>
-        <div className="cards-container flex column a-i-center j-c-center">
+        <div id="packages-container" className="cards-container flex column a-i-center j-c-center">
           {ourPackages.map((el, idx) => {
             return (
               <Card 

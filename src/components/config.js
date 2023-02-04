@@ -5,8 +5,8 @@ import checkup from '../assets/icons/icon_checkup.png'
 
 
 // export const fetchURL = `http://localhost:4717`
-export const fetchURL = `https://t3a2-b-server-production-8f9c.up.railway.app`
-// export const fetchURL = `t3a2-b-server-production-8f9c.up.railway.app`
+export const fetchURL = `https://t3a2-b-server-production-542a.up.railway.app`
+
 
 export const menuItems=[
   {

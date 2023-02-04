@@ -634,6 +634,10 @@ footer {
     order: 10;
   }
 
+  #packages-container {
+    margin-bottom: 50px;
+  } 
+
   .cards-container {
     flex-direction: row;
     flex-wrap: wrap ;
@@ -797,6 +801,10 @@ footer {
     flex-wrap: wrap ;
     justify-content: center;
     margin: 0px 0px;
+  }
+
+  #packages-container {
+    margin-bottom: 130px;
   }
 
   .package-card {

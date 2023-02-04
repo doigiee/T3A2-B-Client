@@ -36,6 +36,8 @@ function App() {
       <Route path='/bookings' element={<Booking />} /> 
       <Route path='/bookings/update' element={<BookingUpdate />} /> 
       <Route path='/404' element={<NotFound />} /> 
+      <Route path='https://pawful.netlify.app/404' element={<NotFound />} /> 
+      <Route path='https://pawful.netlify.app/*' element={<NotFound />} /> 
       <Route path='*' element={<NotFound />} /> 
     </Routes>
     <Footer />
