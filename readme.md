@@ -263,7 +263,7 @@ Hosting : Railway
 
 ### **Our team is following `Kanban` project methodology to perform high task efficiency according to their ability and circumstances.**
 
-### Click [here](#./docs/trello.md) to see Trello Screenshots
+### Click [here](./docs/trello.md) to see Trello Screenshots
 
 
 <br><br><br>
