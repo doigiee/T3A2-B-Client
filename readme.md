@@ -51,6 +51,7 @@ Git clone here: [Backend - Server API](https://github.com/doigiee/T3A2-B-Server_
 <br>
 Firstly run `npm init -y`, and `npm i express` then run `npm start` or `nodemon` to get the Server running. 
 
+### **Before nodemon, make sure setting up for `ATLAS_DB_URL` and `SECRET_KEY` in .env file**
 
 make a DB with Mongo DB. 
     
