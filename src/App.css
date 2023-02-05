@@ -15,7 +15,7 @@
 }
 
 .shadow-btm {
-  box-shadow: 0px 5px 50px 0px #3636367b;
+  box-shadow: 0px 5px 30px 0px #36363664;
 }
 
 .white {
@@ -586,6 +586,11 @@ footer {
   line-height: 140%;
   font-weight: 200;
   text-align: left;
+}
+
+#book-now-card {
+  text-align: center;
+  width: 100%;
 }
 
 #package-dropbox {

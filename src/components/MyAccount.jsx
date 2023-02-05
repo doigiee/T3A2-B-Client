@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import my_detail from '../assets/icons/icon_mydetail.png'
 import { fetchURL } from './config'
 import { useUserContext } from './UserContext'
+import add_button from '../assets/icons/add_button.png'
 
 
 
@@ -128,13 +129,31 @@ const BookingCard = ({ booking, date, pkg, time, price }) => {
   )
 }
 
+
+const BookingNowCard = () => {
+  return (
+    <div className="booking-card flex a-i-center shadow-btm">
+      <div id="book-now-card" className="booking-date flex column a-i-center">
+        <Link className="" to={`/bookings/`} > 
+          <img src={add_button}/>
+          <h3>New booking</h3>
+          </Link>
+      </div>
+    </div>
+  )
+}
+
+
+
+
+
 const BookingCardContainer = () => {
   if (loading) {
     return <><br/><h3>Loading...</h3></>
   }
   return (
     <div id="booking-cards-container" className="cards-container flex column a-i-center j-c-center">
-          {bookings.length > 0 ? 
+          {
             bookings.map((el, idx) => {
               return (
                 <BookingCard 
@@ -145,7 +164,8 @@ const BookingCardContainer = () => {
                   time={el.date.time}
                   price={el.pkg.price}
                 />)
-            }) : <h5> No booking found </h5>}
+            }) }
+            <BookingNowCard />
         </div>
   )
 }

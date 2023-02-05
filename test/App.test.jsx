@@ -12,8 +12,6 @@ import LoginController from '../src/components/Login'
 import MyAccount from '../src/components/MyAccount'
 import OurServices from '../src/components/OurServices'
 import { UserContextProvider } from '../src/components/UserContext'
-import { rest } from 'msw'
-
 
 
 
@@ -202,8 +200,6 @@ describe('Login', () => {
     userEvent.type(emailInput, mockUser.email)
     userEvent.type(passwordInput, mockUser.password)
     userEvent.click(submitButton)
-    // console.log("email", emailInput, "password", passwordInput)
-    screen.debug()
 
   })
 
