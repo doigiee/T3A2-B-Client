@@ -63,15 +63,17 @@ const JoinController = () => {
               })
             alert("Thanks for registering!")
             return nav('/my_account')
-            }
-          })
+          }
+        })
         .catch((err) => {
-         setUser(null) 
+          console.log(err)
+          setUser(null) 
+          alert("Failed to register. Please try again")
         })
       } catch (err) {
-        setUser(null)
-        console.error(err)
-        alert("Failed to register. Please try again")
+          setUser(null)
+          console.error(err)
+          alert("Failed to register. Please try again")
       }}
 
     const submit = async (evt) => {
@@ -89,8 +91,9 @@ const JoinController = () => {
           form.phone_number, 
           form.password )
       }
-      console.log(user)
-      // nav('/my_account')
+      setUser(null)
+      console.error(`${form.email} is in used. Register failed`)
+      return alert(`${form.email} is already in use. Please try other email.`)
     }
 
 
