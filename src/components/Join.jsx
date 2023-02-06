@@ -181,23 +181,27 @@ const JoinController = () => {
         
         const data = await returnedUser.json()
         .then((res) => {
+          console.log("Attempting to register in DB")
+          if (res.code == 201) {
             setUser({
               _id: res.user_id,
               firstName: res.firstName,
               tk: res.token
               })
-          })
-        .then((res) => {
-          console.log(res)
-          nav('/my_account')
+            alert("Thanks for registering!")
+            return nav('/my_account')
+          }
         })
-        
+        .catch((err) => {
+          console.log(err)
+          setUser(null) 
+          alert("Failed to register. Please try again")
+        })
       } catch (err) {
-        setUser(undefined)
-        console.error(err)
-        alert("Failed to register. Please try again")
+          setUser(null)
+          console.error(err)
+          alert("Failed to register. Please try again")
       }}
-
 
     const submit = async (evt) => {
       evt.preventDefault()
@@ -214,8 +218,9 @@ const JoinController = () => {
           form.phone_number, 
           form.password )
       }
-      console.log(user)
-      // nav('/my_account')
+      setUser(null)
+      console.error(`${form.email} is in used. Register failed`)
+      return alert(`${form.email} is already in use. Please try other email.`)
     }
 
 
