@@ -869,6 +869,14 @@ footer {
     margin: 1rem 3rem;
   }
 
+<<<<<<< HEAD
+  #packages-dropbox {
+    /* margin-right: 4rem;
+    margin-left: 4rem; */
+  }
+
+=======
+>>>>>>> fb2896808fffb5749fb2cae8f610224e6592dc6d
   #login-bg {
     flex-direction: column;
     z-index: -1;

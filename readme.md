@@ -1,4 +1,3 @@
-
 <div style="text-align:center">
 <br><br>
 <img src=./docs/dog_login.png > <br><br>
