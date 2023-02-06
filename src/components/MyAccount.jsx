@@ -1,18 +1,9 @@
-<<<<<<< HEAD
-import React, { useContext, useEffect, useState } from 'react'
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
-import my_detail from '../assets/icons/icon_mydetail.png'
-import LoginController from './Login'
-import { useUserContext } from './UserContext'
-
-
-const BookingCard = (props) => {
-=======
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import my_detail from '../assets/icons/icon_mydetail.png'
 import { fetchURL } from './config'
 import { useUserContext } from './UserContext'
+import add_button from '../assets/icons/add_button.png'
 
 
 
@@ -115,7 +106,6 @@ const BookingCard = ({ booking, date, pkg, time, price }) => {
       return true
     }
   }
->>>>>>> fb2896808fffb5749fb2cae8f610224e6592dc6d
 
   return (
     <>
@@ -128,17 +118,10 @@ const BookingCard = ({ booking, date, pkg, time, price }) => {
           <h3>{pkg}</h3>
           <p className='heading-description'>{time} up to 1 hour</p>
           <div className="modify-booking-box">
-<<<<<<< HEAD
-            <h3>$ {props.price}</h3>
-            <Link className="" to="/bookings">Modify</Link>
-            <span className="" >  |  </span>
-            <Link className="" to="">Cancel</Link>
-=======
             <h3>$ {price}</h3>
             <Link className="" to={`/bookings/update`} onClick={addBookingToUserContext}>Modify</Link>
             <span className="" > | </span>
             <Link className="" to="" onClick={deleteBooking}>Cancel</Link>
->>>>>>> fb2896808fffb5749fb2cae8f610224e6592dc6d
           </div>
         </div>
       </div>
@@ -146,68 +129,31 @@ const BookingCard = ({ booking, date, pkg, time, price }) => {
   )
 }
 
-<<<<<<< HEAD
 
-const NoBookingsExist = () => {
-  return <></>
+const BookingNowCard = () => {
+  return (
+    <div className="booking-card flex a-i-center shadow-btm">
+      <div id="book-now-card" className="booking-date flex column a-i-center">
+        <Link className="" to={`/bookings/`} > 
+          <img src={add_button}/>
+          <h3>New booking</h3>
+          </Link>
+      </div>
+    </div>
+  )
 }
 
-const MyAccount = () => {
-  // const location = useLocation()
-  // if (location.state == null) {
-  //   return <LoginController />
-  // } 
-  const [ bookings, setBookings ] = useState([])
-  const nav = useNavigate()
-  const { user } = useUserContext()
-  console.log(user, " at My account page")
-  // if ( user == undefined ) {
-  //   return <LoginController />
-  // } 
 
 
-  // console.log(location.state.email, "After login")
-  // console.log(location.state.password, "After login")
-  // console.log(location.state.first_name, "After login")
 
-  // const bookings = [
-  //   {
-  //     id: 123,
-  //     date: {
-  //       day: 27,
-  //       month: "Jan"
-  //     }, 
-  //     time: '11:00-12:00',
-  //     pkg: 'Package 1',
-  //     price: 110
-  //   }
-  // ]
-  
-  
 
-  useEffect(() => {
-    async function getBookings() {
-      console.log("Start fetching bookings...")
-      const res = await fetch(`http://localhost:4717/bookings/${user._id}`) // user id to retrieve bookings
-      const data = await res.json()
-      setBookings(data)
-      console.log(data)
-      console.log(bookings)
-    }
-    getBookings().catch((e) => console.log(e.message))
-    if (user == undefined) {
-      nav('/login')
-    }
-  }, [])
-  
-=======
 const BookingCardContainer = () => {
   if (loading) {
     return <><br/><h3>Loading...</h3></>
   }
   return (
     <div id="booking-cards-container" className="cards-container flex column a-i-center j-c-center">
-          {bookings.length > 0 ? 
+          {
             bookings.map((el, idx) => {
               return (
                 <BookingCard 
@@ -218,11 +164,11 @@ const BookingCardContainer = () => {
                   time={el.date.time}
                   price={el.pkg.price}
                 />)
-            }) : <h5> No booking found </h5>}
+            }) }
+            <BookingNowCard />
         </div>
   )
 }
->>>>>>> fb2896808fffb5749fb2cae8f610224e6592dc6d
 
 
   return (
@@ -243,24 +189,7 @@ const BookingCardContainer = () => {
           <img src={my_detail} width="25px"/>Update my detail</Link>
       </div>
       <h2 className="heading">My bookings</h2>
-<<<<<<< HEAD
-        <div className="cards-container flex column a-i-center j-c-center">
-          {bookings !== undefined ? 
-            bookings.map((el, idx) => {
-              return <BookingCard 
-              key={idx}
-              date={{date: el.date[0].date + "th" ,month: el.date[0].month}}
-              pkg={el.pkg}
-              time={el.date[0].time}
-              price={el.price}/>
-            }) : <h5> No booking found </h5>}
-          {/* <BookingCard date={{date:"27th", month:"Jan"}} pkg="Package 1" time="11:00AM - 12:00PM" price="110"/>
-          <BookingCard date={{date:"27th", month:"Jan"}} pkg="Package 1" time="11:00AM - 12:00PM" price="110"/>
-          <BookingCard date={{date:"27th", month:"Jan"}} pkg="Package 1" time="11:00AM - 12:00PM" price="110"/> */}
-        </div>
-=======
         <BookingCardContainer/>
->>>>>>> fb2896808fffb5749fb2cae8f610224e6592dc6d
     </section>
   </main>
   )
